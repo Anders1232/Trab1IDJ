@@ -37,7 +37,7 @@ Game::Game(std::string title,int width, int height)
 		Error(SDL_GetError());
 	}
 	renderer= SDL_CreateRenderer(window, -1, 0);
-	if(nullptr == window)
+	if(nullptr == renderer)
 	{
 		Error(SDL_GetError());
 	}
