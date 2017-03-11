@@ -5,6 +5,8 @@
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
 
+#include"State.h"
+
 class Game
 {
 	public:
@@ -13,12 +15,12 @@ class Game
 		void Run(void);
 		SDL_Renderer* GetRenderer(void) const;
 		State& GetState(void) const;
-		static Game& GetInstance(void) const;
+		static Game& GetInstance(void);
 	private:
 		static Game* instance;
 		SDL_Window* window;
 		SDL_Renderer* renderer;
 		State* state;
-}
+};
 
 #endif // GAME_H

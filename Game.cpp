@@ -1,21 +1,15 @@
 #include "Game.h"
+#include "Error.h"
 
-#define ErrorMsg(msg)std::cerr << "[ERROR] " << __FILE__ << " | " << __func__ << ":" << __LINE__ << "\t\t" << msg << endl
-#define ERROR_PREFIX  "[ERROR] "<< __FILE__<<" | "<< __func__ <<":"<< __LINE__ <<"\t\t"
-
-static void Error(char* errMsg)
-{
-	std::cerr << "[ERROR] " << __FILE__ << " | " << __func__ << ":" << __LINE__ << "\t\t" << errMsg << endl;
-	exit(1);
-}
+Game* Game::instance= nullptr;
 
 Game::Game(std::string title,int width, int height)
 {
-	if(nullptr != instance)
+	if(nullptr != Game::instance)
 	{
 		Error("Second instantion of the game!");
 	}
-	instance= this;
+	Game::instance= this;
 	if(0 != SDL_Init(SDL_INIT_VIDEO))
 	{
 		Error(SDL_GetError());
@@ -25,22 +19,19 @@ Game::Game(std::string title,int width, int height)
 	{
 		Error("Loading SDL_image failed");
 	}
-	if(0 == result & IMG_INIT_JPG)
+	if(0 == (result & IMG_INIT_JPG ) )
 	{
-//		std::cerr << "[ERROR] " << __FILE__ << " | " << __func__ << ":" << __LINE__ << "\t\t" << "Error Loading IMG_INIT_JPG";
 		Error("Loading IMG_INIT_JPG failed");
 	}
-	if(0 == result & IMG_INIT_PNG)
+	if(0 == (result & IMG_INIT_PNG) )
 	{
-//		std::cerr << "[ERROR] " << __FILE__ << " | " << __func__ << ":" << __LINE__ << "\t\t" << "Error Loading IMG_INIT_PNG";
 		Error("Loading IMG_INIT_PNG failed");
 	}
-	if(0 == result & IMG_INIT_TIF)
+	if(0 == (result & IMG_INIT_TIF ))
 	{
-//		std::cerr << "[ERROR] " << __FILE__ << " | " << __func__ << ":" << __LINE__ << "\t\t" << "Error Loading IMG_INIT_TIF";
 		Error("Loading IMG_INIT_TIF failed");
 	}
-	window= SDL_CreateWindow("Usando SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
+	window= SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
 	if(nullptr == window)
 	{
 		Error(SDL_GetError());
@@ -50,7 +41,7 @@ Game::Game(std::string title,int width, int height)
 	{
 		Error(SDL_GetError());
 	}
-	//iniciar o state
+	state= new State();
 }
 
 Game::~Game()
@@ -61,9 +52,9 @@ Game::~Game()
 	SDL_Quit();
 }
 
-Game& Game::GetInstance(void) const
+Game& Game::GetInstance(void)
 {
-	return *instance;
+	return *(Game::instance);
 }
 
 State& Game::GetState(void) const
@@ -73,5 +64,16 @@ State& Game::GetState(void) const
 
 SDL_Renderer* Game::GetRenderer(void)const
 {
-	return *renderer;
+	return renderer;
+}
+
+void Game::Run(void)
+{
+	while(!state->QuitRequested())
+	{
+		state->Update();
+		state->Render();
+		SDL_RenderPresent(renderer);
+		SDL_Delay(33);
+	}
 }

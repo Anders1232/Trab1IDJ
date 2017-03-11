@@ -5,11 +5,13 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     Game.cpp \
-    state.cpp
+    Error.cpp \
+    Sprite.cpp \
+    State.cpp
 
 TARGET = JOGO
 
-QMAKE_CXXFLAGS += -finline-functions -Wall -pedantic -std=c++11 -lSDL2
+QMAKE_CXXFLAGS += -finline-functions -Wall -pedantic -std=c++11
 QMAKE_CFLAGS += -finline-functions -Wall -pedantic -std=c99
 
 QMAKE_CFLAGS_RELEASE += -O3
@@ -20,6 +22,9 @@ qtcAddDeployment()
 
 HEADERS += \
     Game.h \
-    state.h
+    Error.h \
+    Sprite.h \
+    State.h
 
+LIBS += -lSDL2 -lSDL2_image
 
