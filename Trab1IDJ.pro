@@ -6,7 +6,9 @@ CONFIG -= qt
 SOURCES += main.cpp \
     Game.cpp \
     Sprite.cpp \
-    State.cpp
+    State.cpp \
+    Gameobject.cpp \
+    RectOp.cpp
 
 TARGET = JOGO
 
@@ -23,7 +25,9 @@ HEADERS += \
     Game.h \
     Error.h \
     Sprite.h \
-    State.h
+    State.h \
+    Gameobject.h \
+    RectOp.h
 
 LIBS += -lSDL2 -lSDL2_image
 
