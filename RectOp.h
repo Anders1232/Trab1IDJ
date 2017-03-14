@@ -3,10 +3,6 @@
 
 #include <SDL2/SDL.h>
 
-class RectOp
-{
-	public:
-		static SDL_Rect NewRect(int x, int y, int w, int h);
-};
+SDL_Rect operator+(SDL_Rect const &a, SDL_Rect const &b);
 
 #endif // RECTOP_H

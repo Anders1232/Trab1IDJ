@@ -8,7 +8,8 @@ SOURCES += main.cpp \
     Sprite.cpp \
     State.cpp \
     Gameobject.cpp \
-    RectOp.cpp
+    RectOp.cpp \
+    Vec2.cpp
 
 TARGET = JOGO
 
@@ -27,7 +28,8 @@ HEADERS += \
     Sprite.h \
     State.h \
     Gameobject.h \
-    RectOp.h
+    RectOp.h \
+    Vec2.h
 
 LIBS += -lSDL2 -lSDL2_image
 
