@@ -5,7 +5,6 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     Game.cpp \
-    Error.cpp \
     Sprite.cpp \
     State.cpp
 

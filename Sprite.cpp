@@ -2,8 +2,8 @@
 #include "Game.h"
 #include "Error.h"
 
-#define SPRITE_OPEN_X (1024)
-#define SPRITE_OPEN_Y (600)
+#define SPRITE_OPEN_X (0)//alterar esses valores altera a parte da textura que será renderizada
+#define SPRITE_OPEN_Y (0)
 
 Sprite::Sprite(void)
 {
@@ -41,6 +41,7 @@ void Sprite::Open(std::string file)
 		Error(SDL_GetError());
 	}
 	SetClip(SPRITE_OPEN_X, SPRITE_OPEN_Y, width, height);
+	std::cout << __FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\t"<< "width=" << width << "\t height = " << height << std::endl;
 }
 
 void Sprite::SetClip(int x, int y, int w, int h)

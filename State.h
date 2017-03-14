@@ -3,6 +3,8 @@
 
 #include "Sprite.h"
 
+//#define BG_POINTER
+
 class State
 {
 	public:
@@ -11,7 +13,11 @@ class State
 		void Update(void);
 		void Render(void);
 	private:
+#ifndef BG_POINTER
 		Sprite bg;
+#else
+		Sprite *bg;
+#endif
 		bool quitRequested;
 };
 
