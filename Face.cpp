@@ -7,7 +7,6 @@ Face::Face(float x, float y): sp("img/penguimface.png")
 	box.x= x-(box.w*0.5);
 	box.y= y-(box.y*0.5);
 	hitpoints=30;
-	isDead=false;
 }
 void Face::Damage(int damage)
 {
