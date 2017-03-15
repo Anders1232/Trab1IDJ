@@ -1,6 +1,6 @@
 #include "Face.h"
 
-Face::Face(float x, float y): sp("img/penguimface.png")
+Face::Face(float x, float y): sp("img/penguinface.png")
 {
 	box.w= sp.GetWidth();
 	box.h= sp.GetHeight();
@@ -25,3 +25,7 @@ bool Face::IsDead(void)
 	return (hitpoints<=0);
 }
 
+Face::~Face()
+{
+
+}

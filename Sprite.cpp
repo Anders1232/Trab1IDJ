@@ -41,7 +41,7 @@ void Sprite::Open(std::string file)
 		Error(SDL_GetError());
 	}
 	SetClip(SPRITE_OPEN_X, SPRITE_OPEN_Y, width, height);
-	std::cout << __FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\t"<< "width=" << width << "\t height = " << height << std::endl;
+//	std::cout << __FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\t"<< "width=" << width << "\t height = " << height << std::endl;
 }
 
 void Sprite::SetClip(int x, int y, int w, int h)

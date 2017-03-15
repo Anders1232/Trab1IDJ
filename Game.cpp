@@ -1,10 +1,13 @@
 #include "Game.h"
 #include "Error.h"
+#include<stdlib.h>
+#include<time.h>
 
 Game* Game::instance= nullptr;
 
 Game::Game(std::string title,int width, int height)
 {
+	srand(time(NULL));
 	if(nullptr != Game::instance)
 	{
 		Error("Second instantion of the game!");

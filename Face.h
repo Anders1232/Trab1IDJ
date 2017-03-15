@@ -12,6 +12,7 @@ class Face: public GameObject
 		void Update(float dt);
 		void Render(void);
 		bool IsDead(void);
+		~Face(void);
 	private:
 		int hitpoints;
 		Sprite sp;

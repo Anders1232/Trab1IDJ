@@ -87,6 +87,10 @@ void State::Render(void)
 {
 	//renderizar o bg
 	bg.Render(STATE_RENDER_X, STATE_RENDER_Y);
+	for(unsigned int cont=0; cont < objectArray.size(); cont++)
+	{
+		objectArray[cont]->Render();
+	}
 }
 
 bool State::QuitRequested()
@@ -98,5 +102,8 @@ void State::AddObject(float mouseX, float mouseY)
 {
 	//[TODO] ver o q é pra fazer aqui
 //	objectArray.push_back(std::unique_ptr<GameObject>(new Face(mouseX, mouseY)));
-//	objectArray.push_back(new Face(mouseX, mouseY));
+	objectArray.emplace_back(std::unique_ptr<Face>( new Face(mouseX, mouseY) ) );
+//	objectArray.emplace_back(Face(mouseX, mouseY));
 }
+
+
