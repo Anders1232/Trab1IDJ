@@ -18,7 +18,7 @@ Vec2 Vec2::operator-(Vec2 const &b) const
 {
 	return Vec2(x-b.x, y-b.y);
 }
-Vec2 Vec2::operator*(float b)
+Vec2 Vec2::operator*(float b) const
 {
 	return Vec2(x*b, y*b);
 }
@@ -44,5 +44,14 @@ float Vec2::Inclination(void) const
 float Vec2::Inclination(Vec2 const &b) const
 {
 	return ((*this)-b).Inclination();
+}
+
+bool Vec2::IsInRect(SDL_Rect const &rect) const
+{
+	int xMax, yMax;
+	xMax= rect.x+rect.w;
+	yMax= rect.y+rect.h;//o eixo y crece para baixo, ver se tem que somar ou subtrair
+	return (rect.x<=x && x < xMax && rect.y <= y && y < yMax);//caso o ponto mais próximo da origem seja (0,0)
+//	return (rect.x<x && x <= xMax && rect.y < y && y <= yMax);//caso o ponto mais próximo da origem seja (1,1)
 }
 

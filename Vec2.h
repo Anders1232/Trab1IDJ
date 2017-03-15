@@ -11,14 +11,14 @@ class Vec2
 		Vec2(Vec2 const &b);
 		Vec2 operator+(Vec2 const &b)const;
 		Vec2 operator-(Vec2 const &b) const;
-		Vec2 operator*(float b);
+		Vec2 operator*(float b)const;
 		Vec2& operator=(Vec2 const &b);
 		float Magnitude(void)const;
 		void Normalize(void);
 		float DistanceTo(Vec2 const &b) const;
 		float Inclination(void) const;
 		float Inclination(Vec2 const &b) const;
-		bool IsInRect(SDL_Rect const &rect);
+		bool IsInRect(SDL_Rect const &rect) const;
 		float x;
 		float y;
 };
