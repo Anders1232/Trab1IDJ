@@ -43,6 +43,6 @@ float Vec2::Inclination(void) const
 }
 float Vec2::Inclination(Vec2 const &b) const
 {
-	((*this)-b).Inclination();
+	return ((*this)-b).Inclination();
 }
 

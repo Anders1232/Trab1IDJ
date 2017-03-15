@@ -18,6 +18,7 @@ class Vec2
 		float DistanceTo(Vec2 const &b) const;
 		float Inclination(void) const;
 		float Inclination(Vec2 const &b) const;
+		bool IsInRect(SDL_Rect const &rect);
 		float x;
 		float y;
 };
