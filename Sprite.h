@@ -15,6 +15,7 @@ class Sprite
 		void Open(std::string file);
 		void SetClip(int x, int y, int w, int h);
 		void Render(int x, int y);
+		void Rotate(double angle);
 		int GetWidth(void);
 		int GetHeight(void);
 		bool IsOpen(void);
@@ -23,6 +24,7 @@ class Sprite
 		int width;
 		int height;
 		SDL_Rect clipRect;
+		double angle;
 };
 
 

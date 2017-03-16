@@ -74,7 +74,7 @@ void State::Input(void)
 void State::Update()
 {
 	Input();
-	for(int cont=0; cont < objectArray.size(); cont++)
+	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
 		if(objectArray.at(cont)->IsDead())
 		{
@@ -102,8 +102,11 @@ void State::AddObject(float mouseX, float mouseY)
 {
 	//[TODO] ver o q é pra fazer aqui
 //	objectArray.push_back(std::unique_ptr<GameObject>(new Face(mouseX, mouseY)));
-	objectArray.emplace_back(std::unique_ptr<Face>( new Face(mouseX, mouseY) ) );
 //	objectArray.emplace_back(Face(mouseX, mouseY));
+	objectArray.emplace_back(std::unique_ptr<Face>( new Face(mouseX, mouseY) ) );
+//	((Face*)(*(objectArray.end())) )->Rotate(rand());
+//	Face* temp= (Face*) objectArray[objectArray.size()-1].get();
+//	temp->
 }
 
 

@@ -18,6 +18,7 @@ class Game
 		static Game& GetInstance(void);
 	private:
 		static Game* instance;
+#define CHECK_SDL_ERRO
 		SDL_Window* window;
 		SDL_Renderer* renderer;
 		State* state;

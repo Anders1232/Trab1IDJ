@@ -5,12 +5,12 @@
 #define SPRITE_OPEN_X (0)//alterar esses valores altera a parte da textura que será renderizada
 #define SPRITE_OPEN_Y (0)
 
-Sprite::Sprite(void)
+Sprite::Sprite(void): angle(0.0)
 {
 	texture= nullptr;
 }
 
-Sprite::Sprite(std::string file)
+Sprite::Sprite(std::string file): angle(0.0)
 {
 	texture=nullptr;
 	Open(file);
@@ -60,7 +60,11 @@ void Sprite::Render(int x, int y)
 	rect.y = y;
 	rect.w = clipRect.w;
 	rect.h = clipRect.h;
-	if(SDL_RenderCopy(game.GetRenderer(), texture, &clipRect, &rect) )//verifica se haverá erro
+/*	if(SDL_RenderCopy(game.GetRenderer(), texture, &clipRect, &rect) )//verifica se haverá erro
+	{
+		Error(SDL_GetError());
+	}*/
+	if(SDL_RenderCopyEx(game.GetRenderer(), texture, &clipRect, &rect, angle, NULL, SDL_FLIP_NONE) )//verifica se haverá erro
 	{
 		Error(SDL_GetError());
 	}
@@ -79,4 +83,9 @@ int Sprite::GetWidth(void)
 bool Sprite::IsOpen(void)
 {
 	return (nullptr != texture);
+}
+
+void Sprite::Rotate(double angle)
+{
+	this->angle= angle;
 }
