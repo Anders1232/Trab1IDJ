@@ -5,7 +5,7 @@ Face::Face(float x, float y): sp("img/penguinface.png")
 	box.w= sp.GetWidth();
 	box.h= sp.GetHeight();
 	box.x= x-(box.w*0.5);
-	box.y= y-(box.y*0.5);
+	box.y= y-(box.h*0.5);
 	hitpoints=30;
 	sp.Rotate(rand());
 }
