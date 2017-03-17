@@ -29,3 +29,9 @@ bool State::QuitRequested()
 {
 	return quitRequested;
 }
+
+void State::LoadAssets(void)
+{
+
+}
+
