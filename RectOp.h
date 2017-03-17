@@ -1,7 +1,17 @@
 #ifndef RECTOP_H
 #define RECTOP_H
 
-#include <SDL2/SDL.h>
+#ifdef _WIN32
+	//windows
+#elif __APPLE__
+	#include "TargetConditionals.h"
+	//mac
+#elif __linux__
+	#include <SDL2/SDL.h>
+#else
+	#error "Unknown compiler"
+#endif
+
 #include "Vec2.h"
 
 SDL_Rect operator+(SDL_Rect const &rect, Vec2 const vec);

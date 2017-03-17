@@ -1,8 +1,18 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include<SDL2/SDL.h>
-#include<SDL2/SDL_image.h>
+#ifdef _WIN32
+	//windows
+#elif __APPLE__
+	#include "TargetConditionals.h"
+	//mac
+#elif __linux__
+	#include <SDL2/SDL.h>
+	#include<SDL2/SDL_image.h>
+#else
+	#error "Unknown compiler"
+#endif
+
 
 #include <string>
 

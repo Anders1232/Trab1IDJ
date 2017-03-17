@@ -1,7 +1,18 @@
 #ifndef VEC2OP_H
 #define VEC2OP_H
 
-#include <SDL2/SDL.h>
+#ifdef _WIN32
+	//windows
+#elif __APPLE__
+	#include "TargetConditionals.h"
+	//mac
+#elif __linux__
+	#include <SDL2/SDL.h>
+	// linux
+#else
+	#error "Unknown compiler"
+#endif
+
 
 class Vec2
 {

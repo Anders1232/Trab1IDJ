@@ -2,10 +2,18 @@
 #define GAME_H
 
 #include<string>
-#include<SDL2/SDL.h>
-#include<SDL2/SDL_image.h>
-
 #include"State.h"
+#ifdef _WIN32
+	//windows
+#elif __APPLE__
+	#include "TargetConditionals.h"
+	//mac
+#elif __linux__
+	// linux
+#else
+	#error "Unknown compiler"
+#endif
+
 
 class Game
 {
