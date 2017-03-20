@@ -1,6 +1,6 @@
 #ifndef TILESET_H
 #define TILESET_H
-/*
+
 #include <string>
 #include "Sprite.h"
 
@@ -20,5 +20,5 @@ class TileSet
 		int tileWidth;
 		int tileHeight;
 };
-*/
+
 #endif // TILESET_H
