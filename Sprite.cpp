@@ -1,5 +1,6 @@
 #include "Sprite.h"
 #include "Game.h"
+#include "Resources.h"
 #include "Error.h"
 
 #define SPRITE_OPEN_X (0)//alterar esses valores altera a parte da textura que será renderizada
@@ -21,10 +22,6 @@ Sprite::Sprite(std::string file): angle(0.0)
 
 Sprite::~Sprite()
 {
-	if(nullptr != texture)
-	{
-		SDL_DestroyTexture(texture);
-	}
 }
 
 void Sprite::Open(std::string file)
@@ -34,7 +31,7 @@ void Sprite::Open(std::string file)
 		SDL_DestroyTexture(texture);
 		texture=nullptr;
 	}
-	texture= IMG_LoadTexture(Game::GetInstance().GetRenderer(), file.c_str());
+	texture= Resources::GetImage(file);
 	if(nullptr == texture)
 	{
 		Error(SDL_GetError());

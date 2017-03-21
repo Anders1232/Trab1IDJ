@@ -7,12 +7,10 @@
 
 #define STATE_RENDER_X 0//esse valores calculam o offset em relação ao canto superior esquedo da imagem daquilo que será renderizado
 #define STATE_RENDER_Y 0
-State::State(void): bg("img/ocean.jpg")/*, tileMap("map/tileMap.txt", NULL)*/, tileSet(64, 64,"img/tileset.png")
+State::State(void): bg("img/ocean.jpg"), tileSet(64, 64,"img/tileset.png")
 {
 	REPORT_I_WAS_HERE;
 	tileMap= new TileMap(std::string("map/tileMap.txt"), &tileSet);
-//	tileMap.SetTileSet(&tileSet);
-//	SDL_ASSERT();
 	quitRequested=false;
 	REPORT_I_WAS_HERE;
 }
@@ -95,8 +93,8 @@ void State::Update()
 void State::Render(void)
 {
 	//renderizar o bg
-	tileMap->Render(0, 0);
 	bg.Render(STATE_RENDER_X, STATE_RENDER_Y);
+	tileMap->Render(0, 0);
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
 		objectArray[cont]->Render();
@@ -110,13 +108,7 @@ bool State::QuitRequested()
 //AddObject recebe ints ou floats???
 void State::AddObject(float mouseX, float mouseY)
 {
-	//[TODO] ver o q é pra fazer aqui
-//	objectArray.push_back(std::unique_ptr<GameObject>(new Face(mouseX, mouseY)));
-//	objectArray.emplace_back(Face(mouseX, mouseY));
 	objectArray.emplace_back(std::unique_ptr<Face>( new Face(mouseX, mouseY) ) );
-//	((Face*)(*(objectArray.end())) )->Rotate(rand());
-//	Face* temp= (Face*) objectArray[objectArray.size()-1].get();
-//	temp->
 }
 
 

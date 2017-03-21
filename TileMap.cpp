@@ -2,7 +2,7 @@
 #include "Error.h"
 #include <cstdio>
 
-#define GAMBIARRA
+//#define GAMBIARRA
 
 TileMap::TileMap(string file, TileSet *tileSet): tileSet(tileSet)
 {
