@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     RectOp.cpp \
     Vec2.cpp \
     Face.cpp \
-    Tileset.cpp
+    Tileset.cpp \
+    TileMap.cpp
 
 TARGET = JOGO
 
@@ -33,7 +34,8 @@ HEADERS += \
     RectOp.h \
     Vec2.h \
     Face.h \
-    Tileset.h
+    Tileset.h \
+    TileMap.h
 
 LIBS += -lSDL2 -lSDL2_image
 

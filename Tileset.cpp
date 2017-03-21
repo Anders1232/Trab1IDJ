@@ -10,9 +10,27 @@ TileSet::TileSet(int tileWidth, int tileHeight, string file): tileSet(file), til
 void TileSet::Render(unsigned int index, float x, float y)
 {
 	ASSERT(index < (unsigned int)rows*columns);
-	if()
-	{
-
-	}
+	unsigned int desiredLine, desiredColumn;
+	desiredLine= index/columns;
+	desiredColumn= index%columns;
+	SDL_Rect wantedSubSprite;
+	wantedSubSprite.x= desiredColumn*tileWidth;
+	wantedSubSprite.y= desiredLine*tileHeight;
+	wantedSubSprite.w= tileWidth;
+	wantedSubSprite.h= tileHeight;
+	SDL_Rect destinyPosition;
+	destinyPosition.x=x;
+	destinyPosition.y=y;
+	destinyPosition.w= tileWidth;
+	destinyPosition.h= tileHeight;
 }
 
+int TileSet::GetTileHeight(void)
+{
+	return tileWidth;
+}
+
+int TileSet::GetTileWidth(void)
+{
+	return tileHeight;
+}
