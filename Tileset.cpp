@@ -1,8 +1,10 @@
 #include "Tileset.h"
 #include "Error.h"
+#include "Game.h"
 
 TileSet::TileSet(int tileWidth, int tileHeight, string file): tileSet(file), tileWidth(tileWidth), tileHeight(tileHeight)
 {
+	REPORT_I_WAS_HERE;
 	rows= tileSet.GetHeight()/tileHeight;
 	columns= tileSet.GetWidth()/tileWidth;
 }
@@ -23,14 +25,16 @@ void TileSet::Render(unsigned int index, float x, float y)
 	destinyPosition.y=y;
 	destinyPosition.w= tileWidth;
 	destinyPosition.h= tileHeight;
+	SDL_RenderCopy(Game::GetInstance().GetRenderer(), tileSet.GetTexture(),&wantedSubSprite, &destinyPosition);
+//	REPORT_I_WAS_HERE;
 }
 
 int TileSet::GetTileHeight(void)
 {
-	return tileWidth;
+	return tileHeight;
 }
 
 int TileSet::GetTileWidth(void)
 {
-	return tileHeight;
+	return tileWidth;
 }

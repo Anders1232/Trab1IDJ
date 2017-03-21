@@ -9,7 +9,8 @@
 #elif __linux__
 	#include <SDL2/SDL.h>
 #else
-	#error "Unknown compiler"
+	#include <SDL2/SDL.h>
+//	#error "Unknown compiler"
 #endif
 
 #include "Vec2.h"

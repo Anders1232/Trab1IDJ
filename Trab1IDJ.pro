@@ -16,8 +16,8 @@ SOURCES += main.cpp \
 
 TARGET = JOGO
 
-QMAKE_CXXFLAGS += -finline-functions -Wall -pedantic -std=c++11
-QMAKE_CFLAGS += -finline-functions -Wall -pedantic -std=c99
+QMAKE_CXXFLAGS += -Wall -pedantic -std=c++11 -g
+QMAKE_CFLAGS += -Wall -pedantic -std=c99 -g
 
 QMAKE_CFLAGS_RELEASE += -O3
 QMAKE_CXXFLAGS_RELEASE += -O3

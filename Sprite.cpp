@@ -12,8 +12,11 @@ Sprite::Sprite(void): angle(0.0)
 
 Sprite::Sprite(std::string file): angle(0.0)
 {
+	REPORT_I_WAS_HERE;
 	texture=nullptr;
+	REPORT_I_WAS_HERE;
 	Open(file);
+	REPORT_I_WAS_HERE;
 }
 
 Sprite::~Sprite()
@@ -52,7 +55,7 @@ void Sprite::SetClip(int x, int y, int w, int h)
 	clipRect.h = h;
 }
 
-void Sprite::Render(int x, int y)
+void Sprite::Render(int x, int y) const
 {
 	Game& game= Game::GetInstance();
 	SDL_Rect rect;
@@ -70,17 +73,17 @@ void Sprite::Render(int x, int y)
 	}
 }
 
-int Sprite::GetHeight(void)
+int Sprite::GetHeight(void) const
 {
 	return height;
 }
 
-int Sprite::GetWidth(void)
+int Sprite::GetWidth(void) const
 {
 	return width;
 }
 
-bool Sprite::IsOpen(void)
+bool Sprite::IsOpen(void) const
 {
 	return (nullptr != texture);
 }
@@ -89,3 +92,9 @@ void Sprite::Rotate(double angle)
 {
 	this->angle= angle;
 }
+
+SDL_Texture *Sprite::GetTexture(void) const
+{
+	return texture;
+}
+

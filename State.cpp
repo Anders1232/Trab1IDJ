@@ -1,19 +1,26 @@
 #include "State.h"
 #include "Face.h"
 #include "RectOp.h"
+#include "Error.h"
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
 
 #define STATE_RENDER_X 0//esse valores calculam o offset em relação ao canto superior esquedo da imagem daquilo que será renderizado
 #define STATE_RENDER_Y 0
-State::State(void): bg("img/ocean.jpg")
+State::State(void): bg("img/ocean.jpg")/*, tileMap("map/tileMap.txt", NULL)*/, tileSet(64, 64,"img/tileset.png")
 {
+	REPORT_I_WAS_HERE;
+	tileMap= new TileMap(std::string("map/tileMap.txt"), &tileSet);
+//	tileMap.SetTileSet(&tileSet);
+//	SDL_ASSERT();
 	quitRequested=false;
+	REPORT_I_WAS_HERE;
 }
 
 State::~State(void)
 {
-	objectArray.clear();;
+	objectArray.clear();
+	delete tileMap;
 }
 
 void State::Input(void)
@@ -73,6 +80,7 @@ void State::Input(void)
 //void State::Update(float dt)
 void State::Update()
 {
+	REPORT_I_WAS_HERE;
 	Input();
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
@@ -81,11 +89,13 @@ void State::Update()
 			objectArray.erase(objectArray.begin()+cont);
 		}
 	}
+	REPORT_I_WAS_HERE;
 }
 
 void State::Render(void)
 {
 	//renderizar o bg
+	tileMap->Render(0, 0);
 	bg.Render(STATE_RENDER_X, STATE_RENDER_Y);
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{

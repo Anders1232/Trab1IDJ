@@ -5,6 +5,8 @@
 #include <memory>
 #include "Sprite.h"
 #include "Gameobject.h"
+#include "Tileset.h"
+#include "TileMap.h"
 
 //#define BG_POINTER
 
@@ -20,6 +22,8 @@ class State
 		void AddObject(float mouseX, float mouseY);
 	private:
 		Sprite bg;
+		TileMap *tileMap;
+		TileSet tileSet;
 		bool quitRequested;
 		std::vector<std::unique_ptr<GameObject>> objectArray;
 };

@@ -13,8 +13,6 @@ class TileMap
 {
 	public:
 		TileMap(string file, TileSet *tileSet);
-		void Load(string file);
-		void SetTileSet(TileSet *tileSet);
 		int& At(int x, int y, int z=0) const;
 		void Render(int cameraX=0, int cameraY=0) const;
 		void RenderLayer(int layer, int cameraX=0, int cameraY=0) const;
@@ -22,6 +20,8 @@ class TileMap
 		int GetHeight(void) const;
 		int GetDepth(void) const;
 	private:
+		void Load(string file);
+		void SetTileSet(TileSet *tileSet);
 		std::vector<int> tileMatrix;
 		TileSet *tileSet;
 		int mapWidth;

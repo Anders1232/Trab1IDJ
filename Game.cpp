@@ -44,12 +44,15 @@ Game::Game(std::string title,int width, int height)
 	{
 		Error(SDL_GetError());
 	}
+	REPORT_I_WAS_HERE;
 	state= new State();
+	REPORT_I_WAS_HERE;
 }
 
 Game::~Game()
 {
 	IMG_Quit();
+	delete state;
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();

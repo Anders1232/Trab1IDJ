@@ -24,11 +24,12 @@ class Sprite
 		~Sprite();
 		void Open(std::string file);
 		void SetClip(int x, int y, int w, int h);
-		void Render(int x, int y);
+		void Render(int x, int y) const;
 		void Rotate(double angle);
-		int GetWidth(void);
-		int GetHeight(void);
-		bool IsOpen(void);
+		int GetWidth(void) const;
+		int GetHeight(void) const;
+		SDL_Texture* GetTexture(void) const;
+		bool IsOpen(void) const;
 	private:
 		SDL_Texture *texture;
 		int width;

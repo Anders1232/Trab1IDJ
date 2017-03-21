@@ -2,6 +2,8 @@
 #include "Error.h"
 #include <cstdio>
 
+#define GAMBIARRA
+
 TileMap::TileMap(string file, TileSet *tileSet): tileSet(tileSet)
 {
 	Load(file);
@@ -9,7 +11,7 @@ TileMap::TileMap(string file, TileSet *tileSet): tileSet(tileSet)
 void TileMap::Load(string file)
 {
 	FILE *arq= fopen(file.c_str(), "r");
-	ASSERT(arq);
+	ASSERT(NULL != arq);
 	fscanf(arq, "%d,%d,%d,", &mapWidth, &mapHeight, &mapDepth);
 	int numbersToRead= mapWidth*mapHeight*mapDepth;
 	tileMatrix.resize(numbersToRead);//assim ele não desperdiça memória nem muda de tamanho no for abaixo
@@ -47,7 +49,15 @@ void TileMap::RenderLayer(int layer, int cameraX, int cameraY) const
 		{
 			for(int y=0; y < mapHeight; y++)
 			{
-				tileSet->Render(At(x, y, z), x*tileSet->GetTileWidth(), y*tileSet->GetTileHeight());
+				int index= At(x, y, z);
+				if(0 <= index)
+				{
+#ifdef GAMBIARRA
+					tileSet->Render(At(x, y, z)%12, x*tileSet->GetTileWidth(), y*tileSet->GetTileHeight());
+#else
+					tileSet->Render(At(x, y, z), x*tileSet->GetTileWidth(), y*tileSet->GetTileHeight());
+#endif
+				}
 			}
 		}
 	}
