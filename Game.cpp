@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Error.h"
+#include "Resources.h"
 #include<stdlib.h>
 #include<time.h>
 
@@ -82,4 +83,5 @@ void Game::Run(void)
 		SDL_RenderPresent(renderer);
 		SDL_Delay(33);
 	}
+	Resources::ClearImages();
 }

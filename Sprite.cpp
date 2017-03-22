@@ -26,11 +26,6 @@ Sprite::~Sprite()
 
 void Sprite::Open(std::string file)
 {
-	if(nullptr != texture)//poderia trocar esse if por uma chamada explícita do destrutor?
-	{
-		SDL_DestroyTexture(texture);
-		texture=nullptr;
-	}
 	texture= Resources::GetImage(file);
 	if(nullptr == texture)
 	{
@@ -45,7 +40,7 @@ void Sprite::Open(std::string file)
 }
 
 void Sprite::SetClip(int x, int y, int w, int h)
-{first
+{
 	clipRect.x = x;
 	clipRect.y = y;
 	clipRect.w = w;
