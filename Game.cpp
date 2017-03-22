@@ -6,7 +6,7 @@
 
 Game* Game::instance= nullptr;
 
-Game::Game(std::string title,int width, int height): inputManager(InputManager::GetInstance())
+Game::Game(std::string title,int width, int height): inputManager(InputManager::GetInstance()), dt(0.0), frameStart(SDL_GetTicks())
 {
 	srand(time(NULL));
 	if(nullptr != Game::instance)
@@ -76,6 +76,7 @@ SDL_Renderer* Game::GetRenderer(void)const
 
 void Game::Run(void)
 {
+	CalculateDeltaTime();
 	while(!state->QuitRequested())
 	{
 		inputManager.Update();
@@ -85,4 +86,16 @@ void Game::Run(void)
 		SDL_Delay(33);
 	}
 	Resources::ClearImages();
+}
+
+void Game::CalculateDeltaTime(void)
+{
+	u_int32_t newTick= SDL_GetTicks();
+	dt=((float)(frameStart-newTick))/1000;//converter de milissegundos para segundos
+	frameStart= newTick;
+}
+
+float Game::GetDeltaTime(void) const
+{
+	return dt;
 }

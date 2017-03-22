@@ -25,6 +25,7 @@ class Game
 		SDL_Renderer* GetRenderer(void) const;
 		State& GetState(void) const;
 		static Game& GetInstance(void);
+		float GetDeltaTime(void) const;
 	private:
 		static Game* instance;
 #define CHECK_SDL_ERRO
@@ -32,6 +33,9 @@ class Game
 		SDL_Renderer* renderer;
 		State* state;
 		InputManager &inputManager;
+		unsigned int frameStart;
+		float dt;
+		void CalculateDeltaTime(void);
 };
 
 #endif // GAME_H

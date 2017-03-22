@@ -16,8 +16,8 @@ Face::Face(float x, float y): sp("img/penguinface.png"), inputManager(InputManag
 	box.x= x-(rand()%100);
 	box.y= y-(rand()%100);
 #elif SPAWN_CIRCULAR_AO_REDOR_DO_MOUSE
-	box.x= x-(box.w*0.5);
-	box.y= y-(box.h*0.5);
+//	box.x= x-(box.w*0.5);
+//	box.y= y-(box.h*0.5);
 	//rotacionando
 	int angulo= rand();
 	box.x= x-(box.w*0.5)+RAIO_AO_REDOR_DO_MOUSE*cos(angulo);

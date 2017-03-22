@@ -1,5 +1,6 @@
 #include "State.h"
 #include "Face.h"
+#include "Game.h"
 #include "RectOp.h"
 #include "Error.h"
 #include<SDL2/SDL.h>
@@ -80,7 +81,7 @@ void State::Update()
 {
 	REPORT_I_WAS_HERE;
 //	Input();
-	if(inputManager.KeyPress(ESCAPE_KEY))
+	if(inputManager.KeyPress(ESCAPE_KEY) || inputManager.QuitRequested())
 	{
 		quitRequested= true;
 	}
@@ -90,6 +91,7 @@ void State::Update()
 	}
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
+		objectArray.at(cont)->Update(Game::GetInstance().GetDeltaTime());
 		if(objectArray.at(cont)->IsDead())
 		{
 			objectArray.erase(objectArray.begin()+cont);
@@ -102,7 +104,7 @@ void State::Render(void)
 {
 	//renderizar o bg
 	bg.Render(STATE_RENDER_X, STATE_RENDER_Y);
-	tileMap->Render(0, 0);
+	tileMap->Render();
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
 		objectArray[cont]->Render();
