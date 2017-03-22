@@ -2,8 +2,6 @@
 #include "Error.h"
 #include <cstdio>
 
-//#define GAMBIARRA
-
 TileMap::TileMap(string file, TileSet *tileSet): tileSet(tileSet)
 {
 	Load(file);
@@ -35,6 +33,7 @@ int& TileMap::At(int x, int y, int z) const
 	return ((int&)tileMatrix.at(z*mapWidth*mapHeight + y*mapWidth + x) );
 }
 void TileMap::Render(int cameraX, int cameraY) const
+
 {
 	for(int count =0; count < mapDepth; count++)
 	{
@@ -43,21 +42,14 @@ void TileMap::Render(int cameraX, int cameraY) const
 }
 void TileMap::RenderLayer(int layer, int cameraX, int cameraY) const
 {
-	for(int z=0; z < mapDepth; z++)
+	for(int x=0; x < mapWidth; x++)
 	{
-		for(int x=0; x < mapWidth; x++)
+		for(int y=0; y < mapHeight; y++)
 		{
-			for(int y=0; y < mapHeight; y++)
+			int index= At(x, y, layer);
+			if(0 <= index)
 			{
-				int index= At(x, y, z);
-				if(0 <= index)
-				{
-#ifdef GAMBIARRA
-					tileSet->Render(At(x, y, z)%12, x*tileSet->GetTileWidth(), y*tileSet->GetTileHeight());
-#else
-					tileSet->Render(At(x, y, z), x*tileSet->GetTileWidth(), y*tileSet->GetTileHeight());
-#endif
-				}
+				tileSet->Render(At(x, y, layer), x*tileSet->GetTileWidth(), y*tileSet->GetTileHeight());
 			}
 		}
 	}

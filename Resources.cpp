@@ -28,9 +28,9 @@ void Resources::ClearImages(void)
 		SDL_DestroyTexture(imageTable.begin()+count);
 	}
 #else
-	for(auto i= imageTable.begin(); i != imageTable.end(); i++)
+	for(std::unordered_map<string, SDL_Texture*>::iterator i= imageTable.begin(); i != imageTable.end(); i++)
 	{
-		SDL_DestroyTexture(i);
+		SDL_DestroyTexture((*i).second);
 	}
 #endif
 	imageTable.clear();
