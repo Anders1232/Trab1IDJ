@@ -3,6 +3,7 @@
 
 #include<string>
 #include"State.h"
+#include "InputManager.h"
 #ifdef _WIN32
 	//windows
 #elif __APPLE__
@@ -30,6 +31,7 @@ class Game
 		SDL_Window* window;
 		SDL_Renderer* renderer;
 		State* state;
+		InputManager &inputManager;
 };
 
 #endif // GAME_H

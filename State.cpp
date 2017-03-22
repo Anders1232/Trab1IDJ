@@ -7,7 +7,7 @@
 
 #define STATE_RENDER_X 0//esse valores calculam o offset em relação ao canto superior esquedo da imagem daquilo que será renderizado
 #define STATE_RENDER_Y 0
-State::State(void): bg("img/ocean.jpg"), tileSet(64, 64,"img/tileset.png")
+State::State(void): bg("img/ocean.jpg"), tileSet(64, 64,"img/tileset.png"), inputManager(InputManager::GetInstance())
 {
 	REPORT_I_WAS_HERE;
 	tileMap= new TileMap(std::string("map/tileMap.txt"), &tileSet);
@@ -20,7 +20,7 @@ State::~State(void)
 	objectArray.clear();
 	delete tileMap;
 }
-
+/*
 void State::Input(void)
 {
 
@@ -74,12 +74,20 @@ void State::Input(void)
 	}
 }
 
-
+*/
 //void State::Update(float dt)
 void State::Update()
 {
 	REPORT_I_WAS_HERE;
-	Input();
+//	Input();
+	if(inputManager.KeyPress(ESCAPE_KEY))
+	{
+		quitRequested= true;
+	}
+	if(inputManager.IsKeyDown(ESPACE_KEY))
+	{
+		AddObject((float)inputManager.GetMouseX(), (float)inputManager.GetMouseY());
+	}
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
 		if(objectArray.at(cont)->IsDead())

@@ -6,7 +6,7 @@
 
 Game* Game::instance= nullptr;
 
-Game::Game(std::string title,int width, int height)
+Game::Game(std::string title,int width, int height): inputManager(InputManager::GetInstance())
 {
 	srand(time(NULL));
 	if(nullptr != Game::instance)
@@ -78,6 +78,7 @@ void Game::Run(void)
 {
 	while(!state->QuitRequested())
 	{
+		inputManager.Update();
 		state->Update();
 		state->Render();
 		SDL_RenderPresent(renderer);

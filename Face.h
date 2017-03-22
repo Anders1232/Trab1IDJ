@@ -3,6 +3,7 @@
 
 #include "Gameobject.h"
 #include "Sprite.h"
+#include "InputManager.h"
 
 class Face: public GameObject
 {
@@ -16,6 +17,7 @@ class Face: public GameObject
 	private:
 		int hitpoints;
 		Sprite sp;
+		InputManager &inputManager;
 };
 
 #endif // FACE_H

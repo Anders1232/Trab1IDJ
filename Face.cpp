@@ -1,10 +1,11 @@
 #include "Face.h"
 #include <cmath>
+#include "Vec2.h"
 
 #define SPAWN_CIRCULAR_AO_REDOR_DO_MOUSE 1
 #define RAIO_AO_REDOR_DO_MOUSE 150
 
-Face::Face(float x, float y): sp("img/penguinface.png")
+Face::Face(float x, float y): sp("img/penguinface.png"), inputManager(InputManager::GetInstance())
 {
 	box.w= sp.GetWidth();
 	box.h= sp.GetHeight();
@@ -31,7 +32,18 @@ void Face::Damage(int damage)
 }
 void Face::Update(float dt)
 {
+	if(inputManager.MousePress(LEFT_MOUSE_BUTTON))
+	{
+		int mouseX, mouseY;
+		mouseX= inputManager.GetMouseX();
+		mouseY= inputManager.GetMouseY();
+		if(Vec2(mouseX, mouseY).IsInRect(box))
+		{
+			// Aplica dano
+			Damage(rand() % 10 + 10);
+		}
 
+	}
 }
 void Face::Render(void)
 {
