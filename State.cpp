@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "RectOp.h"
 #include "Error.h"
+#include "Camera.h"
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
 
@@ -97,14 +98,18 @@ void State::Update()
 			objectArray.erase(objectArray.begin()+cont);
 		}
 	}
+	Camera::Update(Game::GetInstance().GetDeltaTime());
 	REPORT_I_WAS_HERE;
 }
 
 void State::Render(void)
 {
 	//renderizar o bg
+	REPORT_I_WAS_HERE;
 	bg.Render(STATE_RENDER_X, STATE_RENDER_Y);
-	tileMap->Render();
+	REPORT_I_WAS_HERE;
+	tileMap->Render(Camera::pos.x, Camera::pos.y);
+	REPORT_I_WAS_HERE;
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
 		objectArray[cont]->Render();

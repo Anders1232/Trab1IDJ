@@ -1,5 +1,6 @@
 #include "TileMap.h"
 #include "Error.h"
+#include <exception>
 #include <cstdio>
 
 TileMap::TileMap(string file, TileSet *tileSet): tileSet(tileSet)
@@ -30,10 +31,18 @@ int& TileMap::At(int x, int y, int z) const
 {
 //	int* vec= (int*)tileMatrix.data();
 //	return (vec[z*mapWidth*mapHeight + y*mapWidth + x]);
-	return ((int&)tileMatrix.at(z*mapWidth*mapHeight + y*mapWidth + x) );
+	int index= z*mapWidth*mapHeight + y*mapWidth + x;
+	try
+	{
+		return ((int&)tileMatrix.at(index) );
+	}
+	catch(...)
+	{
+		static const int  m1=-1;
+		return (int&)m1;
+	}
 }
 void TileMap::Render(int cameraX, int cameraY) const
-
 {
 	for(int count =0; count < mapDepth; count++)
 	{
@@ -46,14 +55,25 @@ void TileMap::RenderLayer(int layer, int cameraX, int cameraY) const
 	{
 		for(int y=0; y < mapHeight; y++)
 		{
-			int index= At(x, y, layer);
+			REPORT_I_WAS_HERE;
+			int index= At(x+cameraX, y+cameraY, layer);
+			REPORT_I_WAS_HERE;
 			if(0 <= index)
 			{
-				tileSet->Render(At(x, y, layer), x*tileSet->GetTileWidth(), y*tileSet->GetTileHeight());
+				REPORT_I_WAS_HERE;
+				int destinyX= CalculateParallaxScrolling((int)x*tileSet->GetTileWidth(), layer);
+				int destinyY= CalculateParallaxScrolling((int)y*tileSet->GetTileHeight(), layer);
+				tileSet->Render(At(x+cameraX, y+cameraY, layer), destinyX, destinyY);
 			}
 		}
 	}
 }
+
+int TileMap::CalculateParallaxScrolling(int num, int layer) const
+{
+	return (int)( (double)num*(1.0-(double)layer/(double)mapDepth) );
+}
+
 int TileMap::GetWidth(void) const
 {
 	return mapWidth;

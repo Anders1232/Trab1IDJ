@@ -1,9 +1,21 @@
 #ifndef INPUTMANAGER_H
 #define INPUTMANAGER_H
 
+#ifdef _WIN32
+	//windows
+#elif __APPLE__
+	#include "TargetConditionals.h"
+	//mac
+#elif __linux__
+	#include <SDL2/SDL.h>
+	#include<SDL2/SDL_image.h>
+#else
+	#error "Unknown compiler"
+#endif
+
 #define LEFT_ARROW_KEY SDLK_LEFT
-#define RIGHT_ARROW_KEY SDL_RIGHT
-#define UP_ARROW_KEY SDLK_RIGHT
+#define RIGHT_ARROW_KEY SDLK_RIGHT
+#define UP_ARROW_KEY SDLK_UP
 #define DOWN_ARROW_KEY SDLK_DOWN
 #define ESCAPE_KEY SDLK_ESCAPE
 #define LEFT_ALT_KEY SDLK_LALT
@@ -13,6 +25,7 @@
 #define LEFT_MOUSE_BUTTON SDL_BUTTON_LEFT
 #define RIGHT_MOUSE_BUTTON SDL_BUTTON_RIGHT
 #define MIDDLE_MOUSE_BUTTON SDL_BUTTON_MIDDLE
+
 
 class InputManager
 {

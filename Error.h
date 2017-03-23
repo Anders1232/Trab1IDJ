@@ -12,6 +12,8 @@ using std::endl;
 #define ASSERT(exp)if(!(exp)){std::cerr<<"[ERROR] "<<__FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\tAssertion Failed."<< endl;exit(1);}
 #define SDL_ASSERT(exp)if(!(exp)){std::cerr<<"[ERROR] "<<__FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\tAssertion Failed:" << SDL_GetError()<< endl;exit(1);}
 
+#define WHERE __FILE__<<" | "<<__func__<<":"<<__LINE__
+
 #define CHECK_SDL_ERROR std::cerr<<"[ERROR] "<<__FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\t"<<SDL_GetError()<< endl
 
 #define REPORT_I_WAS_HERE if(DEBUG){std::cout <<"[DEBUG] I was here!\t"<<__FILE__<<" | "<<__func__<<":"<<__LINE__<<std::endl;}

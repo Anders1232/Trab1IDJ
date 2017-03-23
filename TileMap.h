@@ -22,6 +22,7 @@ class TileMap
 	private:
 		void Load(string file);
 		void SetTileSet(TileSet *tileSet);
+		int CalculateParallaxScrolling(int num, int layer)const;
 		std::vector<int> tileMatrix;
 		TileSet *tileSet;
 		int mapWidth;

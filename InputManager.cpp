@@ -1,18 +1,6 @@
 #include "InputManager.h"
 #include "string.h"
 
-#ifdef _WIN32
-	//windows
-#elif __APPLE__
-	#include "TargetConditionals.h"
-	//mac
-#elif __linux__
-	#include <SDL2/SDL.h>
-	#include<SDL2/SDL_image.h>
-#else
-	#error "Unknown compiler"
-#endif
-
 InputManager::InputManager():quitRequested(false), updateCounter(0), mouseX(0), mouseY(0)
 {
 	memset(keyState, 0, 416*sizeof(bool));
