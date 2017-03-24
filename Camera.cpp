@@ -2,7 +2,7 @@
 #include "InputManager.h"
 #include "Error.h"
 
-#define CAMERA_MOVE_SPEED 1;
+#define CAMERA_MOVE_SPEED 5;
 #define INPUT_MANAGER InputManager::GetInstance()
 
 GameObject* Camera::focus= nullptr;

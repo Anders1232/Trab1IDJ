@@ -56,21 +56,23 @@ void TileMap::RenderLayer(int layer, int cameraX, int cameraY) const
 		for(int y=0; y < mapHeight; y++)
 		{
 			REPORT_I_WAS_HERE;
-			int index= At(x+cameraX, y+cameraY, layer);
+			int index= At(x, y, layer);
 			REPORT_I_WAS_HERE;
 			if(0 <= index)
 			{
 				REPORT_I_WAS_HERE;
-				int destinyX= CalculateParallaxScrolling((int)x*tileSet->GetTileWidth(), layer);
-				int destinyY= CalculateParallaxScrolling((int)y*tileSet->GetTileHeight(), layer);
-				tileSet->Render(At(x+cameraX, y+cameraY, layer), destinyX, destinyY);
+				int destinyX= CalculateParallaxScrolling((int)x*tileSet->GetTileWidth(),cameraX, layer);
+				int destinyY= CalculateParallaxScrolling((int)y*tileSet->GetTileHeight(), cameraY, layer);
+				tileSet->Render(At(x, y, layer), destinyX, destinyY);
 			}
 		}
 	}
 }
 
-int TileMap::CalculateParallaxScrolling(int num, int layer) const
+int TileMap::CalculateParallaxScrolling(int num, int camera, int layer) const
 {
+	return (int)(num-camera*(layer+1)/mapDepth );
+	return (int)( (double)num*(1.0+(double)layer/(double)mapDepth) );
 	return (int)( (double)num*(1.0-(double)layer/(double)mapDepth) );
 }
 

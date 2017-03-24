@@ -37,8 +37,8 @@ void Face::Update(float dt)
 	if(inputManager.MousePress(LEFT_MOUSE_BUTTON))
 	{
 		int mouseX, mouseY;
-		mouseX= inputManager.GetMouseX();
-		mouseY= inputManager.GetMouseY();
+		mouseX= inputManager.GetMouseX()+Camera::pos.x;
+		mouseY= inputManager.GetMouseY()+Camera::pos.y;
 		if(Vec2(mouseX, mouseY).IsInRect(box))
 		{
 			// Aplica dano
@@ -49,7 +49,7 @@ void Face::Update(float dt)
 }
 void Face::Render(void)
 {
-	std::cout << WHERE << "TODO: ajustar" << endl;
+//	std::cout << WHERE << "TODO: ajustar" << endl;
 	sp.Render(box.x-Camera::pos.x, box.y-Camera::pos.y);
 }
 bool Face::IsDead(void)

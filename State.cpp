@@ -88,7 +88,7 @@ void State::Update()
 	}
 	if(inputManager.IsKeyDown(ESPACE_KEY))
 	{
-		AddObject((float)inputManager.GetMouseX(), (float)inputManager.GetMouseY());
+		AddObject((float)inputManager.GetMouseX()+Camera::pos.x, (float)inputManager.GetMouseY()+Camera::pos.y);
 	}
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
