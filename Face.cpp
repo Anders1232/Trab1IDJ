@@ -1,6 +1,8 @@
 #include "Face.h"
 #include <cmath>
 #include "Vec2.h"
+#include "Camera.h"
+#include "Error.h"
 
 #define SPAWN_CIRCULAR_AO_REDOR_DO_MOUSE 1
 #define RAIO_AO_REDOR_DO_MOUSE 150
@@ -47,7 +49,8 @@ void Face::Update(float dt)
 }
 void Face::Render(void)
 {
-	sp.Render(box.x, box.y);
+	std::cout << WHERE << "TODO: ajustar" << endl;
+	sp.Render(box.x-Camera::pos.x, box.y-Camera::pos.y);
 }
 bool Face::IsDead(void)
 {
