@@ -71,6 +71,7 @@ void TileMap::RenderLayer(int layer, int cameraX, int cameraY) const
 
 int TileMap::CalculateParallaxScrolling(int num, int camera, int layer) const
 {
+	return (int)(num-camera*(layer+1));
 	return (int)(num-camera*(layer+1)/mapDepth );
 	return (int)( (double)num*(1.0+(double)layer/(double)mapDepth) );
 	return (int)( (double)num*(1.0-(double)layer/(double)mapDepth) );

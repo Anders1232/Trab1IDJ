@@ -108,12 +108,14 @@ void State::Render(void)
 	REPORT_I_WAS_HERE;
 	bg.Render(STATE_RENDER_X, STATE_RENDER_Y);
 	REPORT_I_WAS_HERE;
-	tileMap->Render(Camera::pos.x, Camera::pos.y);
+	tileMap->RenderLayer(0, Camera::pos.x, Camera::pos.y);
+//	tileMap->Render(Camera::pos.x, Camera::pos.y);
 	REPORT_I_WAS_HERE;
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
 		objectArray[cont]->Render();
 	}
+	tileMap->RenderLayer(1, Camera::pos.x, Camera::pos.y);
 }
 
 bool State::QuitRequested()
