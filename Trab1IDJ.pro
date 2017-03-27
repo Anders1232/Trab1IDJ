@@ -15,7 +15,9 @@ SOURCES += main.cpp \
     TileMap.cpp \
     Resources.cpp \
     InputManager.cpp \
-    Camera.cpp
+    Camera.cpp \
+    Alien.cpp \
+    Minion.cpp
 
 TARGET = JOGO
 
@@ -41,7 +43,9 @@ HEADERS += \
     TileMap.h \
     Resources.h \
     InputManager.h \
-    Camera.h
+    Camera.h \
+    Alien.h \
+    Minion.h
 
 LIBS += -lSDL2 -lSDL2_image
 
