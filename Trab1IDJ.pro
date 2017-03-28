@@ -33,6 +33,8 @@ QMAKE_CXXFLAGS_RELEASE += -O3
 include(deployment.pri)
 qtcAddDeployment()
 
+INCLUDEPATH += include/
+
 HEADERS += \
 	include/Game.h \
 	include/Error.h \
