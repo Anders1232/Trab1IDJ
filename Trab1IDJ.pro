@@ -3,26 +3,29 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp \
-    Game.cpp \
-    Sprite.cpp \
-    State.cpp \
-    Gameobject.cpp \
-    RectOp.cpp \
-    Vec2.cpp \
-    Face.cpp \
-    Tileset.cpp \
-    TileMap.cpp \
-    Resources.cpp \
-    InputManager.cpp \
-    Camera.cpp \
-    Alien.cpp \
-    Minion.cpp
+SOURCES += source/main.cpp \
+	source/Game.cpp \
+	source/Sprite.cpp \
+	source/State.cpp \
+	source/Gameobject.cpp \
+	source/RectOp.cpp \
+	source/Vec2.cpp \
+	source/Face.cpp \
+	source/Tileset.cpp \
+	source/TileMap.cpp \
+	source/Resources.cpp \
+	source/InputManager.cpp \
+	source/Camera.cpp \
+	source/Alien.cpp \
+	source/Minion.cpp
 
 TARGET = JOGO
 
-QMAKE_CXXFLAGS += -Wall -pedantic -std=c++11 -g
-QMAKE_CFLAGS += -Wall -pedantic -std=c99 -g
+QMAKE_CXXFLAGS += -Wall -pedantic -std=c++11
+QMAKE_CFLAGS += -Wall -pedantic -std=c99
+
+QMAKE_CXXFLAGS_DEBUG += -g
+QMAKE_CFLAGS_DEBUG += -g
 
 QMAKE_CFLAGS_RELEASE += -O3
 QMAKE_CXXFLAGS_RELEASE += -O3
@@ -31,21 +34,21 @@ include(deployment.pri)
 qtcAddDeployment()
 
 HEADERS += \
-    Game.h \
-    Error.h \
-    Sprite.h \
-    State.h \
-    Gameobject.h \
-    RectOp.h \
-    Vec2.h \
-    Face.h \
-    Tileset.h \
-    TileMap.h \
-    Resources.h \
-    InputManager.h \
-    Camera.h \
-    Alien.h \
-    Minion.h
+	include/Game.h \
+	include/Error.h \
+	include/Sprite.h \
+	include/State.h \
+	include/Gameobject.h \
+	include/RectOp.h \
+	include/Vec2.h \
+	include/Face.h \
+	include/Tileset.h \
+	include/TileMap.h \
+	include/Resources.h \
+	include/InputManager.h \
+	include/Camera.h \
+	include/Alien.h \
+	include/Minion.h
 
 LIBS += -lSDL2 -lSDL2_image
 
