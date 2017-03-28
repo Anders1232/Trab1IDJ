@@ -1,38 +1,42 @@
 #include "Alien.h"
-#include "RectOp.h"
 #include "Camera.h"
 #include "InputManager.h"
 #include "Error.h"
 
 #define DISTANCE_NEAR_ENOUGH ALIEN_MOVE_SPEED
+#define HP_INICIAL 30
 
-Alien::Alien(float x, float y, int nMinions): sp("img/alien.png")
+Alien::Alien(float x, float y, int nMinions): sp("img/alien.png"), hp(HP_INICIAL)
 {
 	box.x= x;
 	box.y= y;
 	box.w= sp.GetWidth();
 	box.h= sp.GetHeight();
-//	for(int count=0; count < nMinions; count++)
-//	{
-//		minionArray.emplace_back(Minion());
-//	}
+	for(int count=0; count < nMinions; count++)
+	{
+		minionArray.emplace_back(Minion(this, rand()));
+	}
 }
 Alien::~Alien(void)
 {
-	std::cout << WHERE << "\t needs to be implemented" << endl;
+	while(0 < taskQueue.size())
+	{
+		taskQueue.pop();
+	}
+	minionArray.clear();
 }
 
 void Alien::Update(float dt)
 {
 	InputManager &inputManager= InputManager::GetInstance();
-	if(inputManager.KeyPress(LEFT_MOUSE_BUTTON))
+	if(inputManager.MousePress(LEFT_MOUSE_BUTTON))
 	{
 		Alien::Action action(Alien::Action::ActionType::SHOOT,//caraca
 							 (int)(inputManager.GetMouseX()+(Camera::pos.x)),
 							 (int)(inputManager.GetMouseY()+Camera::pos.y));
 		taskQueue.emplace(action);
 	}
-	if(inputManager.KeyPress(RIGHT_MOUSE_BUTTON))
+	if(inputManager.MousePress(RIGHT_MOUSE_BUTTON))
 	{
 		Action action(Alien::Action::ActionType::MOVE,//caraca
 					(inputManager.GetMouseX()+Camera::pos.x),
@@ -40,7 +44,7 @@ void Alien::Update(float dt)
 				);
 		taskQueue.push(action);
 	}
-
+//	TEMP_REPORT_I_WAS_HERE;
 	if(0 < taskQueue.size())
 	{
 		if(Alien::Action::ActionType::MOVE==taskQueue.front().type)
@@ -56,7 +60,7 @@ void Alien::Update(float dt)
 			else
 			{
 				distance.Normalize();
-				distance= distance*sqrt(ALIEN_MOVE_SPEED)*dt;
+				distance= (distance*sqrt(ALIEN_MOVE_SPEED));
 				box.x+= distance.x;
 				box.y+= distance.y;
 			}
@@ -65,6 +69,10 @@ void Alien::Update(float dt)
 		{
 			taskQueue.pop();
 		}
+	}
+	for(unsigned int count=0; count < minionArray.size(); count++)
+	{
+		minionArray[count].Update(dt);
 	}
 }
 void Alien::Render(void)

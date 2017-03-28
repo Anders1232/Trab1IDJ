@@ -26,6 +26,7 @@ class Vec2
 		Vec2& operator=(Vec2 const &b);
 		float Magnitude(void)const;
 		void Normalize(void);
+		Vec2 Rotate(float angle) const;
 		float DistanceTo(Vec2 const &b) const;
 		float Inclination(void) const;
 		float Inclination(Vec2 const &b) const;

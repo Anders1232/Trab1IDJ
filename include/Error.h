@@ -17,6 +17,9 @@ using std::endl;
 #define CHECK_SDL_ERROR std::cerr<<"[ERROR] "<<__FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\t"<<SDL_GetError()<< endl
 
 #define REPORT_I_WAS_HERE if(DEBUG){std::cout <<"[DEBUG] I was here!\t"<<__FILE__<<" | "<<__func__<<":"<<__LINE__<<std::endl;}
+
+#define TEMP_REPORT_I_WAS_HERE if(1){std::cout <<"[DEBUG] I was here!\t"<<__FILE__<<" | "<<__func__<<":"<<__LINE__<<std::endl;}
+
 //void Error(char const * errMsg);
 
 #endif // ERROR_H

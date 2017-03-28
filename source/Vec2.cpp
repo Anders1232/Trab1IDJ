@@ -27,6 +27,7 @@ Vec2& Vec2::operator=(Vec2 const &b)
 {
 	x= b.x;
 	y= b.y;
+	return *this;
 }
 
 float Vec2::Magnitude(void)const
@@ -60,5 +61,10 @@ bool Vec2::IsInRect(SDL_Rect const &rect) const
 	yMax= rect.y+rect.h;//o eixo y crece para baixo, ver se tem que somar ou subtrair
 	return (rect.x<=x && x < xMax && rect.y <= y && y < yMax);//caso o ponto mais próximo da origem seja (0,0)
 //	return (rect.x<x && x <= xMax && rect.y < y && y <= yMax);//caso o ponto mais próximo da origem seja (1,1)
+}
+
+Vec2 Vec2::Rotate(float angle) const
+{
+	return Vec2(x*cos(angle)-y*sin(angle), y*cos(angle)+x*sin(angle));
 }
 

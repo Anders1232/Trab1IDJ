@@ -8,7 +8,6 @@ SOURCES += source/main.cpp \
 	source/Sprite.cpp \
 	source/State.cpp \
 	source/Gameobject.cpp \
-	source/RectOp.cpp \
 	source/Vec2.cpp \
 	source/Tileset.cpp \
 	source/TileMap.cpp \
@@ -16,12 +15,13 @@ SOURCES += source/main.cpp \
 	source/InputManager.cpp \
 	source/Camera.cpp \
 	source/Alien.cpp \
-	source/Minion.cpp
+	source/Minion.cpp \
+	source/Rect.cpp
 
 TARGET = JOGO
 
-QMAKE_CXXFLAGS += -Wall -pedantic -std=c++11
-QMAKE_CFLAGS += -Wall -pedantic -std=c99
+QMAKE_CXXFLAGS += -Wall -pedantic -std=c++11 -g
+QMAKE_CFLAGS += -Wall -pedantic -std=c99 -g
 
 QMAKE_CXXFLAGS_DEBUG += -g
 QMAKE_CFLAGS_DEBUG += -g
@@ -40,7 +40,6 @@ HEADERS += \
 	include/Sprite.h \
 	include/State.h \
 	include/Gameobject.h \
-	include/RectOp.h \
 	include/Vec2.h \
 	include/Tileset.h \
 	include/TileMap.h \
@@ -48,7 +47,8 @@ HEADERS += \
 	include/InputManager.h \
 	include/Camera.h \
 	include/Alien.h \
-	include/Minion.h
+	include/Minion.h \
+	include/Rect.h
 
 LIBS += -lSDL2 -lSDL2_image
 

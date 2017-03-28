@@ -1,11 +1,20 @@
 #include "State.h"
 #include "Game.h"
-#include "RectOp.h"
 #include "Error.h"
 #include "Camera.h"
 #include "Alien.h"
-#include<SDL2/SDL.h>
-#include<SDL2/SDL_image.h>
+
+#ifdef _WIN32
+	//windows
+#elif __APPLE__
+	#include "TargetConditionals.h"
+	//mac
+#elif __linux__
+	#include <SDL2/SDL.h>
+	#include<SDL2/SDL_image.h>
+#else
+	#error "Unknown compiler"
+#endif
 
 #define STATE_RENDER_X 0//esse valores calculam o offset em relação ao canto superior esquedo da imagem daquilo que será renderizado
 #define STATE_RENDER_Y 0
@@ -15,7 +24,7 @@ State::State(void): bg("img/ocean.jpg"), tileSet(64, 64,"img/tileset.png"), inpu
 	tileMap= new TileMap(std::string("map/tileMap.txt"), &tileSet);
 	quitRequested=false;
 	REPORT_I_WAS_HERE;
-	objectArray.emplace_back(std::unique_ptr<Alien>( new Alien (512, 300, 0) ) );
+	objectArray.emplace_back(std::unique_ptr<Alien>( new Alien (512, 300, 1) ) );
 }
 
 State::~State(void)
