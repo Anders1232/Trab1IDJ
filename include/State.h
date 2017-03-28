@@ -20,7 +20,6 @@ class State
 		void Update(void);
 		void Render(void);
 //		void Input(void);
-		void AddObject(float mouseX, float mouseY);
 	private:
 		Sprite bg;
 		TileMap *tileMap;

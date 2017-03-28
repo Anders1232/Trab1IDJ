@@ -10,7 +10,6 @@ SOURCES += source/main.cpp \
 	source/Gameobject.cpp \
 	source/RectOp.cpp \
 	source/Vec2.cpp \
-	source/Face.cpp \
 	source/Tileset.cpp \
 	source/TileMap.cpp \
 	source/Resources.cpp \
@@ -43,7 +42,6 @@ HEADERS += \
 	include/Gameobject.h \
 	include/RectOp.h \
 	include/Vec2.h \
-	include/Face.h \
 	include/Tileset.h \
 	include/TileMap.h \
 	include/Resources.h \
