@@ -6,7 +6,7 @@
 
 #define DISTANCE_NEAR_ENOUGH ALIEN_MOVE_SPEED
 
-Alien::Alien(float x, float y, int nMinions): sp("Alien.png")
+Alien::Alien(float x, float y, int nMinions): sp("img/alien.png")
 {
 	box.x= x;
 	box.y= y;
@@ -27,19 +27,18 @@ void Alien::Update(float dt)
 	InputManager &inputManager= InputManager::GetInstance();
 	if(inputManager.KeyPress(LEFT_MOUSE_BUTTON))
 	{
-		taskQueue.emplace(
-					(Alien::Action::ActionType::SHOOT,//caraca
-					inputManager.GetMouseX()+Camera::pos.x,
-					inputManager.GetMouseY()+Camera::pos.y)
-				);
+		Alien::Action action(Alien::Action::ActionType::SHOOT,//caraca
+							 (int)(inputManager.GetMouseX()+(Camera::pos.x)),
+							 (int)(inputManager.GetMouseY()+Camera::pos.y));
+		taskQueue.emplace(action);
 	}
 	if(inputManager.KeyPress(RIGHT_MOUSE_BUTTON))
 	{
-		taskQueue.emplace(
-					(Alien::Action::ActionType::MOVE,//caraca
-					inputManager.GetMouseX()+Camera::pos.x,
-					inputManager.GetMouseY()+Camera::pos.y)
+		Action action(Alien::Action::ActionType::MOVE,//caraca
+					(inputManager.GetMouseX()+Camera::pos.x),
+					(inputManager.GetMouseY()+Camera::pos.y)
 				);
+		taskQueue.push(action);
 	}
 
 	if(0 < taskQueue.size())
@@ -70,7 +69,7 @@ void Alien::Update(float dt)
 }
 void Alien::Render(void)
 {
-	sp.Render(box.x, box.y);
+	sp.Render(box.x-Camera::pos.x, box.y-Camera::pos.y);
 	for(unsigned int count=0; count < minionArray.size(); count++)
 	{
 		minionArray[count].Render();
@@ -80,3 +79,8 @@ bool Alien::IsDead(void)
 {
 	return (0 >=hp);
 }
+
+Alien::Action::Action(ActionType type, float x, float y): type(type), pos(x, y)
+{
+}
+

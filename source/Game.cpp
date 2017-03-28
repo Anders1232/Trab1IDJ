@@ -6,8 +6,9 @@
 
 Game* Game::instance= nullptr;
 
-Game::Game(std::string title,int width, int height): inputManager(InputManager::GetInstance()), dt(0.0), frameStart(SDL_GetTicks())
+Game::Game(std::string title,int width, int height): inputManager(InputManager::GetInstance()), dt(0.0)//, frameStart(SDL_GetTicks())
 {
+	frameStart= SDL_GetTicks();
 	srand(time(NULL));
 	if(nullptr != Game::instance)
 	{

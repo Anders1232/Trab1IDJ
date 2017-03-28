@@ -3,6 +3,7 @@
 #include "RectOp.h"
 #include "Error.h"
 #include "Camera.h"
+#include "Alien.h"
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
 
@@ -14,6 +15,7 @@ State::State(void): bg("img/ocean.jpg"), tileSet(64, 64,"img/tileset.png"), inpu
 	tileMap= new TileMap(std::string("map/tileMap.txt"), &tileSet);
 	quitRequested=false;
 	REPORT_I_WAS_HERE;
+	objectArray.emplace_back(std::unique_ptr<Alien>( new Alien (512, 300, 0) ) );
 }
 
 State::~State(void)

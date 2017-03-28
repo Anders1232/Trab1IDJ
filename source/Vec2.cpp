@@ -22,6 +22,13 @@ Vec2 Vec2::operator*(float b) const
 {
 	return Vec2(x*b, y*b);
 }
+
+Vec2& Vec2::operator=(Vec2 const &b)
+{
+	x= b.x;
+	y= b.y;
+}
+
 float Vec2::Magnitude(void)const
 {
 	return sqrt(x*x+ y*y);
