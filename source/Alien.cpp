@@ -39,8 +39,8 @@ void Alien::Update(float dt)
 	if(inputManager.MousePress(RIGHT_MOUSE_BUTTON))
 	{
 		Action action(Alien::Action::ActionType::MOVE,//caraca
-					(inputManager.GetMouseX()+Camera::pos.x),
-					(inputManager.GetMouseY()+Camera::pos.y)
+					(inputManager.GetMouseX()+Camera::pos.x)-box.w/2,
+					(inputManager.GetMouseY()+Camera::pos.y)-box.h/2
 				);
 		taskQueue.push(action);
 	}
