@@ -2,7 +2,7 @@
 #include "InputManager.h"
 #include "Error.h"
 
-#define CAMERA_MOVE_SPEED 5;
+#define CAMERA_MOVE_SPEED (100)
 #define INPUT_MANAGER InputManager::GetInstance()
 
 GameObject* Camera::focus= nullptr;
@@ -33,7 +33,7 @@ void Camera::Update(float dt)
 		if(INPUT_MANAGER.IsKeyDown(LEFT_ARROW_KEY) || INPUT_MANAGER.IsKeyDown('a'))
 #endif
 		{
-			pos.x -= CAMERA_MOVE_SPEED;
+			pos.x -= CAMERA_MOVE_SPEED * dt;
 			if(pos.x <0 ) pos.x=0;
 		}
 #ifdef KEYPRESS
@@ -42,7 +42,7 @@ void Camera::Update(float dt)
 		if(INPUT_MANAGER.IsKeyDown(RIGHT_ARROW_KEY) | INPUT_MANAGER.IsKeyDown('d'))
 #endif
 		{
-			pos.x += CAMERA_MOVE_SPEED;
+			pos.x += CAMERA_MOVE_SPEED*dt;
 		}
 #ifdef KEYPRESS
 		if(INPUT_MANAGER.KeyPress(DOWN_ARROW_KEY) || INPUT_MANAGER.KeyPress('s'))
@@ -50,7 +50,7 @@ void Camera::Update(float dt)
 		if(INPUT_MANAGER.IsKeyDown(DOWN_ARROW_KEY) | INPUT_MANAGER.IsKeyDown('s'))
 #endif
 		{
-			pos.y += CAMERA_MOVE_SPEED;
+			pos.y += CAMERA_MOVE_SPEED*dt;
 //			if(pos.y <0 ) pos.y=0;
 		}
 #ifdef KEYPRESS
@@ -59,7 +59,7 @@ void Camera::Update(float dt)
 		if(INPUT_MANAGER.IsKeyDown(UP_ARROW_KEY) | INPUT_MANAGER.IsKeyDown('w'))
 #endif
 		{
-			pos.y -= CAMERA_MOVE_SPEED;
+			pos.y -= CAMERA_MOVE_SPEED*dt;
 		}
 	}
 }

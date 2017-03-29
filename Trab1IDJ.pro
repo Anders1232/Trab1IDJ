@@ -17,7 +17,7 @@ SOURCES += source/main.cpp \
 	source/Alien.cpp \
 	source/Minion.cpp \
 	source/Rect.cpp \
-    source/Bullet.cpp
+	source/Bullet.cpp
 
 TARGET = JOGO
 
@@ -50,7 +50,7 @@ HEADERS += \
 	include/Alien.h \
 	include/Minion.h \
 	include/Rect.h \
-    source/Bullet.h
+	include/Bullet.h
 
 LIBS += -lSDL2 -lSDL2_image
 

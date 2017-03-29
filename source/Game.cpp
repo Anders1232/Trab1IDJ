@@ -77,9 +77,9 @@ SDL_Renderer* Game::GetRenderer(void)const
 
 void Game::Run(void)
 {
-	CalculateDeltaTime();
 	while(!state->QuitRequested())
 	{
+		CalculateDeltaTime();
 		inputManager.Update();
 		state->Update();
 		state->Render();
@@ -96,8 +96,7 @@ void Game::CalculateDeltaTime(void)
 	frameStart= newTick;
 }
 
-float Game::GetDeltaTime(void)
+float Game::GetDeltaTime(void) const
 {
-	CalculateDeltaTime();
 	return dt;
 }

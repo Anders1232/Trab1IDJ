@@ -19,6 +19,7 @@ class Bullet: public GameObject
 				float maxDistance,
 				string sprite
 			);
+		~Bullet(void);
 		void Update(float dt);
 		void Render(void);
 		bool IsDead(void);
