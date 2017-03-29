@@ -14,6 +14,7 @@ Alien::Alien(float x, float y, int nMinions) : GameObject(), sp("img/alien.png")
 	box.h= sp.GetHeight();
 	for(int count=0; count < nMinions; count++)
 	{
+//		std::cout << WHERE << "  " << count*360/nMinions << endl;
 		minionArray.emplace_back(Minion(this, count*360/nMinions));
 	}
 }
@@ -75,10 +76,11 @@ void Alien::Update(float dt)
 	{
 		minionArray[count].Update(dt);
 	}
+	rotation-= dt* CONVERSAO_GRAUS_RADIANOS/6.;
 }
 void Alien::Render(void)
 {
-	sp.Render(box.x-Camera::pos.x, box.y-Camera::pos.y);
+	sp.Render(box.x-Camera::pos.x, box.y-Camera::pos.y, rotation);
 	for(unsigned int count=0; count < minionArray.size(); count++)
 	{
 		minionArray[count].Render();

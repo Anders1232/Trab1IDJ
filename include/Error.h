@@ -7,6 +7,7 @@
 using std::endl;
 
 #define DEBUG 0
+#define CONVERSAO_GRAUS_RADIANOS 57.324840764
 
 #define Error(msg)std::cerr<<"[ERROR] "<<__FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\t"<<msg<< endl;exit(1);
 #define ASSERT(exp)if(!(exp)){std::cerr<<"[ERROR] "<<__FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\tAssertion Failed."<< endl;exit(1);}

@@ -5,6 +5,11 @@
 #include "Vec2.h"
 #include "Sprite.h"
 
+#define VELOCIDADE_ANGULAR_MINION (2)
+#define MINION_DISTANCE_TO_CENTER (150)
+#define MINION_BULLET_SPEED (80)
+#define MINION_BULLET_MAX_DISTANCE (500)
+
 class Minion: public GameObject
 {
 	public:

@@ -6,13 +6,10 @@
 #include "Bullet.h"
 #include "Game.h"
 
-#define VELOCIDADE_ANGULAR_MINION (2)
-#define MINION_DISTANCE_TO_CENTER (150)
-#define MINION_BULLET_SPEED (80)
-#define MINION_BULLET_MAX_DISTANCE (500)
 
-Minion::Minion(GameObject *minionCenter, float arcOffset): center(minionCenter), sp("img/minion.png"), arc (arcOffset)
+Minion::Minion(GameObject *minionCenter, float arcOffset): center(minionCenter), sp("img/minion.png"), arc (arcOffset/CONVERSAO_GRAUS_RADIANOS)
 {
+//	rotation=
 	Vec2 offSetFromOrigin= Vec2(0, MINION_DISTANCE_TO_CENTER).Rotate(arc);
 	box.w= sp.GetWidth();
 	box.h= sp.GetHeight();
@@ -27,9 +24,11 @@ void Minion::Update(float dt)
 void Minion::Render(void)
 {
 	InputManager &inputManager= InputManager::GetInstance();
+//	std::cout << WHERE << " arc= " <<arc <<endl;
 	sp.Render(
 			box.x-Camera::pos.x,
-			box.y-Camera::pos.y);
+			box.y-Camera::pos.y,
+			arc*CONVERSAO_GRAUS_RADIANOS);
 }
 bool Minion::IsDead(void)
 {
