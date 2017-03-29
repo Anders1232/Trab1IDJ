@@ -80,3 +80,8 @@ bool State::QuitRequested()
 	return quitRequested;
 }
 
+void State::AddObject(GameObject *ptr)
+{
+	objectArray.push_back(std::unique_ptr<GameObject>(ptr));
+}
+

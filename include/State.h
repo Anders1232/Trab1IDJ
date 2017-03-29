@@ -19,6 +19,7 @@ class State
 		bool QuitRequested(void);
 		void Update(void);
 		void Render(void);
+		void AddObject(GameObject *ptr);
 //		void Input(void);
 	private:
 		Sprite bg;

@@ -8,7 +8,7 @@ Bullet::Bullet(
 		float speed,
 		float maxDistance,
 		string sprite
-	): sp(sprite)
+	): GameObject(), sp(sprite)
 {
 	box.x= Camera::pos.x+x;
 	box.y= Camera::pos.y+y;
@@ -27,7 +27,7 @@ void Bullet::Update(float dt)
 }
 void Bullet::Render(void)
 {
-	sp.Render(box.x, box.y);
+	sp.Render(box.x- Camera::pos.x, box.y- Camera::pos.y);
 }
 bool Bullet::IsDead(void)
 {

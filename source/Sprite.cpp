@@ -6,12 +6,12 @@
 #define SPRITE_OPEN_X (0)//alterar esses valores altera a parte da textura que será renderizada
 #define SPRITE_OPEN_Y (0)
 
-Sprite::Sprite(void): angle(0.0)
+Sprite::Sprite(void): scaleX(1.), scaleY(1.0)
 {
 	texture= nullptr;
 }
 
-Sprite::Sprite(std::string file): angle(0.0)
+Sprite::Sprite(std::string file): scaleX(1.), scaleY(1.0)
 {
 	REPORT_I_WAS_HERE;
 	texture=nullptr;
@@ -47,7 +47,7 @@ void Sprite::SetClip(int x, int y, int w, int h)
 	clipRect.h = h;
 }
 
-void Sprite::Render(int x, int y) const
+void Sprite::Render(int x, int y, float angle) const
 {
 	Game& game= Game::GetInstance();
 	SDL_Rect rect;
@@ -68,12 +68,12 @@ void Sprite::Render(int x, int y) const
 
 int Sprite::GetHeight(void) const
 {
-	return height;
+	return height*scaleY;
 }
 
 int Sprite::GetWidth(void) const
 {
-	return width;
+	return width*scaleX;
 }
 
 bool Sprite::IsOpen(void) const
@@ -81,13 +81,40 @@ bool Sprite::IsOpen(void) const
 	return (nullptr != texture);
 }
 
-void Sprite::Rotate(double angle)
+/*void Sprite::Rotate(double angle)
 {
 	this->angle= angle;
 }
-
+*/
 SDL_Texture *Sprite::GetTexture(void) const
 {
 	return texture;
+}
+
+void Sprite::SetScaleX(float scale)
+{
+	scaleX= scale;
+}
+void Sprite::SetScaleY(float scale)
+{
+	scaleY= scale;
+}
+void Sprite::SetScale(float scale)
+{
+	scaleX= scale;
+	scaleY= scale;
+}
+void Sprite::ScaleX(float scale)
+{
+	scaleX*= scale;
+}
+void Sprite::ScaleY(float scale)
+{
+	scaleY *= scale;
+}
+void Sprite::Scale(float scale)
+{
+	scaleX *= scale;
+	scaleY *= scale;
 }
 

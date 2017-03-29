@@ -23,6 +23,7 @@ class Rect
 		operator SDL_Rect() const;
 		operator Vec2 () const;
 		Rect operator+(Vec2 const &a) const;
+		Rect operator-(Vec2 const &a) const;
 //		SDL_Rect operator-(SDL_Rect const &b) const;
 		Rect operator=(Vec2 const &a);
 		Vec2 Center(void) const;

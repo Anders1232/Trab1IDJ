@@ -24,18 +24,26 @@ class Sprite
 		~Sprite();
 		void Open(std::string file);
 		void SetClip(int x, int y, int w, int h);
-		void Render(int x, int y) const;
-		void Rotate(double angle);
+		void Render(int x, int y, float angle=0) const;
+//		void Rotate(double angle);
 		int GetWidth(void) const;
 		int GetHeight(void) const;
 		SDL_Texture* GetTexture(void) const;
 		bool IsOpen(void) const;
+		void SetScaleX(float scale);
+		void SetScaleY(float scale);
+		void SetScale(float scale);
+		void ScaleX(float scale);
+		void ScaleY(float scale);
+		void Scale(float scale);
 	private:
 		SDL_Texture *texture;
 		int width;
 		int height;
 		SDL_Rect clipRect;
-		double angle;
+//		double angle;
+		float scaleX;
+		float scaleY;
 };
 
 

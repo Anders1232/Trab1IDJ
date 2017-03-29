@@ -18,11 +18,13 @@
 class GameObject
 {
 	public:
+		GameObject(void);
 		virtual ~GameObject(void);
 		virtual void Update(float dt)=0;
 		virtual void Render(void)=0;
 		virtual bool IsDead(void)=0;
 		Rect box;
+		float rotation;
 	private:
 
 };

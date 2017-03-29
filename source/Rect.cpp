@@ -23,7 +23,10 @@ Rect Rect::operator+(Vec2 const &a) const
 {
 	return Rect(x+a.x, y+a.y, w, h);
 }
-//		SDL_Rect operator-(SDL_Rect const &b) const;
+Rect Rect::operator-(Vec2 const &a) const
+{
+	return Rect(x-a.x, y-a.y, w, h);
+}
 Rect Rect::operator=(Vec2 const &a)
 {
 	x=a.x;

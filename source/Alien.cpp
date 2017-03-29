@@ -3,10 +3,10 @@
 #include "InputManager.h"
 #include "Error.h"
 
-#define DISTANCE_NEAR_ENOUGH ALIEN_MOVE_SPEED/4
+#define DISTANCE_NEAR_ENOUGH 5
 #define HP_INICIAL (30)
 
-Alien::Alien(float x, float y, int nMinions): sp("img/alien.png"), hp(HP_INICIAL)
+Alien::Alien(float x, float y, int nMinions) : GameObject(), sp("img/alien.png"), hp(HP_INICIAL)
 {
 	box.x= x;
 	box.y= y;
@@ -14,7 +14,7 @@ Alien::Alien(float x, float y, int nMinions): sp("img/alien.png"), hp(HP_INICIAL
 	box.h= sp.GetHeight();
 	for(int count=0; count < nMinions; count++)
 	{
-		minionArray.emplace_back(Minion(this, rand()));
+		minionArray.emplace_back(Minion(this, count*360/nMinions));
 	}
 }
 Alien::~Alien(void)
@@ -67,6 +67,7 @@ void Alien::Update(float dt)
 		}
 		else
 		{
+			minionArray[rand()%minionArray.size()].Shoot(taskQueue.front().pos);
 			taskQueue.pop();
 		}
 	}
