@@ -3,8 +3,8 @@
 #include "InputManager.h"
 #include "Error.h"
 
-#define DISTANCE_NEAR_ENOUGH ALIEN_MOVE_SPEED
-#define HP_INICIAL 30
+#define DISTANCE_NEAR_ENOUGH ALIEN_MOVE_SPEED/4
+#define HP_INICIAL (30)
 
 Alien::Alien(float x, float y, int nMinions): sp("img/alien.png"), hp(HP_INICIAL)
 {
@@ -60,7 +60,7 @@ void Alien::Update(float dt)
 			else
 			{
 				distance.Normalize();
-				distance= (distance*sqrt(ALIEN_MOVE_SPEED));
+				distance= (distance*sqrt(ALIEN_MOVE_SPEED*dt));
 				box.x+= distance.x;
 				box.y+= distance.y;
 			}

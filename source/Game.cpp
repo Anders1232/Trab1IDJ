@@ -92,11 +92,12 @@ void Game::Run(void)
 void Game::CalculateDeltaTime(void)
 {
 	u_int32_t newTick= SDL_GetTicks();
-	dt=((float)(frameStart-newTick))/1000;//converter de milissegundos para segundos
+	dt=((float)(newTick-frameStart))/1000;//converter de milissegundos para segundos
 	frameStart= newTick;
 }
 
-float Game::GetDeltaTime(void) const
+float Game::GetDeltaTime(void)
 {
+	CalculateDeltaTime();
 	return dt;
 }
