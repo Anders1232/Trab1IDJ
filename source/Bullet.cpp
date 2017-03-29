@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "Camera.h"
+#include "Error.h"
 
 Bullet::Bullet(
 		float x,
@@ -10,12 +11,13 @@ Bullet::Bullet(
 		string sprite
 	): GameObject(), sp(sprite)
 {
-	box.x= Camera::pos.x+x;
-	box.y= Camera::pos.y+y;
+	box.x= Camera::pos.x+x -sp.GetWidth()/2;
+	box.y= Camera::pos.y+y -sp.GetHeight()/2;
 	box.w= sp.GetWidth();
 	box.h= sp.GetHeight();
-	this->speed= {1.0, 0.};
-	this->speed.Rotate(angle);
+	rotation= angle*CONVERSAO_GRAUS_RADIANOS;
+	this->speed= {1.0, 0.0};
+	this->speed=this->speed.Rotate(angle);
 	this->speed = this->speed*sqrt(speed);
 	distanceLeft= maxDistance;
 }
@@ -27,7 +29,8 @@ void Bullet::Update(float dt)
 }
 void Bullet::Render(void)
 {
-	sp.Render(box.x- Camera::pos.x, box.y- Camera::pos.y);
+//	std::cout << WHERE << " rotation= " <<rotation <<endl;
+	sp.Render(box.x- Camera::pos.x, box.y- Camera::pos.y, rotation);
 }
 bool Bullet::IsDead(void)
 {

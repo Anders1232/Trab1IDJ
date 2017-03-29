@@ -11,6 +11,8 @@ Minion::Minion(GameObject *minionCenter, float arcOffset): center(minionCenter),
 {
 //	rotation=
 	Vec2 offSetFromOrigin= Vec2(0, MINION_DISTANCE_TO_CENTER).Rotate(arc);
+	float scale= ( (float)(rand()%6+10) )/10;
+	sp.SetScale( scale);
 	box.w= sp.GetWidth();
 	box.h= sp.GetHeight();
 	box= center->box.Center() + offSetFromOrigin- Vec2(box.w/2, box.h/2);

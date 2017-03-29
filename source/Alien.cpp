@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "InputManager.h"
 #include "Error.h"
+#include "climits"
 
 #define DISTANCE_NEAR_ENOUGH 5
 #define HP_INICIAL (30)
@@ -68,7 +69,20 @@ void Alien::Update(float dt)
 		}
 		else
 		{
-			minionArray[rand()%minionArray.size()].Shoot(taskQueue.front().pos);
+			Vec2 mousePos(inputManager.GetMouseX(), inputManager.GetMouseY());
+			int nearestAlien=0;
+			float nearestDistance= (mousePos - minionArray[0].box).Magnitude();
+			nearestDistance= (nearestDistance >0)?nearestDistance: -nearestDistance;
+			for(int count =1; count < minionArray.size(); count++)
+			{
+				float candidateDistance= (mousePos - minionArray[count].box).Magnitude();
+				candidateDistance= (candidateDistance >0)?candidateDistance: -candidateDistance;
+				if(candidateDistance < nearestDistance)
+				{
+					nearestAlien=count;
+				}
+			}
+			minionArray[nearestAlien].Shoot(taskQueue.front().pos);
 			taskQueue.pop();
 		}
 	}
