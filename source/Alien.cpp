@@ -73,7 +73,7 @@ void Alien::Update(float dt)
 			int nearestAlien=0;
 			float nearestDistance= (mousePos - minionArray[0].box).Magnitude();
 			nearestDistance= (nearestDistance >0)?nearestDistance: -nearestDistance;
-			for(int count =1; count < minionArray.size(); count++)
+			for(unsigned int count =1; count < minionArray.size(); count++)
 			{
 				float candidateDistance= (mousePos - minionArray[count].box).Magnitude();
 				candidateDistance= (candidateDistance >0)?candidateDistance: -candidateDistance;

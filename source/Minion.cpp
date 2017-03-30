@@ -25,7 +25,6 @@ void Minion::Update(float dt)
 }
 void Minion::Render(void)
 {
-	InputManager &inputManager= InputManager::GetInstance();
 //	std::cout << WHERE << " arc= " <<arc <<endl;
 	sp.Render(
 			box.x-Camera::pos.x,
