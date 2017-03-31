@@ -8,8 +8,10 @@ Bullet::Bullet(
 		float angle,
 		float speed,
 		float maxDistance,
+		float frameTime,
+		int frameCount,
 		string sprite
-	): GameObject(), sp(sprite)
+	): GameObject(), sp(sprite, frameTime, frameCount)
 {
 	box.x= Camera::pos.x+x -sp.GetWidth()/2;
 	box.y= Camera::pos.y+y -sp.GetHeight()/2;

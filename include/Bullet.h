@@ -17,6 +17,8 @@ class Bullet: public GameObject
 				float angle,
 				float speed,
 				float maxDistance,
+				float frameTime,
+				int frameCount,
 				string sprite
 			);
 		~Bullet(void);

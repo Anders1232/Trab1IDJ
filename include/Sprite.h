@@ -20,7 +20,8 @@ class Sprite
 {
 	public:
 		Sprite(void);
-		Sprite(std::string file);
+//		Sprite(std::string file);
+		Sprite(std::string file, float frameTime=1, int frameCount=1);
 		~Sprite();
 		void Open(std::string file);
 		void SetClip(int x, int y, int w, int h);
@@ -30,6 +31,10 @@ class Sprite
 		int GetHeight(void) const;
 		SDL_Texture* GetTexture(void) const;
 		bool IsOpen(void) const;
+		void Update(float dt);
+		void SetFrame(int frame);
+		void SetFrameCount(int frameCount);
+		void SetFrameTime(float frameTime);
 		void SetScaleX(float scale);
 		void SetScaleY(float scale);
 		void SetScale(float scale);
@@ -40,6 +45,10 @@ class Sprite
 		SDL_Texture *texture;
 		int width;
 		int height;
+		int frameCount;
+		int currentFrame;
+		float timeElapsed;
+		float frameTime;
 		SDL_Rect clipRect;
 //		double angle;
 		float scaleX;

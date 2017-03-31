@@ -6,12 +6,12 @@
 #define SPRITE_OPEN_X (0)//alterar esses valores altera a parte da textura que será renderizada
 #define SPRITE_OPEN_Y (0)
 
-Sprite::Sprite(void): scaleX(1.), scaleY(1.0)
+Sprite::Sprite(void): scaleX(1.), scaleY(1.0), frameCount(1), frameTime(0), currentFrame(0)
 {
 	texture= nullptr;
 }
 
-Sprite::Sprite(std::string file): scaleX(1.), scaleY(1.0)
+Sprite::Sprite(std::string file, float frameTime, int frameCount): scaleX(1.), scaleY(1.0), frameCount(frameCount), frameTime(frameTime), currentFrame(0)
 {
 	REPORT_I_WAS_HERE;
 	texture=nullptr;
@@ -26,16 +26,21 @@ Sprite::~Sprite()
 
 void Sprite::Open(std::string file)
 {
+	REPORT_I_WAS_HERE;
 	texture= Resources::GetImage(file);
+	REPORT_I_WAS_HERE;
 	if(nullptr == texture)
 	{
 		Error(SDL_GetError());
 	}
+	REPORT_I_WAS_HERE;
 	if(SDL_QueryTexture(texture, nullptr, nullptr, &width, &height))//verificar se houve erro na chamada
 	{
 		Error(SDL_GetError());
 	}
-	SetClip(SPRITE_OPEN_X, SPRITE_OPEN_Y, width, height);
+	REPORT_I_WAS_HERE;
+	SetClip(SPRITE_OPEN_X, SPRITE_OPEN_Y, width/frameCount, height);
+	REPORT_I_WAS_HERE;
 //	std::cout << __FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\t"<< "width=" << width << "\t height = " << height << std::endl;
 }
 
@@ -73,7 +78,7 @@ int Sprite::GetHeight(void) const
 
 int Sprite::GetWidth(void) const
 {
-	return width*scaleX;
+	return width/frameCount*scaleX;
 }
 
 bool Sprite::IsOpen(void) const
@@ -117,4 +122,33 @@ void Sprite::Scale(float scale)
 	scaleX *= scale;
 	scaleY *= scale;
 }
+void Sprite::Update(float dt)
+{
+	timeElapsed+= dt;
+	currentFrame++;
+	if(timeElapsed> frameTime)
+	{
+		timeElapsed-= frameTime;
+		int newXRect= currentFrame*(width/frameCount);
+		clipRect.x= (newXRect>= width)? 0: newXRect;
+	}
+}
+
+void Sprite::SetFrame(int frame)
+{
+	currentFrame= frame%frameCount;
+	int newXRect= currentFrame*(width/frameCount);
+	clipRect.x= newXRect;
+}
+
+void Sprite::SetFrameCount(int frameCount)
+{
+	this->frameCount= frameCount;
+	clipRect.w= width/frameCount;
+}
+void Sprite::SetFrameTime(float frameTime)
+{
+	this->frameTime=frameTime;
+}
+
 

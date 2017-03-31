@@ -6,6 +6,8 @@
 #include "Bullet.h"
 #include "Game.h"
 
+#define MINION_BULLET_FRAMETIME (0.3)
+#define MINION_BULLET_FRAME_COUNT (1)
 
 Minion::Minion(GameObject *minionCenter, float arcOffset): center(minionCenter), sp("img/minion.png"), arc (arcOffset/CONVERSAO_GRAUS_RADIANOS)
 {
@@ -37,14 +39,19 @@ bool Minion::IsDead(void)
 }
 void Minion::Shoot(Vec2 pos)
 {
+	REPORT_I_WAS_HERE;
 	Bullet* bullet= new Bullet(
 				box.x-Camera::pos.x,
 				box.y-Camera::pos.y,
 				(pos-box).Inclination(),
 				MINION_BULLET_SPEED,
 				MINION_BULLET_MAX_DISTANCE,
+				MINION_BULLET_FRAMETIME,
+				MINION_BULLET_FRAME_COUNT,
 				"img/minionbullet2.png"
 			);
+	REPORT_I_WAS_HERE;
 	Game::GetInstance().GetState().AddObject(bullet);
+	REPORT_I_WAS_HERE;
 }
 
