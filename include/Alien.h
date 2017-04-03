@@ -8,7 +8,7 @@
 #include <queue>
 #include <vector>
 
-#define ALIEN_MOVE_SPEED (90)
+#define ALIEN_MOVE_SPEED (50)
 
 using std::queue;
 using std::vector;

@@ -62,7 +62,7 @@ void Alien::Update(float dt)
 			else
 			{
 				distance.Normalize();
-				distance= (distance*sqrt(ALIEN_MOVE_SPEED*dt));
+				distance= (distance*ALIEN_MOVE_SPEED*dt);
 				box.x+= distance.x;
 				box.y+= distance.y;
 			}

@@ -10,7 +10,11 @@ SDL_Texture* Resources::GetImage(string file)
 	if(imageTable.end() == imageTable.find(file))
 	{
 		ret=IMG_LoadTexture(Game::GetInstance().GetRenderer(), file.c_str());
-		ASSERT(nullptr != ret);
+		if(nullptr == ret)
+		{
+			std::cout << WHERE << "\tCould not load " << file << endl;
+		}
+//		ASSERT(nullptr != ret);
 		imageTable[file]= ret;
 		return ret;
 	}

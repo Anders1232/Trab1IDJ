@@ -1,4 +1,5 @@
 #include "Vec2.h"
+#include "Error.h"
 #include <cmath>
 
 Vec2::Vec2(void): x(0.0), y(0.0)
@@ -20,7 +21,8 @@ Vec2 Vec2::operator-(Vec2 const &b) const
 }
 Vec2 Vec2::operator*(float b) const
 {
-	return Vec2(x*b, y*b);
+	return Vec2(this->Magnitude()*b, 0).Rotate(Inclination());//coordenadas polares OP
+	return Vec2(x*b, y*b);//esse aqui zoa a magnetude
 }
 
 Vec2& Vec2::operator=(Vec2 const &b)
@@ -66,5 +68,15 @@ bool Vec2::IsInRect(SDL_Rect const &rect) const
 Vec2 Vec2::Rotate(float angle) const
 {
 	return Vec2(x*cos(angle)-y*sin(angle), y*cos(angle)+x*sin(angle));
+}
+Vec2& Vec2::operator+=(Vec2 const &b)
+{
+	*this= *this+b;
+	return *this;
+}
+Vec2& Vec2::operator-=(Vec2 const &b)
+{
+	*this= *this-b;
+	return *this;
 }
 

@@ -24,6 +24,8 @@ class Vec2
 		Vec2 operator-(Vec2 const &b) const;
 		Vec2 operator*(float b)const;
 		Vec2& operator=(Vec2 const &b);
+		Vec2& operator+=(Vec2 const &b);
+		Vec2& operator-=(Vec2 const &b);
 		float Magnitude(void)const;
 		void Normalize(void);
 		Vec2 Rotate(float angle) const;

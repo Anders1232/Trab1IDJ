@@ -24,6 +24,7 @@ void Camera::Update(float dt)
 	if(nullptr != focus)
 	{
 		//centrar a câmera na tela
+		pos= focus->box.Center()-Vec2(512, 300);
 	}
 	else
 	{

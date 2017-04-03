@@ -3,6 +3,7 @@
 #include "Error.h"
 #include "Camera.h"
 #include "Alien.h"
+#include "Penguins.h"
 
 #ifdef _WIN32
 	//windows
@@ -25,6 +26,7 @@ State::State(void): bg("img/ocean.jpg"), tileSet(64, 64,"img/tileset.png"), inpu
 	quitRequested=false;
 	REPORT_I_WAS_HERE;
 	objectArray.emplace_back(std::unique_ptr<Alien>( new Alien (512, 300, 3) ) );
+	objectArray.emplace_back(std::unique_ptr<Penguins>( new Penguins (704, 640) ) );
 }
 
 State::~State(void)

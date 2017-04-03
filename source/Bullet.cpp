@@ -28,6 +28,7 @@ void Bullet::Update(float dt)
 {
 	box= box + speed*dt;
 	distanceLeft-= speed.Magnitude()*dt;
+	sp.Update(dt);
 }
 void Bullet::Render(void)
 {

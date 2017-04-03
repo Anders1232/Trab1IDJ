@@ -6,12 +6,12 @@
 #define SPRITE_OPEN_X (0)//alterar esses valores altera a parte da textura que será renderizada
 #define SPRITE_OPEN_Y (0)
 
-Sprite::Sprite(void): scaleX(1.), scaleY(1.0), frameCount(1), frameTime(0), currentFrame(0)
+Sprite::Sprite(void): frameCount(1), currentFrame(0), frameTime(0), scaleX(1.), scaleY(1.0)
 {
 	texture= nullptr;
 }
 
-Sprite::Sprite(std::string file, float frameTime, int frameCount): scaleX(1.), scaleY(1.0), frameCount(frameCount), frameTime(frameTime), currentFrame(0)
+Sprite::Sprite(std::string file, float frameTime, int frameCount): frameCount(frameCount), currentFrame(0), frameTime(frameTime), scaleX(1.), scaleY(1.0)
 {
 	REPORT_I_WAS_HERE;
 	texture=nullptr;
@@ -40,6 +40,7 @@ void Sprite::Open(std::string file)
 	}
 	REPORT_I_WAS_HERE;
 	SetClip(SPRITE_OPEN_X, SPRITE_OPEN_Y, width/frameCount, height);
+//	std::cout << WHERE << "  width/frameCount = "<< width/frameCount << " frameCount= " << frameCount << endl;
 	REPORT_I_WAS_HERE;
 //	std::cout << __FILE__<<" | "<<__func__<<":"<<__LINE__<<"\t\t"<< "width=" << width << "\t height = " << height << std::endl;
 }
@@ -65,6 +66,7 @@ void Sprite::Render(int x, int y, float angle) const
 	{
 		Error(SDL_GetError());
 	}*/
+//	std::cout << WHERE << "  rect.w = "<< rect.w<< endl;
 	if(SDL_RenderCopyEx(game.GetRenderer(), texture, &clipRect, &rect, angle, NULL, SDL_FLIP_NONE) )//verifica se haverá erro
 	{
 		Error(SDL_GetError());
@@ -125,12 +127,12 @@ void Sprite::Scale(float scale)
 void Sprite::Update(float dt)
 {
 	timeElapsed+= dt;
-	currentFrame++;
 	if(timeElapsed> frameTime)
 	{
 		timeElapsed-= frameTime;
-		int newXRect= currentFrame*(width/frameCount);
-		clipRect.x= (newXRect>= width)? 0: newXRect;
+		currentFrame= (currentFrame+1)%frameCount;
+		clipRect.x= currentFrame*(width/frameCount);
+//		clipRect.x= (newXRect>= width)? 0: newXRect;
 	}
 }
 

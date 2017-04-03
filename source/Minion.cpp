@@ -6,8 +6,8 @@
 #include "Bullet.h"
 #include "Game.h"
 
-#define MINION_BULLET_FRAMETIME (0.3)
-#define MINION_BULLET_FRAME_COUNT (1)
+#define MINION_BULLET_FRAMETIME (0.2)
+#define MINION_BULLET_FRAME_COUNT (3)
 
 Minion::Minion(GameObject *minionCenter, float arcOffset): center(minionCenter), sp("img/minion.png"), arc (arcOffset/CONVERSAO_GRAUS_RADIANOS)
 {
