@@ -40,3 +40,14 @@ bool Bullet::IsDead(void)
 
 Bullet::~Bullet()
 {}
+
+void Bullet::NotifyCollision(GameObject &other)
+{
+	distanceLeft= 0;
+}
+bool Bullet::Is(string type)
+{
+	return type=="Bullet";
+}
+
+

@@ -26,8 +26,8 @@ class GameObject
 		virtual void Update(float dt)=0;
 		virtual void Render(void)=0;
 		virtual bool IsDead(void)=0;
-		virtual void NotifyCollision(GameObject &other);
-		virtual bool Is(string type);
+		virtual void NotifyCollision(GameObject &other)=0;
+		virtual bool Is(string type)=0;
 		Rect box;
 		float rotation;
 	private:

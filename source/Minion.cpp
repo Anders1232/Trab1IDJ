@@ -55,3 +55,15 @@ void Minion::Shoot(Vec2 pos)
 	REPORT_I_WAS_HERE;
 }
 
+void Minion::NotifyCollision(GameObject &other)
+{
+	if(other.Is("Bullet"))
+	{
+		std::cout << WHERE << "Implementar?" << endl;
+	}
+}
+bool Minion::Is(string type)
+{
+	return type=="Minion";
+}
+

@@ -6,6 +6,7 @@
 
 #define DISTANCE_NEAR_ENOUGH 5
 #define HP_INICIAL (30)
+#define ALIEN_DAMAGE_PER_BULLET (13)
 
 Alien::Alien(float x, float y, int nMinions) : GameObject(), sp("img/alien.png"), hp(HP_INICIAL)
 {
@@ -107,5 +108,18 @@ bool Alien::IsDead(void)
 
 Alien::Action::Action(ActionType type, float x, float y): type(type), pos(x, y)
 {
+}
+
+bool Alien::Is(string type)
+{
+	return type != "Alien";
+}
+
+void Alien::NotifyCollision(GameObject &other)
+{
+	if(other.Is("Bullet"))
+	{
+		hp-= ALIEN_DAMAGE_PER_BULLET;
+	}
 }
 

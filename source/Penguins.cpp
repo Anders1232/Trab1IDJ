@@ -16,6 +16,7 @@
 #define PENGUIM_BULLET_FRAMETIME (0.5)
 #define PENGUIM_BULLET_FRAME_COUNT (4)
 #define PENGUIN_CANNON_LENGHT (50)
+#define PENGUIM_DAMAGE_PER_BULLET (15)
 
 
 Penguins* Penguins::player= nullptr;
@@ -98,4 +99,14 @@ void Penguins::Shoot(void)
 	Game::GetInstance().GetState().AddObject(bullet);
 	REPORT_I_WAS_HERE;
 }
+
+void Penguins::NotifyCollision(GameObject &other)
+{
+	hp-= PENGUIM_DAMAGE_PER_BULLET;
+}
+bool Penguins::Is(string type)
+{
+	return type=="Penguins";
+}
+
 
