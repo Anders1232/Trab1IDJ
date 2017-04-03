@@ -8,7 +8,7 @@
 #define PENGUIM_LINEAR_SPEED (50)
 #define PENGUIM_CANNON_ANGLE (20)
 #define PENGUIM_HP (100)
-#define PENGUIM_MAX_SPEED (50.)
+#define PENGUIM_MAX_SPEED (90.)
 #define PENGUIM_ACELERACAO (1.1)
 #define PENGUIM_VEC_ANGULAR (2.)
 #define PENGUIM_BULLET_SPEED (180)
@@ -65,7 +65,7 @@ void Penguins::Update(float dt)
 	{
 		rotation+= PENGUIM_VEC_ANGULAR*dt;
 	}
-	box= box + speed.Rotate(rotation);
+	box= box + speed.Rotate(rotation)*dt;
 	cannonAngle= (inputManager.GetMousePos()-(box.Center()-Camera::pos)).Inclination()*CONVERSAO_GRAUS_RADIANOS;
 	if(inputManager.MousePress(LEFT_MOUSE_BUTTON))
 	{

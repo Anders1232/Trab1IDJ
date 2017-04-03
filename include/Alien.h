@@ -21,6 +21,8 @@ class Alien: public GameObject
 		void Update(float dt);
 		void Render(void);
 		bool IsDead(void);
+		void NotifyCollision(GameObject &other);
+		bool Is(string type);
 	private:
 		class Action;
 		Sprite sp;

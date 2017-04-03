@@ -14,6 +14,9 @@
 #endif
 
 #include "Rect.h"
+#include "string"
+
+using std::string;
 
 class GameObject
 {
@@ -23,6 +26,8 @@ class GameObject
 		virtual void Update(float dt)=0;
 		virtual void Render(void)=0;
 		virtual bool IsDead(void)=0;
+		virtual void NotifyCollision(GameObject &other);
+		virtual bool Is(string type);
 		Rect box;
 		float rotation;
 	private:

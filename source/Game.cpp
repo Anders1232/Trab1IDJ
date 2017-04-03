@@ -85,6 +85,7 @@ void Game::Run(void)
 		state->Render();
 		SDL_RenderPresent(renderer);
 		SDL_Delay(33);
+//		SDL_Delay(15);
 	}
 	Resources::ClearImages();
 }

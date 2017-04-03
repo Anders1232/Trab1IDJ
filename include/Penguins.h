@@ -13,6 +13,8 @@ class Penguins: public GameObject
 		void Render(void);
 		bool IsDead(void);
 		void Shoot(void);
+		void NotifyCollision(GameObject &other);
+		bool Is(string type);
 		static Penguins *player;
 	private:
 		Sprite bodySP;

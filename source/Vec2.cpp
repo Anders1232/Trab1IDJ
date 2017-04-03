@@ -83,5 +83,9 @@ Vec2 Vec2::FromPolarCoord(float magnetude, float angle)
 {
 	return Vec2(magnetude, 0).Rotate(angle);
 }
+Vec2 Vec2::MemberMult(float const &b)const
+{
+	return Vec2(x*b, y*b);
+}
 
 

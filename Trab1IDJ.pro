@@ -52,7 +52,8 @@ HEADERS += \
 	include/Minion.h \
 	include/Rect.h \
 	include/Bullet.h \
-	include/Penguins.h
+	include/Penguins.h\
+	include/Collision.h
 
 LIBS += -lSDL2 -lSDL2_image
 

@@ -25,6 +25,8 @@ class Bullet: public GameObject
 		void Update(float dt);
 		void Render(void);
 		bool IsDead(void);
+		void NotifyCollision(GameObject &other);
+		bool Is(string type);
 	private:
 		Sprite sp;
 		Vec2 speed;
