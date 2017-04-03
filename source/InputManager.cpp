@@ -70,44 +70,48 @@ void InputManager::Update(void)
 	k=k-0x40000000+0x7F;\
 }
 
-bool InputManager::KeyPress(int key)
+bool InputManager::KeyPress(int key) const
 {
 	AJUST_KEY(key);
 	return keyState[key] && keyUpdate[key] == updateCounter;
 }
-bool InputManager::KeyRelease(int key)
+bool InputManager::KeyRelease(int key) const
 {
 	AJUST_KEY(key);
 	return ((false==keyState[key]) && keyUpdate[key]+1 ==updateCounter);
 }
-bool InputManager::IsKeyDown(int key)
+bool InputManager::IsKeyDown(int key) const
 {
 	AJUST_KEY(key);
 	return keyState[key];
 }
-bool InputManager::MousePress(int button)
+bool InputManager::MousePress(int button) const
 {
 	return mouseState[button]&& mouseUpdate[button]== updateCounter;
 }
-bool InputManager::MouseRelease(int button)
+bool InputManager::MouseRelease(int button) const
 {
 	return ((false == mouseState[button]) && mouseUpdate[button]+1 == updateCounter);
 }
-bool InputManager::IsMouseDown(int button)
+bool InputManager::IsMouseDown(int button) const
 {
 	return mouseState[button];
 }
-int InputManager::GetMouseX(void)
+int InputManager::GetMouseX(void) const
 {
 	return mouseX;
 }
-int InputManager::GetMouseY(void)
+int InputManager::GetMouseY(void) const
 {
 	return mouseY;
 }
-bool InputManager::QuitRequested(void)
+bool InputManager::QuitRequested(void) const
 {
 	return quitRequested;
+}
+Vec2 InputManager::GetMousePos() const
+{
+	return Vec2(mouseX, mouseY);
 }
 
 

@@ -13,6 +13,8 @@
 	#error "Unknown compiler"
 #endif
 
+#include "Vec2.h"
+
 #define LEFT_ARROW_KEY SDLK_LEFT
 #define RIGHT_ARROW_KEY SDLK_RIGHT
 #define UP_ARROW_KEY SDLK_UP
@@ -31,15 +33,16 @@ class InputManager
 {
 	public:
 		void Update(void);
-		bool KeyPress(int key);
-		bool KeyRelease(int key);
-		bool IsKeyDown(int key);
-		bool MousePress(int button);
-		bool MouseRelease(int button);
-		bool IsMouseDown(int button);
-		int GetMouseX(void);
-		int GetMouseY(void);
-		bool QuitRequested(void);
+		bool KeyPress(int key) const;
+		bool KeyRelease(int key) const;
+		bool IsKeyDown(int key) const;
+		bool MousePress(int button) const;
+		bool MouseRelease(int button) const;
+		bool IsMouseDown(int button) const;
+		int GetMouseX(void) const;
+		int GetMouseY(void) const;
+		Vec2 GetMousePos(void) const;
+		bool QuitRequested(void) const;
 		static InputManager& GetInstance(void);
 	private:
 		InputManager();

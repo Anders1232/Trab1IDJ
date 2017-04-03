@@ -18,9 +18,7 @@ Bullet::Bullet(
 	box.w= sp.GetWidth();
 	box.h= sp.GetHeight();
 	rotation= angle*CONVERSAO_GRAUS_RADIANOS;
-	this->speed= {1.0, 0.0};
-	this->speed=this->speed.Rotate(angle);
-	this->speed = this->speed*sqrt(speed);
+	this->speed= Vec2::FromPolarCoord(speed, angle);
 	distanceLeft= maxDistance;
 }
 

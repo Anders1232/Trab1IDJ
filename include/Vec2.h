@@ -19,6 +19,7 @@ class Vec2
 	public:
 		Vec2(void);
 		Vec2(float x, float y);
+		static Vec2 FromPolarCoord(float magentude, float angle);
 		Vec2(Vec2 const &b);
 		Vec2 operator+(Vec2 const &b)const;
 		Vec2 operator-(Vec2 const &b) const;

@@ -79,4 +79,9 @@ Vec2& Vec2::operator-=(Vec2 const &b)
 	*this= *this-b;
 	return *this;
 }
+Vec2 Vec2::FromPolarCoord(float magnetude, float angle)
+{
+	return Vec2(magnetude, 0).Rotate(angle);
+}
+
 
