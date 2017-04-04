@@ -3,6 +3,7 @@
 
 #include "Gameobject.h"
 #include "Sprite.h"
+#include "Timer.h"
 
 class Penguins: public GameObject
 {
@@ -23,6 +24,7 @@ class Penguins: public GameObject
 		float linearSpeed;
 		float cannonAngle;
 		int hp;
+		Timer bulletsTimer;
 };
 
 #endif // PENGUINS_H

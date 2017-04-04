@@ -18,7 +18,8 @@ SOURCES += source/main.cpp \
 	source/Minion.cpp \
 	source/Rect.cpp \
 	source/Bullet.cpp \
-	source/Penguins.cpp
+	source/Penguins.cpp \
+	source/Timer.cpp
 
 TARGET = JOGO
 
@@ -53,7 +54,8 @@ HEADERS += \
 	include/Rect.h \
 	include/Bullet.h \
 	include/Penguins.h\
-	include/Collision.h
+	include/Collision.h \
+	include/Timer.h
 
 LIBS += -lSDL2 -lSDL2_image
 

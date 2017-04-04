@@ -12,16 +12,18 @@
 #define PENGUIM_ACELERACAO (1.1)
 #define PENGUIM_VEC_ANGULAR (2.)
 #define PENGUIM_BULLET_SPEED (180)
-#define PENGUIM_BULLET_MAX_DISTANCE (360)
 #define PENGUIM_BULLET_FRAMETIME (0.5)
+//#define PENGUIM_BULLET_MAX_DISTANCE (360)
+#define PENGUIM_BULLET_MAX_DISTANCE (PENGUIM_BULLET_FRAME_COUNT*PENGUIM_BULLET_FRAMETIME*PENGUIM_BULLET_SPEED)
 #define PENGUIM_BULLET_FRAME_COUNT (4)
 #define PENGUIN_CANNON_LENGHT (50)
 #define PENGUIM_DAMAGE_PER_BULLET (15)
+#define PENGUIM_BULLET_COODOWN (1./3.)
 
 
 Penguins* Penguins::player= nullptr;
 
-Penguins::Penguins(float x, float y):GameObject(),bodySP("img/penguin.png"), cannonSp("img/cubngun.png"), speed(), linearSpeed(PENGUIM_LINEAR_SPEED), cannonAngle(PENGUIM_CANNON_ANGLE), hp(PENGUIM_HP)
+Penguins::Penguins(float x, float y):GameObject(),bodySP("img/penguin.png"), cannonSp("img/cubngun.png"), speed(), linearSpeed(PENGUIM_LINEAR_SPEED), cannonAngle(PENGUIM_CANNON_ANGLE), hp(PENGUIM_HP), bulletsTimer()
 {
 	player= this;
 	box.x= x;
@@ -69,9 +71,15 @@ void Penguins::Update(float dt)
 	}
 	box= box + speed.Rotate(rotation)*dt;
 	cannonAngle= (inputManager.GetMousePos()-(box.Center()-Camera::pos)).Inclination()*CONVERSAO_GRAUS_RADIANOS;
-	if(inputManager.MousePress(LEFT_MOUSE_BUTTON))
+
+	bulletsTimer.Update(dt);
+	if(inputManager.IsMouseDown(LEFT_MOUSE_BUTTON))
 	{
-		Shoot();
+		if(bulletsTimer.Get() > PENGUIM_BULLET_COODOWN)
+		{
+			bulletsTimer.Restart();
+			Shoot();
+		}
 	}
 }
 void Penguins::Render(void)
