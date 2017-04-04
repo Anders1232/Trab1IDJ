@@ -2,7 +2,8 @@
 #define GAMEOBJECT_H
 
 #ifdef _WIN32
-	//windows
+	#include <SDL.h>
+	#include <SDL_image.h>
 #elif __APPLE__
 	#include "TargetConditionals.h"
 	//mac

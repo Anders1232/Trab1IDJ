@@ -2,12 +2,12 @@ compilador = g++
 arquivoSaida = JOGO.out
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 FLAGS= -std=c++11 -Wall -pedantic -fmax-errors=5
-DebugOrRelease= -g
+DebugOrRelease= -g #-Ofast -mtune=native
 binFolder= bin
 #DEBUG= -g
 #RELEASE= -O3
 incFldr= include
-srcFldr= source
+srcFldr= src
 INCLUDE_FLAGS= -I$(incFldr)
 
 
@@ -56,7 +56,7 @@ executavel: \
 .PHONY: bin
 bin:
 	mkdir -p $(binFolder)
-	cp -R assets $(binFolder)
+#	cp -R assets $(binFolder)
 
 #desfaz tudo que algum make fez e faz denovo
 .PHONY: all

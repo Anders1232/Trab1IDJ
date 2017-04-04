@@ -3,24 +3,24 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += source/main.cpp \
-	source/Game.cpp \
-	source/Sprite.cpp \
-	source/State.cpp \
-	source/Gameobject.cpp \
-	source/Vec2.cpp \
-	source/Tileset.cpp \
-	source/TileMap.cpp \
-	source/Resources.cpp \
-	source/InputManager.cpp \
-	source/Camera.cpp \
-	source/Alien.cpp \
-	source/Minion.cpp \
-	source/Rect.cpp \
-	source/Bullet.cpp \
-	source/Penguins.cpp \
-	source/Timer.cpp \
-	source/Animation.cpp
+SOURCES += src/main.cpp \
+	src/Game.cpp \
+	src/Sprite.cpp \
+	src/State.cpp \
+	src/Gameobject.cpp \
+	src/Vec2.cpp \
+	src/Tileset.cpp \
+	src/TileMap.cpp \
+	src/Resources.cpp \
+	src/InputManager.cpp \
+	src/Camera.cpp \
+	src/Alien.cpp \
+	src/Minion.cpp \
+	src/Rect.cpp \
+	src/Bullet.cpp \
+	src/Penguins.cpp \
+	src/Timer.cpp \
+	src/Animation.cpp
 
 TARGET = JOGO
 
