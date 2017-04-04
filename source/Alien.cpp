@@ -4,6 +4,8 @@
 #include "Error.h"
 #include "climits"
 #include "Bullet.h"
+#include "Game.h"
+#include "Animation.h"
 
 #define DISTANCE_NEAR_ENOUGH 5
 #define HP_INICIAL (30)
@@ -123,6 +125,10 @@ void Alien::NotifyCollision(GameObject &other)
 		if( !( (Bullet&)other).TargetsPlayer() )
 		{
 			hp-= ALIEN_DAMAGE_PER_BULLET;
+			if(IsDead())
+			{
+				Game::GetInstance().GetState().AddObject(new Animation(box.x, box.y, rotation, "img/aliendeath.png", 4, 0.25, true));
+			}
 		}
 	}
 }
