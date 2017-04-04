@@ -27,7 +27,10 @@ executavel: \
 		$(binFolder)/Gameobject.o\
 		$(binFolder)/Rect.o\
 		$(binFolder)/Minion.o\
-		$(binFolder)/Bullet.o
+		$(binFolder)/Bullet.o\
+		$(binFolder)/Timer.o\
+		$(binFolder)/Animation.o\
+		$(binFolder)/Penguins.o
 	$(compilador)\
 		$(binFolder)/Game.o\
 		$(binFolder)/Sprite.o\
@@ -44,6 +47,9 @@ executavel: \
 		$(binFolder)/Rect.o\
 		$(binFolder)/Minion.o\
 		$(binFolder)/Bullet.o\
+		$(binFolder)/Timer.o\
+		$(binFolder)/Animation.o\
+		$(binFolder)/Penguins.o\
 		$(FLAGS) $(LIBS) -o $(binFolder)/$(arquivoSaida) $(DebugOrRelease)
 
 #cria o diretório onde ficará os compilados e copia os resources para lá
@@ -193,6 +199,40 @@ $(binFolder)/Bullet.o:\
 	$(compilador)\
 		$(srcFldr)/Bullet.cpp\
 		$(FLAGS) -o $(binFolder)/Bullet.o -c $(DebugOrRelease) -I$(incFldr)
+$(binFolder)/Penguins.o:\
+		$(srcFldr)/Penguins.cpp\
+		$(incFldr)/Penguins.h\
+		$(incFldr)/Error.h\
+		$(incFldr)/Vec2.h\
+		$(incFldr)/Sprite.h\
+		$(incFldr)/Gameobject.h\
+		$(incFldr)/Camera.h\
+		$(incFldr)/Timer.h\
+		$(incFldr)/InputManager.h\
+		$(incFldr)/Bullet.h\
+		$(incFldr)/Animation.h
+	$(compilador)\
+		$(srcFldr)/Penguins.cpp\
+		$(FLAGS) -o $(binFolder)/Penguins.o -c $(DebugOrRelease) -I$(incFldr)
+$(binFolder)/Animation.o:\
+		$(srcFldr)/Animation.cpp\
+		$(incFldr)/Animation.h\
+		$(incFldr)/Error.h\
+		$(incFldr)/Vec2.h\
+		$(incFldr)/Sprite.h\
+		$(incFldr)/Gameobject.h\
+		$(incFldr)/Camera.h\
+		$(incFldr)/Timer.h\
+		$(incFldr)/Animation.h
+	$(compilador)\
+		$(srcFldr)/Animation.cpp\
+		$(FLAGS) -o $(binFolder)/Animation.o -c $(DebugOrRelease) -I$(incFldr)
+$(binFolder)/Timer.o:\
+		$(srcFldr)/Timer.cpp\
+		$(incFldr)/Timer.h
+	$(compilador)\
+		$(srcFldr)/Timer.cpp\
+		$(FLAGS) -o $(binFolder)/Timer.o -c $(DebugOrRelease) -I$(incFldr)
 
 
 clear:

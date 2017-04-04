@@ -125,5 +125,6 @@ int Alien::GetNearestMinion(Vec2 targetPos)
 			nearestAlien=count;
 		}
 	}
+		return nearestAlien;
 }
 
