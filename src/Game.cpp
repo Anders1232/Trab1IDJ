@@ -47,14 +47,21 @@ Game::Game(std::string title,int width, int height): inputManager(InputManager::
 		Error(SDL_GetError());
 	}
 	REPORT_I_WAS_HERE;
-	state= new State();
+	storedState= nullptr;
 	REPORT_I_WAS_HERE;
 }
 
 Game::~Game()
 {
 	IMG_Quit();
-	delete state;
+	if(nullptr != storedState)
+	{
+		delete state;
+	}
+	while(!stateStack.empty())
+	{
+		stateStack.pop();
+	}
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -65,9 +72,9 @@ Game& Game::GetInstance(void)
 	return *(Game::instance);
 }
 
-State& Game::GetState(void) const
+State& Game::GetCurrentState(void) const
 {
-	return *state;
+	return *stateStack.top();
 }
 
 SDL_Renderer* Game::GetRenderer(void)const
@@ -75,15 +82,48 @@ SDL_Renderer* Game::GetRenderer(void)const
 	return renderer;
 }
 
+void Game::Push(State* state)
+{
+	if(nullptr != storedState)
+	{
+		std::cout << WHERE << "Não era para ter um state aqui...\n";
+	}
+	storedState= state;
+}
+
 void Game::Run(void)
 {
-	while(!state->QuitRequested())
+	if(nullptr !=  storedState)
 	{
+		stateStack.push(storedState);
+		storedState= nullptr;
+	}
+	else
+	{
+		return;//jogo terminou
+	}
+	while(!stateStack.empty())
+	{
+		if(stateStack.top()->QuitRequested())
+		{
+			return;
+		}
 		CalculateDeltaTime();
 		inputManager.Update();
 		state->Update();
 		state->Render();
 		SDL_RenderPresent(renderer);
+		if(stateStack.top()->PopRequested())
+		{
+			stateStack.pop();
+			stateStack.top()->Resume();
+		}
+		if(nullptr != storedState)
+		{
+			stateStack.top()->Pause();
+			stateStack.push(storedState);
+			storedState= nullptr;
+		}
 		SDL_Delay(33);
 //		SDL_Delay(15);
 	}

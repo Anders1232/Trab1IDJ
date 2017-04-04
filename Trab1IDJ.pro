@@ -6,7 +6,7 @@ CONFIG -= qt
 SOURCES += src/main.cpp \
 	src/Game.cpp \
 	src/Sprite.cpp \
-	src/State.cpp \
+	src/StageState.cpp \
 	src/Gameobject.cpp \
 	src/Vec2.cpp \
 	src/Tileset.cpp \
@@ -20,7 +20,8 @@ SOURCES += src/main.cpp \
 	src/Bullet.cpp \
 	src/Penguins.cpp \
 	src/Timer.cpp \
-	src/Animation.cpp
+	src/Animation.cpp \
+    src/State.cpp
 
 TARGET = JOGO
 
@@ -42,7 +43,7 @@ HEADERS += \
 	include/Game.h \
 	include/Error.h \
 	include/Sprite.h \
-	include/State.h \
+	include/StageState.h \
 	include/Gameobject.h \
 	include/Vec2.h \
 	include/Tileset.h \
@@ -57,7 +58,8 @@ HEADERS += \
 	include/Penguins.h\
 	include/Collision.h \
 	include/Timer.h \
-	include/Animation.h
+	include/Animation.h \
+    include/State.h
 
 LIBS += -lSDL2 -lSDL2_image
 

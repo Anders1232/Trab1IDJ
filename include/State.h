@@ -1,33 +1,28 @@
 #ifndef STATE_H
 #define STATE_H
 
+#include "Gameobject.h"
 #include <vector>
 #include <memory>
-#include "Sprite.h"
-#include "Gameobject.h"
-#include "Tileset.h"
-#include "TileMap.h"
-#include "InputManager.h"
-
-//#define BG_POINTER
 
 class State
 {
 	public:
 		State(void);
-		~State(void);
+		virtual ~State(void);
+		virtual void Update(float dt)=0;
+		virtual void Render(void) const =0;
+		virtual void Pause(void)=0;
+		virtual void Resume(void)=0;
+		virtual void AddObject(GameObject *object);
+		bool PopRequested(void);
 		bool QuitRequested(void);
-		void Update(void);
-		void Render(void);
-		void AddObject(GameObject *ptr);
-//		void Input(void);
-	private:
-		Sprite bg;
-		TileMap *tileMap;
-		TileSet tileSet;
+	protected:
+		virtual void UpdateArray(float dt);
+		virtual void RenderArray(void);
+		bool popRequested;
 		bool quitRequested;
 		std::vector<std::unique_ptr<GameObject>> objectArray;
-		InputManager &inputManager;
-};
+}
 
 #endif // STATE_H

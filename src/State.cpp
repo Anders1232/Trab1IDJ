@@ -1,56 +1,23 @@
 #include "State.h"
-#include "Game.h"
-#include "Error.h"
-#include "Camera.h"
-#include "Alien.h"
-#include "Penguins.h"
-#include "Collision.h"
 
-#ifdef _WIN32
-	#include <SDL.h>
-	#include <SDL_image.h>
-#elif __APPLE__
-	#include "TargetConditionals.h"
-	//mac
-#elif __linux__
-	#include <SDL2/SDL.h>
-	#include<SDL2/SDL_image.h>
-#else
-	#error "Unknown compiler"
-#endif
-
-#define STATE_RENDER_X 0//esse valores calculam o offset em relação ao canto superior esquedo da imagem daquilo que será renderizado
-#define STATE_RENDER_Y 0
-State::State(void): bg("img/ocean.jpg"), tileSet(64, 64,"img/tileset.png"), inputManager(InputManager::GetInstance())
+State::State(void): popRequested(false), quitRequested(false)
 {
-	REPORT_I_WAS_HERE;
-	tileMap= new TileMap(std::string("map/tileMap.txt"), &tileSet);
-	quitRequested=false;
-	REPORT_I_WAS_HERE;
-	objectArray.emplace_back(std::unique_ptr<Alien>( new Alien (512, 300, 3) ) );
-	objectArray.emplace_back(std::unique_ptr<Penguins>( new Penguins (704, 640) ) );
 }
-
-State::~State(void)
+State::~State(void);
+void StateAddObject(GameObject *object)
 {
-	objectArray.clear();
-	delete tileMap;
+	objectArray.push_back(std::unique_ptr<GameObject>(ptr));
 }
-
-//void State::Update(float dt)
-void State::Update()
+bool State::PopRequested(void)
 {
-	REPORT_I_WAS_HERE;
-//	Input();
-	if(inputManager.KeyPress(ESCAPE_KEY) || inputManager.QuitRequested())
-	{
-		quitRequested= true;
-	}
-/*	if(inputManager.IsKeyDown(ESPACE_KEY))
-	{
-		AddObject((float)inputManager.GetMouseX()+Camera::pos.x, (float)inputManager.GetMouseY()+Camera::pos.y);
-	}
-*/
+	return popRequested;
+}
+bool State::QuitRequested(void)
+{
+	return quitRequested;
+}
+void State::UpdateArray(float dt)
+{
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
 		objectArray.at(cont)->Update(Game::GetInstance().GetDeltaTime());
@@ -59,44 +26,12 @@ void State::Update()
 			objectArray.erase(objectArray.begin()+cont);
 		}
 	}
-	for(unsigned int count1=0; count1 < objectArray.size()-1; count1++)
-	{
-		for(unsigned int count2= count1+1; count2 < objectArray.size(); count2++)
-		{
-			if(Collision::IsColliding(objectArray[count1]->box, objectArray[count2]->box, objectArray[count1]->rotation, objectArray[count2]->rotation) )
-			{
-				objectArray[count1]->NotifyCollision(*objectArray[count2]);
-				objectArray[count2]->NotifyCollision(*objectArray[count1]);
-			}
-		}
-	}
-	Camera::Update(Game::GetInstance().GetDeltaTime());
-	REPORT_I_WAS_HERE;
 }
-
-void State::Render(void)
+void State::RenderArray(void)
 {
-	//renderizar o bg
-	REPORT_I_WAS_HERE;
-	bg.Render(STATE_RENDER_X, STATE_RENDER_Y);
-	REPORT_I_WAS_HERE;
-	tileMap->RenderLayer(0, Camera::pos.x, Camera::pos.y);
-//	tileMap->Render(Camera::pos.x, Camera::pos.y);
-	REPORT_I_WAS_HERE;
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
 		objectArray[cont]->Render();
 	}
-	tileMap->RenderLayer(1, Camera::pos.x, Camera::pos.y);
-}
-
-bool State::QuitRequested()
-{
-	return quitRequested;
-}
-
-void State::AddObject(GameObject *ptr)
-{
-	objectArray.push_back(std::unique_ptr<GameObject>(ptr));
 }
 
