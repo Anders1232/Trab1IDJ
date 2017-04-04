@@ -19,7 +19,8 @@ class Bullet: public GameObject
 				float maxDistance,
 				float frameTime,
 				int frameCount,
-				string sprite
+				string sprite,
+				bool targetsPlayer
 			);
 		~Bullet(void);
 		void Update(float dt);
@@ -27,10 +28,12 @@ class Bullet: public GameObject
 		bool IsDead(void);
 		void NotifyCollision(GameObject &other);
 		bool Is(string type);
+		bool TargetsPlayer(void) const;
 	private:
 		Sprite sp;
 		Vec2 speed;
 		float distanceLeft;
+		bool targetsPlayer;
 };
 
 #endif // BULLET_H

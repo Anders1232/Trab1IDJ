@@ -3,6 +3,7 @@
 #include "InputManager.h"
 #include "Error.h"
 #include "climits"
+#include "Bullet.h"
 
 #define DISTANCE_NEAR_ENOUGH 5
 #define HP_INICIAL (30)
@@ -119,7 +120,10 @@ void Alien::NotifyCollision(GameObject &other)
 {
 	if(other.Is("Bullet"))
 	{
-		hp-= ALIEN_DAMAGE_PER_BULLET;
+		if( !( (Bullet&)other).TargetsPlayer() )
+		{
+			hp-= ALIEN_DAMAGE_PER_BULLET;
+		}
 	}
 }
 

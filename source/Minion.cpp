@@ -48,7 +48,8 @@ void Minion::Shoot(Vec2 pos)
 				MINION_BULLET_MAX_DISTANCE,
 				MINION_BULLET_FRAMETIME,
 				MINION_BULLET_FRAME_COUNT,
-				"img/minionbullet2.png"
+				"img/minionbullet2.png",
+				true
 			);
 	REPORT_I_WAS_HERE;
 	Game::GetInstance().GetState().AddObject(bullet);

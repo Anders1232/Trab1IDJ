@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Alien.h"
 #include "Penguins.h"
+#include "Collision.h"
 
 #ifdef _WIN32
 	//windows
@@ -55,6 +56,17 @@ void State::Update()
 		if(objectArray.at(cont)->IsDead())
 		{
 			objectArray.erase(objectArray.begin()+cont);
+		}
+	}
+	for(unsigned int count1=0; count1 < objectArray.size()-1; count1++)
+	{
+		for(unsigned int count2= count1+1; count2 < objectArray.size(); count2++)
+		{
+			if(Collision::IsColliding(objectArray[count1]->box, objectArray[count2]->box, objectArray[count1]->rotation, objectArray[count2]->rotation) )
+			{
+				objectArray[count1]->NotifyCollision(*objectArray[count2]);
+				objectArray[count2]->NotifyCollision(*objectArray[count1]);
+			}
 		}
 	}
 	Camera::Update(Game::GetInstance().GetDeltaTime());

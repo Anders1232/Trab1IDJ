@@ -8,7 +8,7 @@
 #define PENGUIM_LINEAR_SPEED (50)
 #define PENGUIM_CANNON_ANGLE (20)
 #define PENGUIM_HP (100)
-#define PENGUIM_MAX_SPEED (90.)
+#define PENGUIM_MAX_SPEED (200.)
 #define PENGUIM_ACELERACAO (1.1)
 #define PENGUIM_VEC_ANGULAR (2.)
 #define PENGUIM_BULLET_SPEED (180)
@@ -34,6 +34,7 @@ Penguins::Penguins(float x, float y):GameObject(),bodySP("img/penguin.png"), can
 Penguins::~Penguins()
 {
 	player = nullptr;
+	Camera::Unfollow();
 }
 
 void Penguins::Update(float dt)
@@ -59,7 +60,7 @@ void Penguins::Update(float dt)
 	}
 	if(inputManager.IsKeyDown('a')|| inputManager.IsKeyDown('A'))
 	{
-		TEMP_REPORT_I_WAS_HERE;
+//		TEMP_REPORT_I_WAS_HERE;
 		rotation-= PENGUIM_VEC_ANGULAR*dt;
 	}
 	if(inputManager.IsKeyDown('d')|| inputManager.IsKeyDown('D'))
@@ -93,7 +94,8 @@ void Penguins::Shoot(void)
 				PENGUIM_BULLET_MAX_DISTANCE,
 				PENGUIM_BULLET_FRAMETIME,
 				PENGUIM_BULLET_FRAME_COUNT,
-				"img/penguinbullet.png"
+				"img/penguinbullet.png",
+				false
 			);
 	REPORT_I_WAS_HERE;
 	Game::GetInstance().GetState().AddObject(bullet);
@@ -102,7 +104,13 @@ void Penguins::Shoot(void)
 
 void Penguins::NotifyCollision(GameObject &other)
 {
-	hp-= PENGUIM_DAMAGE_PER_BULLET;
+	if(other.Is("Bullet"))
+	{
+		if(((Bullet&)other).TargetsPlayer())
+		{
+			hp-= PENGUIM_DAMAGE_PER_BULLET;
+		}
+	}
 }
 bool Penguins::Is(string type)
 {
