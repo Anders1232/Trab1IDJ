@@ -3,10 +3,12 @@
 State::State(void): popRequested(false), quitRequested(false)
 {
 }
-State::~State(void);
-void StateAddObject(GameObject *object)
+State::~State(void)
 {
-	objectArray.push_back(std::unique_ptr<GameObject>(ptr));
+}
+void State::AddObject(GameObject *object)
+{
+	objectArray.push_back(std::unique_ptr<GameObject>(object));
 }
 bool State::PopRequested(void)
 {
@@ -20,7 +22,7 @@ void State::UpdateArray(float dt)
 {
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
-		objectArray.at(cont)->Update(Game::GetInstance().GetDeltaTime());
+		objectArray.at(cont)->Update(dt);
 		if(objectArray.at(cont)->IsDead())
 		{
 			objectArray.erase(objectArray.begin()+cont);

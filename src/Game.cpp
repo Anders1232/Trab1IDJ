@@ -56,7 +56,7 @@ Game::~Game()
 	IMG_Quit();
 	if(nullptr != storedState)
 	{
-		delete state;
+		delete storedState;
 	}
 	while(!stateStack.empty())
 	{
@@ -95,7 +95,7 @@ void Game::Run(void)
 {
 	if(nullptr !=  storedState)
 	{
-		stateStack.push(storedState);
+		stateStack.push(std::unique_ptr<State>(storedState));
 		storedState= nullptr;
 	}
 	else
@@ -106,24 +106,15 @@ void Game::Run(void)
 	{
 		if(stateStack.top()->QuitRequested())
 		{
-			return;
+			break;
 		}
 		CalculateDeltaTime();
 		inputManager.Update();
-		state->Update();
-		state->Render();
+//		State* topState= &( *() );
+		stateStack.top()->Update(GetDeltaTime());
+		stateStack.top()->Render();
 		SDL_RenderPresent(renderer);
-		if(stateStack.top()->PopRequested())
-		{
-			stateStack.pop();
-			stateStack.top()->Resume();
-		}
-		if(nullptr != storedState)
-		{
-			stateStack.top()->Pause();
-			stateStack.push(storedState);
-			storedState= nullptr;
-		}
+		UpdateStack();
 		SDL_Delay(33);
 //		SDL_Delay(15);
 	}
@@ -140,4 +131,19 @@ void Game::CalculateDeltaTime(void)
 float Game::GetDeltaTime(void) const
 {
 	return dt;
+}
+
+void Game::UpdateStack(void)
+{
+	if(stateStack.top()->PopRequested())
+	{
+		stateStack.pop();
+		stateStack.top()->Resume();
+	}
+	if(nullptr != storedState)
+	{
+		stateStack.top()->Pause();
+		stateStack.push(std::unique_ptr<State>(storedState));
+		storedState= nullptr;
+	}
 }

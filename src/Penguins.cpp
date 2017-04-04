@@ -107,7 +107,7 @@ void Penguins::Shoot(void)
 				false
 			);
 	REPORT_I_WAS_HERE;
-	Game::GetInstance().GetState().AddObject(bullet);
+	Game::GetInstance().GetCurrentState().AddObject(bullet);
 	REPORT_I_WAS_HERE;
 }
 
@@ -120,7 +120,7 @@ void Penguins::NotifyCollision(GameObject &other)
 			hp-= PENGUIM_DAMAGE_PER_BULLET;
 			if(IsDead())
 			{
-				Game::GetInstance().GetState().AddObject(new Animation(box.x, box.y, rotation, "img/penguindeath.png", 5, 0.25, true));
+				Game::GetInstance().GetCurrentState().AddObject(new Animation(box.x, box.y, rotation, "img/penguindeath.png", 5, 0.25, true));
 			}
 
 		}

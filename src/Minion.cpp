@@ -52,7 +52,7 @@ void Minion::Shoot(Vec2 pos)
 				true
 			);
 	REPORT_I_WAS_HERE;
-	Game::GetInstance().GetState().AddObject(bullet);
+	Game::GetInstance().GetCurrentState().AddObject(bullet);
 	REPORT_I_WAS_HERE;
 }
 

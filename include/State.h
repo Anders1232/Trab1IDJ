@@ -23,6 +23,6 @@ class State
 		bool popRequested;
 		bool quitRequested;
 		std::vector<std::unique_ptr<GameObject>> objectArray;
-}
+};
 
 #endif // STATE_H

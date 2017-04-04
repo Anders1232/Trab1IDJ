@@ -30,6 +30,7 @@ class Game
 		float GetDeltaTime(void) const;
 	private:
 		void CalculateDeltaTime(void);
+		void UpdateStack(void);
 
 		unsigned int frameStart;
 		float dt;

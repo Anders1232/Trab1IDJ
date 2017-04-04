@@ -8,25 +8,23 @@
 #include "Tileset.h"
 #include "TileMap.h"
 #include "InputManager.h"
+#include "State.h"
 
 //#define BG_POINTER
 
-class StageState
+class StageState: State
 {
 	public:
 		StageState(void);
 		~StageState(void);
-		bool QuitRequested(void);
 		void Update(void);
 		void Render(void);
-		void AddObject(GameObject *ptr);
-//		void Input(void);
+		void Pause(void);
+		void Resume(void);
 	private:
 		Sprite bg;
 		TileMap *tileMap;
 		TileSet tileSet;
-		bool quitRequested;
-		std::vector<std::unique_ptr<GameObject>> objectArray;
 		InputManager &inputManager;
 };
 

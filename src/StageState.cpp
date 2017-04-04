@@ -21,11 +21,10 @@
 
 #define STATE_RENDER_X 0//esse valores calculam o offset em relação ao canto superior esquedo da imagem daquilo que será renderizado
 #define STATE_RENDER_Y 0
-StageState::StageState(void): bg("img/ocean.jpg"), tileSet(64, 64,"img/tileset.png"), inputManager(InputManager::GetInstance())
+StageState::StageState(void): State(), bg("img/ocean.jpg"), tileSet(64, 64,"img/tileset.png"), inputManager(InputManager::GetInstance())
 {
 	REPORT_I_WAS_HERE;
 	tileMap= new TileMap(std::string("map/tileMap.txt"), &tileSet);
-	quitRequested=false;
 	REPORT_I_WAS_HERE;
 	objectArray.emplace_back(std::unique_ptr<Alien>( new Alien (512, 300, 3) ) );
 	objectArray.emplace_back(std::unique_ptr<Penguins>( new Penguins (704, 640) ) );
@@ -90,13 +89,8 @@ void StageState::Render(void)
 	tileMap->RenderLayer(1, Camera::pos.x, Camera::pos.y);
 }
 
-bool StageState::QuitRequested()
-{
-	return quitRequested;
-}
-
-void StageState::AddObject(GameObject *ptr)
-{
-	objectArray.push_back(std::unique_ptr<GameObject>(ptr));
-}
+void StageState::Pause(void)
+{}
+void StageState::Resume(void)
+{}
 
