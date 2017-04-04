@@ -5,10 +5,11 @@
 #include "Gameobject.h"
 #include "Sprite.h"
 #include "Vec2.h"
+#include "Timer.h"
 #include <queue>
 #include <vector>
 
-#define ALIEN_MOVE_SPEED (50)
+#define ALIEN_MOVE_SPEED (60)
 
 using std::queue;
 using std::vector;
@@ -23,26 +24,21 @@ class Alien: public GameObject
 		bool IsDead(void);
 		void NotifyCollision(GameObject &other);
 		bool Is(string type);
+		static int alienCount;
 	private:
-		class Action;
+		enum AlienState
+		{
+			MOVING,
+			RESTING
+		} state;
 		Sprite sp;
 		Vec2 speed;
 		int hp;
-		queue<Action> taskQueue;
 		vector<Minion> minionArray;
+		Timer restTimer;
+		Vec2 destination;
+		int GetNearestMinion(Vec2 targetPos);
 };
 
-
-class Alien::Action
-{
-	public:
-		enum ActionType
-		{
-			MOVE,
-			SHOOT
-		} type;
-		Action(ActionType type, float x, float y);
-		Vec2 pos;
-};
 
 #endif // ALIEN_H
