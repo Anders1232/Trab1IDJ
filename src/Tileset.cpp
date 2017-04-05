@@ -25,7 +25,7 @@ void TileSet::Render(unsigned int index, float x, float y)
 	destinyPosition.y=y;
 	destinyPosition.w= tileWidth;
 	destinyPosition.h= tileHeight;
-	SDL_RenderCopy(Game::GetInstance().GetRenderer(), tileSet.GetTexture(),&wantedSubSprite, &destinyPosition);
+	SDL_RenderCopy(Game::GetInstance().GetRenderer(), tileSet.GetTexture().get(),&wantedSubSprite, &destinyPosition);
 //	REPORT_I_WAS_HERE;
 }
 

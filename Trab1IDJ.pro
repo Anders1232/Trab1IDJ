@@ -21,7 +21,8 @@ SOURCES += src/main.cpp \
 	src/Penguins.cpp \
 	src/Timer.cpp \
 	src/Animation.cpp \
-    src/State.cpp
+	src/State.cpp \
+	src/TitleState.cpp
 
 TARGET = JOGO
 
@@ -59,7 +60,8 @@ HEADERS += \
 	include/Collision.h \
 	include/Timer.h \
 	include/Animation.h \
-    include/State.h
+	include/State.h \
+	include/TitleState.h
 
 LIBS += -lSDL2 -lSDL2_image
 

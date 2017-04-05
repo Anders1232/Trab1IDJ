@@ -6,7 +6,7 @@
 
 Game* Game::instance= nullptr;
 
-Game::Game(std::string title,int width, int height): inputManager(InputManager::GetInstance()), dt(0.0)//, frameStart(SDL_GetTicks())
+Game::Game(std::string title,int width, int height):dt(0.0),  inputManager(InputManager::GetInstance())//, frameStart(SDL_GetTicks())
 {
 	frameStart= SDL_GetTicks();
 	srand(time(NULL));
@@ -62,6 +62,7 @@ Game::~Game()
 	{
 		stateStack.pop();
 	}
+	Resources::ClearImages();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -110,13 +111,16 @@ void Game::Run(void)
 		}
 		CalculateDeltaTime();
 		inputManager.Update();
-//		State* topState= &( *() );
 		stateStack.top()->Update(GetDeltaTime());
 		stateStack.top()->Render();
 		SDL_RenderPresent(renderer);
 		UpdateStack();
 		SDL_Delay(33);
 //		SDL_Delay(15);
+	}
+	while(!stateStack.empty())
+	{
+		stateStack.pop();
 	}
 	Resources::ClearImages();
 }
@@ -138,6 +142,7 @@ void Game::UpdateStack(void)
 	if(stateStack.top()->PopRequested())
 	{
 		stateStack.pop();
+		Resources::ClearImages();
 		stateStack.top()->Resume();
 	}
 	if(nullptr != storedState)

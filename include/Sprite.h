@@ -16,6 +16,7 @@
 
 
 #include <string>
+#include <memory>
 
 class Sprite
 {
@@ -30,7 +31,7 @@ class Sprite
 //		void Rotate(double angle);
 		int GetWidth(void) const;
 		int GetHeight(void) const;
-		SDL_Texture* GetTexture(void) const;
+		std::shared_ptr<SDL_Texture> GetTexture(void) const;
 		bool IsOpen(void) const;
 		void Update(float dt);
 		void SetFrame(int frame);
@@ -43,7 +44,7 @@ class Sprite
 		void ScaleY(float scale);
 		void Scale(float scale);
 	private:
-		SDL_Texture *texture;
+		std::shared_ptr<SDL_Texture> texture;
 		int width;
 		int height;
 		int frameCount;

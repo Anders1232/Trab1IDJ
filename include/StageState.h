@@ -12,13 +12,13 @@
 
 //#define BG_POINTER
 
-class StageState: State
+class StageState: public State
 {
 	public:
 		StageState(void);
 		~StageState(void);
-		void Update(void);
-		void Render(void);
+		void Update(float dt);
+		void Render(void) const;
 		void Pause(void);
 		void Resume(void);
 	private:

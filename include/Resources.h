@@ -16,17 +16,18 @@
 
 #include <string>
 #include <unordered_map>
+#include <memory>
 
 using std::string;
 
 class Resources
 {
 	public:
-		static SDL_Texture* GetImage(string file);
+		static std::shared_ptr<SDL_Texture> GetImage(string file);
 		static void ClearImages(void);
 	private:
 		Resources();
-		static std::unordered_map<string, SDL_Texture*> imageTable;
+		static std::unordered_map<string, std::shared_ptr<SDL_Texture>> imageTable;
 };
 
 #endif // RESOURCES_H

@@ -34,7 +34,7 @@ void Sprite::Open(std::string file)
 		Error(SDL_GetError());
 	}
 	REPORT_I_WAS_HERE;
-	if(SDL_QueryTexture(texture, nullptr, nullptr, &width, &height))//verificar se houve erro na chamada
+	if(SDL_QueryTexture(texture.get(), nullptr, nullptr, &width, &height))//verificar se houve erro na chamada
 	{
 		Error(SDL_GetError());
 	}
@@ -67,7 +67,7 @@ void Sprite::Render(int x, int y, float angle) const
 		Error(SDL_GetError());
 	}*/
 //	std::cout << WHERE << "  rect.w = "<< rect.w<< endl;
-	if(SDL_RenderCopyEx(game.GetRenderer(), texture, &clipRect, &rect, angle, NULL, SDL_FLIP_NONE) )//verifica se haverá erro
+	if(SDL_RenderCopyEx(game.GetRenderer(), texture.get(), &clipRect, &rect, angle, NULL, SDL_FLIP_NONE) )//verifica se haverá erro
 	{
 		Error(SDL_GetError());
 	}
@@ -93,7 +93,7 @@ bool Sprite::IsOpen(void) const
 	this->angle= angle;
 }
 */
-SDL_Texture *Sprite::GetTexture(void) const
+std::shared_ptr<SDL_Texture> Sprite::GetTexture(void) const
 {
 	return texture;
 }

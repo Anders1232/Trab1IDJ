@@ -37,22 +37,21 @@ StageState::~StageState(void)
 }
 
 //void StageState::Update(float dt)
-void StageState::Update()
+void StageState::Update(float dt)
 {
 	REPORT_I_WAS_HERE;
 //	Input();
-	if(inputManager.KeyPress(ESCAPE_KEY) || inputManager.QuitRequested())
+	if(inputManager.KeyPress(ESCAPE_KEY))
+	{
+		popRequested= true;
+	}
+	if(inputManager.QuitRequested())
 	{
 		quitRequested= true;
 	}
-/*	if(inputManager.IsKeyDown(ESPACE_KEY))
-	{
-		AddObject((float)inputManager.GetMouseX()+Camera::pos.x, (float)inputManager.GetMouseY()+Camera::pos.y);
-	}
-*/
 	for(unsigned int cont=0; cont < objectArray.size(); cont++)
 	{
-		objectArray.at(cont)->Update(Game::GetInstance().GetDeltaTime());
+		objectArray.at(cont)->Update(dt);
 		if(objectArray.at(cont)->IsDead())
 		{
 			objectArray.erase(objectArray.begin()+cont);
@@ -69,11 +68,11 @@ void StageState::Update()
 			}
 		}
 	}
-	Camera::Update(Game::GetInstance().GetDeltaTime());
+	Camera::Update(dt);
 	REPORT_I_WAS_HERE;
 }
 
-void StageState::Render(void)
+void StageState::Render(void) const
 {
 	//renderizar o bg
 	REPORT_I_WAS_HERE;

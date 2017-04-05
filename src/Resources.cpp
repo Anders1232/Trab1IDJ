@@ -2,9 +2,9 @@
 #include "Error.h"
 #include "Game.h"
 
-std::unordered_map<string, SDL_Texture*> Resources::imageTable;
+std::unordered_map<string, std::shared_ptr<SDL_Texture>> Resources::imageTable;
 
-SDL_Texture* Resources::GetImage(string file)
+std::shared_ptr<SDL_Texture> Resources::GetImage(string file)
 {
 	SDL_Texture* ret;
 	if(imageTable.end() == imageTable.find(file))
@@ -12,16 +12,20 @@ SDL_Texture* Resources::GetImage(string file)
 		ret=IMG_LoadTexture(Game::GetInstance().GetRenderer(), file.c_str());
 		if(nullptr == ret)
 		{
-			std::cout << WHERE << "\tCould not load " << file << endl;
+//			std::cout << WHERE <<  << file << endl;
+			Error("Could not load "<<file);
 		}
 //		ASSERT(nullptr != ret);
-		imageTable[file]= ret;
-		return ret;
+		imageTable[file]= std::shared_ptr<SDL_Texture>
+				(
+					ret,
+					[](SDL_Texture *texture)//meu primeiro uso de função labda em C++
+					{
+						SDL_DestroyTexture(texture);
+					}
+				);
 	}
-	else
-	{
-		return imageTable[file];
-	}
+	return imageTable[file];
 }
 void Resources::ClearImages(void)
 {
@@ -32,9 +36,16 @@ void Resources::ClearImages(void)
 		SDL_DestroyTexture(imageTable.begin()+count);
 	}
 #else
-	for(std::unordered_map<string, SDL_Texture*>::iterator i= imageTable.begin(); i != imageTable.end(); i++)
+	for(std::unordered_map<string, std::shared_ptr<SDL_Texture>>::iterator i= imageTable.begin(); i != imageTable.end(); i++)
+//	for(int count=0; count < imageTable.size(); count++)
 	{
-		SDL_DestroyTexture((*i).second);
+		if((*i).second.unique())
+//		if( (imageTable.begin()+count )->second.unique())
+		{
+//			imageTable.erase( (imageTable.begin()+count ));
+			imageTable.erase(i);
+//			SDL_DestroyTexture((*i).second);
+		}
 	}
 #endif
 	imageTable.clear();
