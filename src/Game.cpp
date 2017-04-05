@@ -22,19 +22,19 @@ Game::Game(std::string title,int width, int height):dt(0.0),  inputManager(Input
 	int result= IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF);
 	if(0 == result)
 	{
-		Error("Loading SDL_image failed");
+		Error("Loading IMG_Init failed: " << IMG_GetError());
 	}
 	if(0 == (result & IMG_INIT_JPG ) )
 	{
-		Error("Loading IMG_INIT_JPG failed");
+		Error("Loading IMG_INIT_JPG failed: " << IMG_GetError());
 	}
 	if(0 == (result & IMG_INIT_PNG) )
 	{
-		Error("Loading IMG_INIT_PNG failed");
+		Error("Loading IMG_INIT_PNG failed: " << IMG_GetError());
 	}
 	if(0 == (result & IMG_INIT_TIF ))
 	{
-		Error("Loading IMG_INIT_TIF failed");
+		Error("Loading IMG_INIT_TIF failed: " << IMG_GetError());
 	}
 	window= SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
 	if(nullptr == window)
@@ -45,6 +45,23 @@ Game::Game(std::string title,int width, int height):dt(0.0),  inputManager(Input
 	if(nullptr == renderer)
 	{
 		Error(SDL_GetError());
+	}
+	result= Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG);
+	if(0 == result)
+	{
+		Error("Loading Mix_Init failed: " << Mix_GetError());
+	}
+/*	if(0 == (result & MIX_INIT_MP3 ) )
+	{
+		Error("Loading MIX_INIT_MP3 failed: " << Mix_GetError());
+	}*/
+	if(0 == (result & MIX_INIT_OGG) )
+	{
+		Error("Loading MIX_INIT_OGG failed: " << Mix_GetError());
+	}
+	if(0 != Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, MIXER_CHUCK_SIZE))
+	{
+		Error("Loading Mix_OpenAudio failed: " << Mix_GetError());
 	}
 	REPORT_I_WAS_HERE;
 	storedState= nullptr;
@@ -62,7 +79,10 @@ Game::~Game()
 	{
 		stateStack.pop();
 	}
-	Resources::ClearImages();
+	Resources::ClearResources();
+	Mix_CloseAudio();
+	Mix_Quit();
+	IMG_Quit();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -122,7 +142,7 @@ void Game::Run(void)
 	{
 		stateStack.pop();
 	}
-	Resources::ClearImages();
+	Resources::ClearResources();
 }
 
 void Game::CalculateDeltaTime(void)
@@ -142,7 +162,7 @@ void Game::UpdateStack(void)
 	if(stateStack.top()->PopRequested())
 	{
 		stateStack.pop();
-		Resources::ClearImages();
+		Resources::ClearResources();
 		stateStack.top()->Resume();
 	}
 	if(nullptr != storedState)

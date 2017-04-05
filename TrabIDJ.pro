@@ -22,7 +22,8 @@ SOURCES += src/main.cpp \
 	src/Timer.cpp \
 	src/Animation.cpp \
 	src/State.cpp \
-	src/TitleState.cpp
+	src/TitleState.cpp \
+	src/Music.cpp
 
 TARGET = JOGO
 
@@ -61,7 +62,8 @@ HEADERS += \
 	include/Timer.h \
 	include/Animation.h \
 	include/State.h \
-	include/TitleState.h
+	include/TitleState.h \
+	include/Music.h
 
-LIBS += -lSDL2 -lSDL2_image
+LIBS += -lSDL2 -lSDL2_image -lSDL2_mixer
 

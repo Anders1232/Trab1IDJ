@@ -5,16 +5,23 @@
 #include <stack>
 #include"State.h"
 #include "InputManager.h"
+
 #ifdef _WIN32
-	//windows
+	#include <SDL.h>
+	#include <SDL_image.h>
+	#include <SDL_mixer.h>
 #elif __APPLE__
 	#include "TargetConditionals.h"
 	//mac
 #elif __linux__
-	// linux
+	#include <SDL2/SDL.h>
+	#include <SDL2/SDL_image.h>
+	#include <SDL2/SDL_mixer.h>
 #else
 	#error "Unknown compiler"
 #endif
+
+#define MIXER_CHUCK_SIZE 1024
 
 
 class Game

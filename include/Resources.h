@@ -4,12 +4,14 @@
 #ifdef _WIN32
 	#include <SDL.h>
 	#include <SDL_image.h>
+	#include <SDL_mixer.h>
 #elif __APPLE__
 	#include "TargetConditionals.h"
 	//mac
 #elif __linux__
 	#include <SDL2/SDL.h>
-	#include<SDL2/SDL_image.h>
+	#include <SDL2/SDL_image.h>
+	#include <SDL2/SDL_mixer.h>
 #else
 	#error "Unknown compiler"
 #endif
@@ -24,10 +26,14 @@ class Resources
 {
 	public:
 		static std::shared_ptr<SDL_Texture> GetImage(string file);
-		static void ClearImages(void);
+		static std::shared_ptr<Mix_Music> GetMusic(string file);
+		static void ClearResources(void);
 	private:
 		Resources();
+		static void ClearImages(void);
+		static void ClearMusic(void);
 		static std::unordered_map<string, std::shared_ptr<SDL_Texture>> imageTable;
+		static std::unordered_map<string, std::shared_ptr<Mix_Music>> musicTable;
 };
 
 #endif // RESOURCES_H

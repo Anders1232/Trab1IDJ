@@ -3,6 +3,7 @@
 #include "Game.h"
 
 std::unordered_map<string, std::shared_ptr<SDL_Texture>> Resources::imageTable;
+std::unordered_map<string, std::shared_ptr<Mix_Music>> Resources::musicTable;
 
 std::shared_ptr<SDL_Texture> Resources::GetImage(string file)
 {
@@ -29,24 +30,60 @@ std::shared_ptr<SDL_Texture> Resources::GetImage(string file)
 }
 void Resources::ClearImages(void)
 {
-//#define MODO1
-#ifdef MODO1
-	for(unsigned int count =0; count < imageTable.bucket_count(); count++)
-	{
-		SDL_DestroyTexture(imageTable.begin()+count);
-	}
-#else
-	for(std::unordered_map<string, std::shared_ptr<SDL_Texture>>::iterator i= imageTable.begin(); i != imageTable.end(); i++)
-//	for(int count=0; count < imageTable.size(); count++)
+	std::unordered_map<string, std::shared_ptr<SDL_Texture>>::iterator i= imageTable.begin();
+	while(i != imageTable.end())
 	{
 		if((*i).second.unique())
-//		if( (imageTable.begin()+count )->second.unique())
 		{
-//			imageTable.erase( (imageTable.begin()+count ));
-			imageTable.erase(i);
-//			SDL_DestroyTexture((*i).second);
+			i= imageTable.erase(i);
+		}
+		else
+		{
+			i++;
 		}
 	}
-#endif
-	imageTable.clear();
+}
+
+std::shared_ptr<Mix_Music> Resources::GetMusic(string file)
+{
+	Mix_Music* ret;
+	if(musicTable.end() == musicTable.find(file))
+	{
+		ret=Mix_LoadMUS(file.c_str());
+		if(nullptr == ret)
+		{
+//			std::cout << WHERE <<  << file << endl;
+			Error("Could not load "<<file);
+		}
+//		ASSERT(nullptr != ret);
+		musicTable[file]= std::shared_ptr<Mix_Music>
+				(
+					ret,
+					[](Mix_Music *music)//meu segundo uso de função labda em C++
+					{
+						Mix_FreeMusic(music);
+					}
+				);
+	}
+	return musicTable[file];
+}
+void Resources::ClearResources(void)
+{
+	ClearImages();
+	ClearMusic();
+}
+void Resources::ClearMusic(void)
+{
+	std::unordered_map<string, std::shared_ptr<Mix_Music>>::iterator i= musicTable.begin();
+	while(i != musicTable.end())
+	{
+		if((*i).second.unique())
+		{
+			i= musicTable.erase(i);
+		}
+		else
+		{
+			i++;
+		}
+	}
 }

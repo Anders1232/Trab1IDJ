@@ -9,6 +9,7 @@
 #include "TileMap.h"
 #include "InputManager.h"
 #include "State.h"
+#include "Music.h"
 
 //#define BG_POINTER
 
@@ -26,6 +27,7 @@ class StageState: public State
 		TileMap *tileMap;
 		TileSet tileSet;
 		InputManager &inputManager;
+		Music music;
 };
 
 #endif // STAGE_STATE_H
