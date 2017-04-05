@@ -4,6 +4,7 @@
 
 std::unordered_map<string, std::shared_ptr<SDL_Texture>> Resources::imageTable;
 std::unordered_map<string, std::shared_ptr<Mix_Music>> Resources::musicTable;
+std::unordered_map<string, std::shared_ptr<Mix_Chunk>> Resources::soundTable;
 
 std::shared_ptr<SDL_Texture> Resources::GetImage(string file)
 {
@@ -87,3 +88,27 @@ void Resources::ClearMusic(void)
 		}
 	}
 }
+std::shared_ptr<Mix_Chunk> Resources::GetSound(string file)
+{
+	Mix_Chunk* ret;
+	if(soundTable.end() == soundTable.find(file))
+	{
+		ret= Mix_LoadWAV(file.c_str());
+		if(nullptr == ret)
+		{
+//			std::cout << WHERE <<  << file << endl;
+			Error("Could not load "<<file);
+		}
+//		ASSERT(nullptr != ret);
+		soundTable[file]= std::shared_ptr<Mix_Chunk>
+				(
+					ret,
+					[](Mix_Chunk *chunck)//meu terceiro uso de função labda em C++
+					{
+						Mix_FreeChunk(chunck);
+					}
+				);
+	}
+	return soundTable[file];
+}
+

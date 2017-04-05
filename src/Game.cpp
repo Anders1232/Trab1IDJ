@@ -51,10 +51,10 @@ Game::Game(std::string title,int width, int height):dt(0.0),  inputManager(Input
 	{
 		Error("Loading Mix_Init failed: " << Mix_GetError());
 	}
-/*	if(0 == (result & MIX_INIT_MP3 ) )
+	if(0 == (result & MIX_INIT_MP3 ) )
 	{
 		Error("Loading MIX_INIT_MP3 failed: " << Mix_GetError());
-	}*/
+	}
 	if(0 == (result & MIX_INIT_OGG) )
 	{
 		Error("Loading MIX_INIT_OGG failed: " << Mix_GetError());
