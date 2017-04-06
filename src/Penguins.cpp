@@ -5,6 +5,7 @@
 #include "Bullet.h"
 #include "Game.h"
 #include "Animation.h"
+#include "Sound.h"
 
 #define PENGUIM_LINEAR_SPEED (50)
 #define PENGUIM_CANNON_ANGLE (20)
@@ -121,6 +122,8 @@ void Penguins::NotifyCollision(GameObject &other)
 			if(IsDead())
 			{
 				Game::GetInstance().GetCurrentState().AddObject(new Animation(box.x, box.y, rotation, "img/penguindeath.png", 5, 0.25, true));
+				Sound explosionSound("audio/boom.wav");
+				explosionSound.Play(1);
 			}
 
 		}

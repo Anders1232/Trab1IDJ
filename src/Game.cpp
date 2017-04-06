@@ -51,10 +51,10 @@ Game::Game(std::string title,int width, int height):dt(0.0),  inputManager(Input
 	{
 		Error("Loading Mix_Init failed: " << Mix_GetError());
 	}
-	if(0 == (result & MIX_INIT_MP3 ) )
+/*	if(0 == (result & MIX_INIT_MP3 ) )
 	{
 		Error("Loading MIX_INIT_MP3 failed: " << Mix_GetError());
-	}
+	}*/
 	if(0 == (result & MIX_INIT_OGG) )
 	{
 		Error("Loading MIX_INIT_OGG failed: " << Mix_GetError());
@@ -62,6 +62,10 @@ Game::Game(std::string title,int width, int height):dt(0.0),  inputManager(Input
 	if(0 != Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, MIXER_CHUCK_SIZE))
 	{
 		Error("Loading Mix_OpenAudio failed: " << Mix_GetError());
+	}
+	if(0 != TTF_Init())
+	{
+		Error("Loading TTF_Init failed: " << TTF_GetError());
 	}
 	REPORT_I_WAS_HERE;
 	storedState= nullptr;
@@ -80,6 +84,7 @@ Game::~Game()
 		stateStack.pop();
 	}
 	Resources::ClearResources();
+	TTF_Quit();
 	Mix_CloseAudio();
 	Mix_Quit();
 	IMG_Quit();
@@ -172,3 +177,13 @@ void Game::UpdateStack(void)
 		storedState= nullptr;
 	}
 }
+
+Vec2 Game::GetWindowDimensions(void) const
+{
+	Vec2 ret;
+	SDL_GetWindowSize(window, (int*)&ret.x, (int*)&ret.y);
+	ret.x= *((int*)&ret.x);
+	ret.y= *((int*)&ret.y);
+	return ret;
+}
+

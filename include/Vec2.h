@@ -36,6 +36,7 @@ class Vec2
 		float Inclination(void) const;
 		float Inclination(Vec2 const &b) const;
 		bool IsInRect(SDL_Rect const &rect) const;
+		void SetWidthAndHeight(Vec2 const &vec);
 		float x;
 		float y;
 };

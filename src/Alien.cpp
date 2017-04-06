@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "Animation.h"
 #include "Penguins.h"
+#include "Sound.h"
 
 #define DISTANCE_NEAR_ENOUGH 10
 #define HP_INICIAL (30)
@@ -106,6 +107,8 @@ void Alien::NotifyCollision(GameObject &other)
 			if(IsDead())
 			{
 				Game::GetInstance().GetCurrentState().AddObject(new Animation(box.x, box.y, rotation, "img/aliendeath.png", 4, 0.25, true));
+				Sound explosionSound("audio/boom.wav");
+				explosionSound.Play(1);
 			}
 		}
 	}

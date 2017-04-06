@@ -1,6 +1,7 @@
 #include "Camera.h"
 #include "InputManager.h"
 #include "Error.h"
+#include "Game.h"
 
 #define CAMERA_MOVE_SPEED (100)
 #define INPUT_MANAGER InputManager::GetInstance()
@@ -24,7 +25,7 @@ void Camera::Update(float dt)
 	if(nullptr != focus)
 	{
 		//centrar a câmera na tela
-		pos= focus->box.Center()-Vec2(512, 300);
+		pos= focus->box.Center()- (Game::GetInstance().GetWindowDimensions()*0.5);
 	}
 	else
 	{

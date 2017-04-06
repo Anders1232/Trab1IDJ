@@ -38,4 +38,11 @@ Vec2 Rect::Center(void) const
 	return Vec2(x+(0.5 * w), y+(0.5 * h) );
 
 }
+void Rect::SetWidthAndHeight(Vec2 const &vec)
+{
+	w= vec.x;
+	h= vec.y;
+}
+
+
 

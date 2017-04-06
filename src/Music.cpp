@@ -11,7 +11,7 @@ Music::Music(string file)
 }
 void Music::Play(int times)
 {
-	TEMP_REPORT_I_WAS_HERE
+	TEMP_REPORT_I_WAS_HERE;
 	Mix_PlayMusic(music.get(), times-1);
 }
 void Music::Stop(void)

@@ -28,6 +28,7 @@ class Rect
 //		SDL_Rect operator-(SDL_Rect const &b) const;
 		Rect operator=(Vec2 const &a);
 		Vec2 Center(void) const;
+		void SetWidthAndHeight(Vec2 const &vec);
 		float x,y, w, h;
 };
 

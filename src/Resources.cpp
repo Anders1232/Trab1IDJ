@@ -5,6 +5,7 @@
 std::unordered_map<string, std::shared_ptr<SDL_Texture>> Resources::imageTable;
 std::unordered_map<string, std::shared_ptr<Mix_Music>> Resources::musicTable;
 std::unordered_map<string, std::shared_ptr<Mix_Chunk>> Resources::soundTable;
+std::unordered_map<string, std::shared_ptr<TTF_Font>> Resources::fontTable;
 
 std::shared_ptr<SDL_Texture> Resources::GetImage(string file)
 {
@@ -56,7 +57,6 @@ std::shared_ptr<Mix_Music> Resources::GetMusic(string file)
 //			std::cout << WHERE <<  << file << endl;
 			Error("Could not load "<<file);
 		}
-//		ASSERT(nullptr != ret);
 		musicTable[file]= std::shared_ptr<Mix_Music>
 				(
 					ret,
@@ -110,5 +110,28 @@ std::shared_ptr<Mix_Chunk> Resources::GetSound(string file)
 				);
 	}
 	return soundTable[file];
+}
+
+std::shared_ptr<TTF_Font> Resources::GetFont(string file, int fontSize)
+{
+	TTF_Font* ret;
+	if(fontTable.end() == fontTable.find(file+std::to_string(fontSize)))
+	{
+		ret= TTF_OpenFont (file.c_str(), fontSize);
+		if(nullptr == ret)
+		{
+//			std::cout << WHERE <<  << file << endl;
+			Error("Could not load "<<file);
+		}
+		fontTable[file+std::to_string(fontSize)]= std::shared_ptr<TTF_Font>
+				(
+					ret,
+					[](TTF_Font *font)//meu quarto uso de função labda em C++
+					{
+						TTF_CloseFont (font);
+					}
+				);
+	}
+	return fontTable[file+std::to_string(fontSize)];
 }
 

@@ -32,7 +32,7 @@ class Sound
 		void Open(string file);
 		bool IsOpen(void);
 	private:
-		std::shared_ptr<Mix_Chunk> chuck;
+		std::shared_ptr<Mix_Chunk> sound;
 		int channel;
 };
 

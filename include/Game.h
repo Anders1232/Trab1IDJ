@@ -5,6 +5,7 @@
 #include <stack>
 #include"State.h"
 #include "InputManager.h"
+#include "Vec2.h"
 
 #ifdef _WIN32
 	#include <SDL.h>
@@ -17,6 +18,7 @@
 	#include <SDL2/SDL.h>
 	#include <SDL2/SDL_image.h>
 	#include <SDL2/SDL_mixer.h>
+	#include <SDL2/SDL_ttf.h>
 #else
 	#error "Unknown compiler"
 #endif
@@ -35,6 +37,7 @@ class Game
 		void Push(State* state);
 		void Run(void);
 		float GetDeltaTime(void) const;
+		Vec2 GetWindowDimensions(void) const;
 	private:
 		void CalculateDeltaTime(void);
 		void UpdateStack(void);
