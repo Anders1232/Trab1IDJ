@@ -27,6 +27,7 @@
 *.exe
 *.out
 *.app
+JOGO
 
 #configuração local do Qt
 *.user
