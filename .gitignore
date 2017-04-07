@@ -31,3 +31,6 @@ JOGO
 
 #configuração local do Qt
 *.user
+
+#arquivo de dependências
+dep/
