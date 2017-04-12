@@ -72,6 +72,8 @@ void Resources::ClearResources(void)
 {
 	ClearImages();
 	ClearMusic();
+	ClearSound();
+	ClearFonts();
 }
 void Resources::ClearMusic(void)
 {
@@ -134,4 +136,36 @@ std::shared_ptr<TTF_Font> Resources::GetFont(string file, int fontSize)
 	}
 	return fontTable[file+std::to_string(fontSize)];
 }
+
+void Resources::ClearSound(void)
+{
+	std::unordered_map<string, std::shared_ptr<Mix_Chunk>>::iterator i= soundTable.begin();
+	while(i != soundTable.end())
+	{
+		if((*i).second.unique())
+		{
+			i= soundTable.erase(i);
+		}
+		else
+		{
+			i++;
+		}
+	}
+}
+void Resources::ClearFonts(void)
+{
+	std::unordered_map<string, std::shared_ptr<TTF_Font>>::iterator i= fontTable.begin();
+	while(i != fontTable.end())
+	{
+		if((*i).second.unique())
+		{
+			i= fontTable.erase(i);
+		}
+		else
+		{
+			i++;
+		}
+	}
+}
+
 
