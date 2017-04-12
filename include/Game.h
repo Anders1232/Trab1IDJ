@@ -11,6 +11,11 @@
 	#include <SDL.h>
 	#include <SDL_image.h>
 	#include <SDL_mixer.h>
+	#include <stdint.h>
+	typedef uint8_t u_int8_t;
+	typedef uint16_t u_int16_t;
+	typedef uint32_t u_int32_t;
+
 #elif __APPLE__
 	#include "TargetConditionals.h"
 	//mac
