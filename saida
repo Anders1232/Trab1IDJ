@@ -1,0 +1,406 @@
+==12336== Memcheck, a memory error detector
+==12336== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==12336== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
+==12336== Command: ./JOGO
+==12336== 
+src/Alien.cpp | Update:46 lastDistance= 380.539 newDistance= 380.539
+src/Alien.cpp | Update:46 lastDistance= 774.566 newDistance= 774.566
+src/Alien.cpp | Update:46 lastDistance= 380.539 newDistance= 337.039
+src/Alien.cpp | Update:46 lastDistance= 774.566 newDistance= 731.066
+src/Alien.cpp | Update:46 lastDistance= 870.983 newDistance= 870.983
+src/Alien.cpp | Update:46 lastDistance= 337.039 newDistance= 277.339
+src/Alien.cpp | Update:46 lastDistance= 731.066 newDistance= 671.366
+src/Alien.cpp | Update:46 lastDistance= 1282.32 newDistance= 1282.32
+src/Alien.cpp | Update:46 lastDistance= 870.983 newDistance= 811.283
+src/Alien.cpp | Update:46 lastDistance= 277.339 newDistance= 229.339
+src/Alien.cpp | Update:46 lastDistance= 671.366 newDistance= 623.366
+src/Alien.cpp | Update:46 lastDistance= 1282.32 newDistance= 1234.32
+src/Alien.cpp | Update:46 lastDistance= 811.283 newDistance= 763.283
+src/Alien.cpp | Update:46 lastDistance= 229.339 newDistance= 184.939
+src/Alien.cpp | Update:46 lastDistance= 623.366 newDistance= 578.966
+src/Alien.cpp | Update:46 lastDistance= 1234.32 newDistance= 1189.92
+src/Alien.cpp | Update:46 lastDistance= 763.283 newDistance= 718.883
+src/Alien.cpp | Update:46 lastDistance= 184.939 newDistance= 153.439
+src/Alien.cpp | Update:46 lastDistance= 578.966 newDistance= 547.466
+src/Alien.cpp | Update:46 lastDistance= 1447.08 newDistance= 1447.08
+src/Alien.cpp | Update:46 lastDistance= 1189.92 newDistance= 1158.42
+src/Alien.cpp | Update:46 lastDistance= 718.883 newDistance= 687.383
+src/Alien.cpp | Update:46 lastDistance= 153.439 newDistance= 115.039
+src/Alien.cpp | Update:46 lastDistance= 547.466 newDistance= 509.066
+src/Alien.cpp | Update:46 lastDistance= 1447.08 newDistance= 1408.68
+src/Alien.cpp | Update:46 lastDistance= 1158.42 newDistance= 1120.02
+src/Alien.cpp | Update:46 lastDistance= 687.383 newDistance= 648.983
+src/Alien.cpp | Update:46 lastDistance= 374.222 newDistance= 374.222
+src/Alien.cpp | Update:46 lastDistance= 115.039 newDistance= 77.8391
+src/Alien.cpp | Update:46 lastDistance= 509.066 newDistance= 471.866
+src/Alien.cpp | Update:46 lastDistance= 1408.68 newDistance= 1371.48
+src/Alien.cpp | Update:46 lastDistance= 1120.02 newDistance= 1082.82
+src/Alien.cpp | Update:46 lastDistance= 648.983 newDistance= 611.783
+src/Alien.cpp | Update:46 lastDistance= 374.222 newDistance= 337.022
+src/Alien.cpp | Update:46 lastDistance= 77.8391 newDistance= 40.3391
+src/Alien.cpp | Update:46 lastDistance= 471.866 newDistance= 434.366
+src/Alien.cpp | Update:46 lastDistance= 1371.48 newDistance= 1333.98
+src/Alien.cpp | Update:46 lastDistance= 1082.82 newDistance= 1045.32
+src/Alien.cpp | Update:46 lastDistance= 611.783 newDistance= 574.283
+src/Alien.cpp | Update:46 lastDistance= 337.022 newDistance= 299.522
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 1.66089
+src/Alien.cpp | Update:46 lastDistance= 434.366 newDistance= 392.366
+src/Alien.cpp | Update:46 lastDistance= 1333.98 newDistance= 1291.98
+src/Alien.cpp | Update:46 lastDistance= 1045.32 newDistance= 1003.32
+src/Alien.cpp | Update:46 lastDistance= 574.283 newDistance= 532.283
+src/Alien.cpp | Update:46 lastDistance= 299.522 newDistance= 257.522
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 392.366 newDistance= 336.266
+src/Alien.cpp | Update:46 lastDistance= 1291.98 newDistance= 1235.88
+src/Alien.cpp | Update:46 lastDistance= 1003.32 newDistance= 947.219
+src/Alien.cpp | Update:46 lastDistance= 532.283 newDistance= 476.183
+src/Alien.cpp | Update:46 lastDistance= 257.522 newDistance= 201.422
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 336.266 newDistance= 267.566
+src/Alien.cpp | Update:46 lastDistance= 1235.88 newDistance= 1167.18
+src/Alien.cpp | Update:46 lastDistance= 947.219 newDistance= 878.519
+src/Alien.cpp | Update:46 lastDistance= 476.183 newDistance= 407.483
+src/Alien.cpp | Update:46 lastDistance= 201.422 newDistance= 132.722
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 267.566 newDistance= 208.766
+src/Alien.cpp | Update:46 lastDistance= 1167.18 newDistance= 1108.38
+src/Alien.cpp | Update:46 lastDistance= 878.519 newDistance= 819.719
+src/Alien.cpp | Update:46 lastDistance= 407.483 newDistance= 348.683
+src/Alien.cpp | Update:46 lastDistance= 132.722 newDistance= 73.9219
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 208.766 newDistance= 161.666
+src/Alien.cpp | Update:46 lastDistance= 1108.38 newDistance= 1061.28
+src/Alien.cpp | Update:46 lastDistance= 819.719 newDistance= 772.619
+src/Alien.cpp | Update:46 lastDistance= 348.683 newDistance= 301.583
+src/Alien.cpp | Update:46 lastDistance= 73.9219 newDistance= 26.8219
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 161.666 newDistance= 130.766
+src/Alien.cpp | Update:46 lastDistance= 1061.28 newDistance= 1030.38
+src/Alien.cpp | Update:46 lastDistance= 772.619 newDistance= 741.719
+src/Alien.cpp | Update:46 lastDistance= 301.583 newDistance= 270.683
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 4.07814
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 130.766 newDistance= 98.9663
+src/Alien.cpp | Update:46 lastDistance= 1030.38 newDistance= 998.577
+src/Alien.cpp | Update:46 lastDistance= 741.719 newDistance= 709.919
+src/Alien.cpp | Update:46 lastDistance= 270.683 newDistance= 238.883
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 98.9663 newDistance= 56.3663
+src/Alien.cpp | Update:46 lastDistance= 998.577 newDistance= 955.977
+src/Alien.cpp | Update:46 lastDistance= 709.919 newDistance= 667.319
+src/Alien.cpp | Update:46 lastDistance= 238.883 newDistance= 196.283
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 56.3663 newDistance= 11.3663
+src/Alien.cpp | Update:46 lastDistance= 955.977 newDistance= 910.977
+src/Alien.cpp | Update:46 lastDistance= 667.319 newDistance= 622.319
+src/Alien.cpp | Update:46 lastDistance= 196.283 newDistance= 151.283
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 40.8337
+src/Alien.cpp | Update:46 lastDistance= 910.977 newDistance= 858.777
+src/Alien.cpp | Update:46 lastDistance= 622.319 newDistance= 570.119
+src/Alien.cpp | Update:46 lastDistance= 151.283 newDistance= 99.0835
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 40.3391 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 858.777 newDistance= 805.677
+src/Alien.cpp | Update:46 lastDistance= 570.119 newDistance= 517.019
+src/Alien.cpp | Update:46 lastDistance= 99.0835 newDistance= 45.9835
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 805.677 newDistance= 764.277
+src/Alien.cpp | Update:46 lastDistance= 517.019 newDistance= 475.619
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 4.58351
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 764.277 newDistance= 719.877
+src/Alien.cpp | Update:46 lastDistance= 475.619 newDistance= 431.219
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 719.877 newDistance= 666.477
+src/Alien.cpp | Update:46 lastDistance= 431.219 newDistance= 377.819
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 666.477 newDistance= 609.477
+src/Alien.cpp | Update:46 lastDistance= 377.819 newDistance= 320.819
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 609.477 newDistance= 556.077
+src/Alien.cpp | Update:46 lastDistance= 320.819 newDistance= 267.419
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 26.8219 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 556.077 newDistance= 511.077
+src/Alien.cpp | Update:46 lastDistance= 267.419 newDistance= 222.419
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 511.077 newDistance= 473.277
+src/Alien.cpp | Update:46 lastDistance= 222.419 newDistance= 184.619
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 473.277 newDistance= 425.277
+src/Alien.cpp | Update:46 lastDistance= 184.619 newDistance= 136.619
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 425.277 newDistance= 379.977
+src/Alien.cpp | Update:46 lastDistance= 136.619 newDistance= 91.3188
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 379.977 newDistance= 348.477
+src/Alien.cpp | Update:46 lastDistance= 91.3188 newDistance= 59.8188
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 348.477 newDistance= 304.377
+src/Alien.cpp | Update:46 lastDistance= 59.8188 newDistance= 15.7188
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 304.377 newDistance= 260.277
+src/Alien.cpp | Update:46 lastDistance= 15.7188 newDistance= 28.3813
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 260.277 newDistance= 205.077
+src/Alien.cpp | Update:46 lastDistance= 15.7188 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 11.3663 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 205.077 newDistance= 150.477
+src/Alien.cpp | Update:46 lastDistance= 15.7188 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 150.477 newDistance= 98.5773
+src/Alien.cpp | Update:46 lastDistance= 15.7188 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 98.5773 newDistance= 40.9773
+src/Alien.cpp | Update:46 lastDistance= 15.7188 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 6.10352e-05 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 40.9773 newDistance= 17.5227
+src/Alien.cpp | Update:46 lastDistance= 15.7188 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 45.9835 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 8.63167e-05 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 233.944 newDistance= 233.944
+src/Alien.cpp | Update:46 lastDistance= 798.63 newDistance= 798.63
+src/Alien.cpp | Update:46 lastDistance= 571.113 newDistance= 571.113
+src/Alien.cpp | Update:46 lastDistance= 233.944 newDistance= 194.044
+src/Alien.cpp | Update:46 lastDistance= 798.63 newDistance= 758.73
+src/Alien.cpp | Update:46 lastDistance= 571.113 newDistance= 531.213
+src/Alien.cpp | Update:46 lastDistance= 219.857 newDistance= 219.857
+src/Alien.cpp | Update:46 lastDistance= 908.766 newDistance= 908.766
+src/Alien.cpp | Update:46 lastDistance= 194.044 newDistance= 156.844
+src/Alien.cpp | Update:46 lastDistance= 758.73 newDistance= 721.53
+src/Alien.cpp | Update:46 lastDistance= 531.213 newDistance= 494.013
+src/Alien.cpp | Update:46 lastDistance= 219.857 newDistance= 181.457
+src/Alien.cpp | Update:46 lastDistance= 908.766 newDistance= 870.366
+src/Alien.cpp | Update:46 lastDistance= 156.844 newDistance= 118.444
+src/Alien.cpp | Update:46 lastDistance= 721.53 newDistance= 683.13
+src/Alien.cpp | Update:46 lastDistance= 494.013 newDistance= 455.613
+src/Alien.cpp | Update:46 lastDistance= 181.457 newDistance= 145.457
+src/Alien.cpp | Update:46 lastDistance= 870.366 newDistance= 834.366
+src/Alien.cpp | Update:46 lastDistance= 118.444 newDistance= 82.4444
+src/Alien.cpp | Update:46 lastDistance= 683.13 newDistance= 647.13
+src/Alien.cpp | Update:46 lastDistance= 455.613 newDistance= 419.613
+src/Alien.cpp | Update:46 lastDistance= 124.908 newDistance= 124.908
+src/Alien.cpp | Update:46 lastDistance= 145.457 newDistance= 99.2568
+src/Alien.cpp | Update:46 lastDistance= 834.366 newDistance= 788.166
+src/Alien.cpp | Update:46 lastDistance= 82.4444 newDistance= 36.2444
+src/Alien.cpp | Update:46 lastDistance= 647.13 newDistance= 600.93
+src/Alien.cpp | Update:46 lastDistance= 419.613 newDistance= 373.413
+src/Alien.cpp | Update:46 lastDistance= 124.908 newDistance= 91.308
+src/Alien.cpp | Update:46 lastDistance= 788.166 newDistance= 754.566
+src/Alien.cpp | Update:46 lastDistance= 36.2444 newDistance= 2.64444
+src/Alien.cpp | Update:46 lastDistance= 600.93 newDistance= 567.33
+src/Alien.cpp | Update:46 lastDistance= 373.413 newDistance= 339.813
+src/Alien.cpp | Update:46 lastDistance= 99.2568 newDistance= 65.6568
+src/Alien.cpp | Update:46 lastDistance= 754.566 newDistance= 698.166
+src/Alien.cpp | Update:46 lastDistance= 36.2444 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 567.33 newDistance= 510.93
+src/Alien.cpp | Update:46 lastDistance= 339.813 newDistance= 283.413
+src/Alien.cpp | Update:46 lastDistance= 65.6568 newDistance= 27.2568
+src/Alien.cpp | Update:46 lastDistance= 698.166 newDistance= 659.766
+src/Alien.cpp | Update:46 lastDistance= 36.2444 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 510.93 newDistance= 472.53
+src/Alien.cpp | Update:46 lastDistance= 283.413 newDistance= 245.013
+src/Alien.cpp | Update:46 lastDistance= 27.2568 newDistance= 18.9432
+src/Alien.cpp | Update:46 lastDistance= 659.766 newDistance= 613.566
+src/Alien.cpp | Update:46 lastDistance= 36.2444 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 245.013 newDistance= 198.813
+src/Alien.cpp | Update:46 lastDistance= 18.9432 newDistance= 58.5432
+src/Alien.cpp | Update:46 lastDistance= 613.566 newDistance= 573.966
+src/Alien.cpp | Update:46 lastDistance= 472.53 newDistance= 426.33
+src/Alien.cpp | Update:46 lastDistance= 198.813 newDistance= 159.213
+src/Alien.cpp | Update:46 lastDistance= 573.966 newDistance= 538.266
+src/Alien.cpp | Update:46 lastDistance= 426.33 newDistance= 390.63
+src/Alien.cpp | Update:46 lastDistance= 159.213 newDistance= 123.513
+src/Alien.cpp | Update:46 lastDistance= 390.63 newDistance= 355.53
+src/Alien.cpp | Update:46 lastDistance= 123.513 newDistance= 88.4129
+src/Alien.cpp | Update:46 lastDistance= 538.266 newDistance= 503.166
+src/Alien.cpp | Update:46 lastDistance= 355.53 newDistance= 324.93
+src/Alien.cpp | Update:46 lastDistance= 88.4129 newDistance= 57.8129
+src/Alien.cpp | Update:46 lastDistance= 503.166 newDistance= 472.566
+src/Alien.cpp | Update:46 lastDistance= 324.93 newDistance= 294.33
+src/Alien.cpp | Update:46 lastDistance= 57.8129 newDistance= 27.2129
+src/Alien.cpp | Update:46 lastDistance= 472.566 newDistance= 441.366
+src/Alien.cpp | Update:46 lastDistance= 294.33 newDistance= 263.13
+src/Alien.cpp | Update:46 lastDistance= 27.2129 newDistance= 3.98712
+src/Alien.cpp | Update:46 lastDistance= 441.366 newDistance= 408.666
+src/Alien.cpp | Update:46 lastDistance= 263.13 newDistance= 230.43
+src/Alien.cpp | Update:46 lastDistance= 27.2129 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 408.666 newDistance= 378.366
+src/Alien.cpp | Update:46 lastDistance= 230.43 newDistance= 200.13
+src/Alien.cpp | Update:46 lastDistance= 27.2129 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 378.366 newDistance= 346.866
+src/Alien.cpp | Update:46 lastDistance= 200.13 newDistance= 168.63
+src/Alien.cpp | Update:46 lastDistance= 27.2129 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 346.866 newDistance= 312.066
+src/Alien.cpp | Update:46 lastDistance= 168.63 newDistance= 133.83
+src/Alien.cpp | Update:46 lastDistance= 27.2129 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 312.066 newDistance= 271.866
+src/Alien.cpp | Update:46 lastDistance= 133.83 newDistance= 93.6301
+src/Alien.cpp | Update:46 lastDistance= 27.2129 newDistance= 8.63167e-05
+src/Alien.cpp | Update:46 lastDistance= 271.866 newDistance= 240.366
+src/Alien.cpp | Update:46 lastDistance= 93.6301 newDistance= 62.13
+src/Alien.cpp | Update:46 lastDistance= 240.366 newDistance= 199.266
+==12336== Invalid read of size 8
+==12336==    at 0xA029D36: FT_Done_Face (in /usr/lib/x86_64-linux-gnu/libfreetype.so.6.11.1)
+==12336==    by 0x55B3B6A: TTF_CloseFont (in /usr/lib/x86_64-linux-gnu/libSDL2_ttf-2.0.so.0.10.2)
+==12336==    by 0x40BD11: Resources::GetFont(std::string, int)::{lambda(_TTF_Font*)#1}::operator()(_TTF_Font*) const (Resources.cpp:131)
+==12336==    by 0x40D76E: std::_Sp_counted_deleter<_TTF_Font*, Resources::GetFont(std::string, int)::{lambda(_TTF_Font*)#1}, std::allocator<int>, (__gnu_cxx::_Lock_policy)2>::_M_dispose() (shared_ptr_base.h:347)
+==12336==    by 0x4046A5: std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>::_M_release() (shared_ptr_base.h:144)
+==12336==    by 0x404308: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::~__shared_count() (shared_ptr_base.h:546)
+==12336==    by 0x40E025: std::__shared_ptr<_TTF_Font, (__gnu_cxx::_Lock_policy)2>::~__shared_ptr() (shared_ptr_base.h:781)
+==12336==    by 0x40E03F: std::shared_ptr<_TTF_Font>::~shared_ptr() (shared_ptr.h:93)
+==12336==    by 0x41421B: std::pair<std::string const, std::shared_ptr<_TTF_Font> >::~pair() (stl_pair.h:96)
+==12336==    by 0x41447D: std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>::~_Hash_node() (hashtable_policy.h:170)
+==12336==    by 0x41449B: void __gnu_cxx::new_allocator<std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true> >::destroy<std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true> >(std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>*) (new_allocator.h:124)
+==12336==    by 0x41304A: std::_Hashtable<std::string, std::pair<std::string const, std::shared_ptr<_TTF_Font> >, std::allocator<std::pair<std::string const, std::shared_ptr<_TTF_Font> > >, std::__detail::_Select1st, std::equal_to<std::string>, std::hash<std::string>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_deallocate_node(std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>*) (hashtable.h:746)
+==12336==  Address 0x13795ef0 is 176 bytes inside a block of size 1,312 free'd
+==12336==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==12336==    by 0xA029DC0: FT_Done_Face (in /usr/lib/x86_64-linux-gnu/libfreetype.so.6.11.1)
+==12336==    by 0xA02B6E8: FT_Done_Library (in /usr/lib/x86_64-linux-gnu/libfreetype.so.6.11.1)
+==12336==    by 0xA02260D: FT_Done_FreeType (in /usr/lib/x86_64-linux-gnu/libfreetype.so.6.11.1)
+==12336==    by 0x406CCA: Game::~Game() (Game.cpp:87)
+==12336==    by 0x4095AA: main (main.cpp:13)
+==12336== 
+==12336== Invalid read of size 8
+==12336==    at 0xA029D42: FT_Done_Face (in /usr/lib/x86_64-linux-gnu/libfreetype.so.6.11.1)
+==12336==    by 0x55B3B6A: TTF_CloseFont (in /usr/lib/x86_64-linux-gnu/libSDL2_ttf-2.0.so.0.10.2)
+==12336==    by 0x40BD11: Resources::GetFont(std::string, int)::{lambda(_TTF_Font*)#1}::operator()(_TTF_Font*) const (Resources.cpp:131)
+==12336==    by 0x40D76E: std::_Sp_counted_deleter<_TTF_Font*, Resources::GetFont(std::string, int)::{lambda(_TTF_Font*)#1}, std::allocator<int>, (__gnu_cxx::_Lock_policy)2>::_M_dispose() (shared_ptr_base.h:347)
+==12336==    by 0x4046A5: std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>::_M_release() (shared_ptr_base.h:144)
+==12336==    by 0x404308: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::~__shared_count() (shared_ptr_base.h:546)
+==12336==    by 0x40E025: std::__shared_ptr<_TTF_Font, (__gnu_cxx::_Lock_policy)2>::~__shared_ptr() (shared_ptr_base.h:781)
+==12336==    by 0x40E03F: std::shared_ptr<_TTF_Font>::~shared_ptr() (shared_ptr.h:93)
+==12336==    by 0x41421B: std::pair<std::string const, std::shared_ptr<_TTF_Font> >::~pair() (stl_pair.h:96)
+==12336==    by 0x41447D: std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>::~_Hash_node() (hashtable_policy.h:170)
+==12336==    by 0x41449B: void __gnu_cxx::new_allocator<std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true> >::destroy<std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true> >(std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>*) (new_allocator.h:124)
+==12336==    by 0x41304A: std::_Hashtable<std::string, std::pair<std::string const, std::shared_ptr<_TTF_Font> >, std::allocator<std::pair<std::string const, std::shared_ptr<_TTF_Font> > >, std::__detail::_Select1st, std::equal_to<std::string>, std::hash<std::string>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_deallocate_node(std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>*) (hashtable.h:746)
+==12336==  Address 0x13795f30 is 240 bytes inside a block of size 1,312 free'd
+==12336==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==12336==    by 0xA029DC0: FT_Done_Face (in /usr/lib/x86_64-linux-gnu/libfreetype.so.6.11.1)
+==12336==    by 0xA02B6E8: FT_Done_Library (in /usr/lib/x86_64-linux-gnu/libfreetype.so.6.11.1)
+==12336==    by 0xA02260D: FT_Done_FreeType (in /usr/lib/x86_64-linux-gnu/libfreetype.so.6.11.1)
+==12336==    by 0x406CCA: Game::~Game() (Game.cpp:87)
+==12336==    by 0x4095AA: main (main.cpp:13)
+==12336== 
+==12336== Invalid read of size 4
+==12336==    at 0xA029D4B: FT_Done_Face (in /usr/lib/x86_64-linux-gnu/libfreetype.so.6.11.1)
+==12336==    by 0x55B3B6A: TTF_CloseFont (in /usr/lib/x86_64-linux-gnu/libSDL2_ttf-2.0.so.0.10.2)
+==12336==    by 0x40BD11: Resources::GetFont(std::string, int)::{lambda(_TTF_Font*)#1}::operator()(_TTF_Font*) const (Resources.cpp:131)
+==12336==    by 0x40D76E: std::_Sp_counted_deleter<_TTF_Font*, Resources::GetFont(std::string, int)::{lambda(_TTF_Font*)#1}, std::allocator<int>, (__gnu_cxx::_Lock_policy)2>::_M_dispose() (shared_ptr_base.h:347)
+==12336==    by 0x4046A5: std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>::_M_release() (shared_ptr_base.h:144)
+==12336==    by 0x404308: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::~__shared_count() (shared_ptr_base.h:546)
+==12336==    by 0x40E025: std::__shared_ptr<_TTF_Font, (__gnu_cxx::_Lock_policy)2>::~__shared_ptr() (shared_ptr_base.h:781)
+==12336==    by 0x40E03F: std::shared_ptr<_TTF_Font>::~shared_ptr() (shared_ptr.h:93)
+==12336==    by 0x41421B: std::pair<std::string const, std::shared_ptr<_TTF_Font> >::~pair() (stl_pair.h:96)
+==12336==    by 0x41447D: std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>::~_Hash_node() (hashtable_policy.h:170)
+==12336==    by 0x41449B: void __gnu_cxx::new_allocator<std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true> >::destroy<std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true> >(std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>*) (new_allocator.h:124)
+==12336==    by 0x41304A: std::_Hashtable<std::string, std::pair<std::string const, std::shared_ptr<_TTF_Font> >, std::allocator<std::pair<std::string const, std::shared_ptr<_TTF_Font> > >, std::__detail::_Select1st, std::equal_to<std::string>, std::hash<std::string>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_deallocate_node(std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>*) (hashtable.h:746)
+==12336==  Address 0x6c is not stack'd, malloc'd or (recently) free'd
+==12336== 
+==12336== 
+==12336== Process terminating with default action of signal 11 (SIGSEGV)
+==12336==  Access not within mapped region at address 0x6C
+==12336==    at 0xA029D4B: FT_Done_Face (in /usr/lib/x86_64-linux-gnu/libfreetype.so.6.11.1)
+==12336==    by 0x55B3B6A: TTF_CloseFont (in /usr/lib/x86_64-linux-gnu/libSDL2_ttf-2.0.so.0.10.2)
+==12336==    by 0x40BD11: Resources::GetFont(std::string, int)::{lambda(_TTF_Font*)#1}::operator()(_TTF_Font*) const (Resources.cpp:131)
+==12336==    by 0x40D76E: std::_Sp_counted_deleter<_TTF_Font*, Resources::GetFont(std::string, int)::{lambda(_TTF_Font*)#1}, std::allocator<int>, (__gnu_cxx::_Lock_policy)2>::_M_dispose() (shared_ptr_base.h:347)
+==12336==    by 0x4046A5: std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>::_M_release() (shared_ptr_base.h:144)
+==12336==    by 0x404308: std::__shared_count<(__gnu_cxx::_Lock_policy)2>::~__shared_count() (shared_ptr_base.h:546)
+==12336==    by 0x40E025: std::__shared_ptr<_TTF_Font, (__gnu_cxx::_Lock_policy)2>::~__shared_ptr() (shared_ptr_base.h:781)
+==12336==    by 0x40E03F: std::shared_ptr<_TTF_Font>::~shared_ptr() (shared_ptr.h:93)
+==12336==    by 0x41421B: std::pair<std::string const, std::shared_ptr<_TTF_Font> >::~pair() (stl_pair.h:96)
+==12336==    by 0x41447D: std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>::~_Hash_node() (hashtable_policy.h:170)
+==12336==    by 0x41449B: void __gnu_cxx::new_allocator<std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true> >::destroy<std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true> >(std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>*) (new_allocator.h:124)
+==12336==    by 0x41304A: std::_Hashtable<std::string, std::pair<std::string const, std::shared_ptr<_TTF_Font> >, std::allocator<std::pair<std::string const, std::shared_ptr<_TTF_Font> > >, std::__detail::_Select1st, std::equal_to<std::string>, std::hash<std::string>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >::_M_deallocate_node(std::__detail::_Hash_node<std::pair<std::string const, std::shared_ptr<_TTF_Font> >, true>*) (hashtable.h:746)
+==12336==  If you believe this happened as a result of a stack
+==12336==  overflow in your program's main thread (unlikely but
+==12336==  possible), you can try to increase the size of the
+==12336==  main thread stack using the --main-stacksize= flag.
+==12336==  The main thread stack size used in this run was 8388608.
+src/Alien.cpp | Update:46 lastDistance= 62.13 newDistance= 21.0301
+src/Alien.cpp | Update:46 lastDistance= 199.266 newDistance= 155.766
+src/Alien.cpp | Update:46 lastDistance= 21.0301 newDistance= 22.47
+src/Alien.cpp | Update:46 lastDistance= 155.766 newDistance= 127.866
+src/Alien.cpp | Update:46 lastDistance= 21.0301 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 127.866 newDistance= 98.7663
+src/Alien.cpp | Update:46 lastDistance= 21.0301 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 98.7663 newDistance= 69.6663
+src/Alien.cpp | Update:46 lastDistance= 21.0301 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 69.6663 newDistance= 28.5663
+src/Alien.cpp | Update:46 lastDistance= 21.0301 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 28.5663 newDistance= 20.6337
+src/Alien.cpp | Update:46 lastDistance= 21.0301 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 20.6337 newDistance= 72.2337
+src/Alien.cpp | Update:46 lastDistance= 21.0301 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 20.6337 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 21.0301 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 20.6337 newDistance= 6.10352e-05
+src/Alien.cpp | Update:46 lastDistance= 21.0301 newDistance= 6.10352e-05
+==12336== 
+==12336== HEAP SUMMARY:
+==12336==     in use at exit: 282,375 bytes in 578 blocks
+==12336==   total heap usage: 85,970 allocs, 85,392 frees, 271,087,006 bytes allocated
+==12336== 
+==12336== LEAK SUMMARY:
+==12336==    definitely lost: 96 bytes in 8 blocks
+==12336==    indirectly lost: 0 bytes in 0 blocks
+==12336==      possibly lost: 88 bytes in 2 blocks
+==12336==    still reachable: 282,191 bytes in 568 blocks
+==12336==         suppressed: 0 bytes in 0 blocks
+==12336== Rerun with --leak-check=full to see details of leaked memory
+==12336== 
+==12336== For counts of detected and suppressed errors, rerun with: -v
+==12336== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 6 from 1)

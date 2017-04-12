@@ -41,6 +41,7 @@ class Alien: public GameObject
 		int GetNearestMinion(Vec2 targetPos);
 		float alienRestingCooldown;
 		float CalculateRestingCooldown(void);
+		float lastDistance;
 };
 
 

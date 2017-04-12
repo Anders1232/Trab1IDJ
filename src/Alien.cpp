@@ -16,7 +16,7 @@
 
 int Alien::alienCount=0;
 
-Alien::Alien(float x, float y, int nMinions) : GameObject(), state(RESTING), sp("img/alien.png"), hp(HP_INICIAL), alienRestingCooldown(CalculateRestingCooldown())
+Alien::Alien(float x, float y, int nMinions) : GameObject(), state(RESTING), sp("img/alien.png"), hp(HP_INICIAL), alienRestingCooldown(CalculateRestingCooldown()), lastDistance(0)
 {
 	box.x= x;
 	box.y= y;
@@ -48,6 +48,7 @@ void Alien::Update(float dt)
 		{//muda de estado
 			destination= Penguins::player->box.Center();
 			speed= Penguins::player->box.Center()-box.Center();
+			lastDistance= speed.Magnitude();
 			speed.Normalize();
 			speed= speed*ALIEN_MOVE_SPEED;
 			state= MOVING;
@@ -55,8 +56,11 @@ void Alien::Update(float dt)
 	}
 	else if(MOVING == state)
 	{
-		if( DISTANCE_NEAR_ENOUGH > ( (destination-box.Center() ).Magnitude() ) )
+//		if( DISTANCE_NEAR_ENOUGH > ( (destination-box.Center() ).Magnitude() ) )
+		if( lastDistance < ( (destination-box.Center() ).Magnitude() )  ||  DISTANCE_NEAR_ENOUGH > ( (destination-box.Center() ).Magnitude() ) )
+//		if( lastDistance < ( (destination-box.Center() ).Magnitude() ) )
 		{
+//			lastDistance= (destination-box.Center() ).Magnitude();
 			box= box + destination-box.Center();
 			Vec2 targetPos= Penguins::player->box.Center();
 			minionArray[GetNearestMinion(targetPos)].Shoot(targetPos);
@@ -66,6 +70,7 @@ void Alien::Update(float dt)
 		}
 		else
 		{
+			lastDistance= (destination-box.Center() ).Magnitude();
 			box= box + speed*dt;
 		}
 	}
