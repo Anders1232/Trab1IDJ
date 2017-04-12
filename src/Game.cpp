@@ -168,11 +168,17 @@ void Game::UpdateStack(void)
 	{
 		stateStack.pop();
 		Resources::ClearResources();
-		stateStack.top()->Resume();
+		if(!stateStack.empty())
+		{
+			stateStack.top()->Resume();
+		}
 	}
 	if(nullptr != storedState)
 	{
-		stateStack.top()->Pause();
+		if(!stateStack.empty())
+		{
+			stateStack.top()->Pause();
+		}
 		stateStack.push(std::unique_ptr<State>(storedState));
 		storedState= nullptr;
 	}

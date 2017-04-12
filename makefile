@@ -11,7 +11,7 @@ RM = rm -f
 #Flags para geração automática de dependências
 DEP_FLAGS = -MT $@ -MMD -MP -MF $(DEP_PATH)/$.d
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lm
-FLAGS= -std=c++11 -Wall -pedantic -Wextra -fmax-errors=5
+FLAGS= -std=c++11 -Wall -pedantic -Wextra -fmax-errors=5 -fdiagnostics-color
 
 INC_PATH = include
 SRC_PATH = src
@@ -45,7 +45,11 @@ else
 UNAME_S := $(shell uname -s)
 
 #-------------------------------------------------------------
+<<<<<<< HEAD
+#Caso o sistema seja Mac
+=======
 #Caso o sistema seja windows
+>>>>>>> fa4e425b04ca2fe53ef79ae789deb7d6cafc9ec5
 #-------------------------------------------------------------
 
 ifeq ($(UNAME_S), Darwin)

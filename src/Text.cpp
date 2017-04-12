@@ -31,6 +31,8 @@ void Text::Render(int cameraX, int cameraY) const
 	SDL_Rect destRect;
 	destRect.x= cameraX;
 	destRect.y= cameraY;
+	destRect.w= box.w;
+	destRect.h= box.h;
 	SDL_Rect srcRect= (SDL_Rect)box;
 	if(0 !=SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture, &srcRect, &destRect) )
 	{
@@ -42,7 +44,7 @@ void Text::SetPos(int x, int y, bool centerX, bool centerY)
 	Vec2 center= Game::GetInstance().GetWindowDimensions();
 	if(centerX)
 	{
-		box.x= center.x;
+		box.x= center.x-(box.w*0.5);
 	}
 	else
 	{
@@ -50,7 +52,7 @@ void Text::SetPos(int x, int y, bool centerX, bool centerY)
 	}
 	if(centerY)
 	{
-		box.y= center.y;
+		box.y= center.y-(box.h*0.5);
 	}
 	else
 	{
@@ -103,5 +105,10 @@ void Text::RemakeTexture(void)
 	SDL_QueryTexture(texture, nullptr, nullptr, (int*)&box.w, (int*)&box.h);
 	box.w= *((int*)&box.w);
 	box.h= *((int*)&box.h);
+}
+
+Vec2 Text::GetSize(void)const
+{
+	return Vec2(box.w, box.h);
 }
 

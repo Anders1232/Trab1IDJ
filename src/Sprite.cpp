@@ -6,12 +6,12 @@
 #define SPRITE_OPEN_X (0)//alterar esses valores altera a parte da textura que será renderizada
 #define SPRITE_OPEN_Y (0)
 
-Sprite::Sprite(void): frameCount(1), currentFrame(0), frameTime(0), scaleX(1.), scaleY(1.0)
+Sprite::Sprite(void): frameCount(1), currentFrame(0), timeElapsed(0), frameTime(0), scaleX(1.), scaleY(1.0)
 {
 	texture= nullptr;
 }
 
-Sprite::Sprite(std::string file, float frameTime, int frameCount): frameCount(frameCount), currentFrame(0), frameTime(frameTime), scaleX(1.), scaleY(1.0)
+Sprite::Sprite(std::string file, float frameTime, int frameCount): frameCount(frameCount), currentFrame(0), timeElapsed(0), frameTime(frameTime), scaleX(1.), scaleY(1.0)
 {
 	REPORT_I_WAS_HERE;
 	texture=nullptr;

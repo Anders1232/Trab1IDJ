@@ -9,7 +9,8 @@
 #include <queue>
 #include <vector>
 
-#define ALIEN_MOVE_SPEED (60)
+#define ALIEN_MOVE_SPEED (300)
+#define MIN_DISTANCE_BETWEEN_ALIENS (100)
 
 using std::queue;
 using std::vector;
@@ -38,6 +39,8 @@ class Alien: public GameObject
 		Timer restTimer;
 		Vec2 destination;
 		int GetNearestMinion(Vec2 targetPos);
+		float alienRestingCooldown;
+		float CalculateRestingCooldown(void);
 };
 
 

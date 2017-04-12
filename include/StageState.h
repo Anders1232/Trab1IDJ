@@ -11,6 +11,8 @@
 #include "State.h"
 #include "Music.h"
 
+#define NUMBER_OF_ALIENS (6)
+
 //#define BG_POINTER
 
 class StageState: public State
@@ -28,6 +30,9 @@ class StageState: public State
 		TileSet tileSet;
 		InputManager &inputManager;
 		Music music;
+		void CreateAlien();
 };
+
+#include "EndState.h"
 
 #endif // STAGE_STATE_H

@@ -7,7 +7,7 @@
 #include "Animation.h"
 #include "Sound.h"
 
-#define PENGUIM_LINEAR_SPEED (50)
+#define PENGUIM_LINEAR_SPEED (150)
 #define PENGUIM_CANNON_ANGLE (20)
 #define PENGUIM_HP (100)
 #define PENGUIM_MAX_SPEED (200.)

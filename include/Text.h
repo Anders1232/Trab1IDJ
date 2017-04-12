@@ -48,6 +48,7 @@ class Text
 		void SetColor(SDL_Color color);
 		void SetStyle(TextStyle style);
 		void SetFontSize(int fontSize);
+		Vec2 GetSize(void)const;
 	private:
 		void RemakeTexture(void);
 		std::shared_ptr<TTF_Font> font;

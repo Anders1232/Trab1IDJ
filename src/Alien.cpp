@@ -16,7 +16,7 @@
 
 int Alien::alienCount=0;
 
-Alien::Alien(float x, float y, int nMinions) : GameObject(), state(RESTING), sp("img/alien.png"), hp(HP_INICIAL)
+Alien::Alien(float x, float y, int nMinions) : GameObject(), state(RESTING), sp("img/alien.png"), hp(HP_INICIAL), alienRestingCooldown(CalculateRestingCooldown())
 {
 	box.x= x;
 	box.y= y;
@@ -44,7 +44,7 @@ void Alien::Update(float dt)
 	if(RESTING== state)
 	{
 		restTimer.Update(dt);
-		if(ALIEN_RESTING_COOLDOWN < restTimer.Get())
+		if(alienRestingCooldown < restTimer.Get())
 		{//muda de estado
 			destination= Penguins::player->box.Center();
 			speed= Penguins::player->box.Center()-box.Center();
@@ -61,6 +61,7 @@ void Alien::Update(float dt)
 			Vec2 targetPos= Penguins::player->box.Center();
 			minionArray[GetNearestMinion(targetPos)].Shoot(targetPos);
 			restTimer.Restart();
+			alienRestingCooldown= CalculateRestingCooldown();
 			state= RESTING;
 		}
 		else
@@ -94,14 +95,14 @@ bool Alien::IsDead(void)
 
 bool Alien::Is(string type)
 {
-	return type != "Alien";
+	return type == "Alien";
 }
 
 void Alien::NotifyCollision(GameObject &other)
 {
 	if(other.Is("Bullet"))
 	{
-		if( !( (Bullet&)other).TargetsPlayer() )
+		if( !( ( (Bullet&)other).TargetsPlayer() ) )
 		{
 			hp-= ALIEN_DAMAGE_PER_BULLET;
 			if(IsDead())
@@ -130,4 +131,11 @@ int Alien::GetNearestMinion(Vec2 targetPos)
 	}
 		return nearestAlien;
 }
+
+float Alien::CalculateRestingCooldown(void)
+{
+	return ALIEN_RESTING_COOLDOWN* 1+( ( ( (float)(rand()%101) )/100-0.5) );
+}
+
+
 

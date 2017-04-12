@@ -26,8 +26,11 @@ StageState::StageState(void): State(), bg("img/ocean.jpg"), tileSet(64, 64,"img/
 	REPORT_I_WAS_HERE;
 	tileMap= new TileMap(std::string("map/tileMap.txt"), &tileSet);
 	REPORT_I_WAS_HERE;
-	Vec2 windowCenter= Game::GetInstance().GetWindowDimensions()*0.5;
-	objectArray.emplace_back(std::unique_ptr<Alien>( new Alien (windowCenter.x, windowCenter.y, 3) ) );
+	int numberOfAliens= NUMBER_OF_ALIENS;
+	for(int count =0; count < numberOfAliens; count++)
+	{
+		CreateAlien();
+	}
 	objectArray.emplace_back(std::unique_ptr<Penguins>( new Penguins (704, 640) ) );
 	music.Play(10);
 }
@@ -72,6 +75,16 @@ void StageState::Update(float dt)
 	}
 	Camera::Update(dt);
 	REPORT_I_WAS_HERE;
+	if(nullptr == Penguins::player)
+	{
+		popRequested= true;
+		Game::GetInstance().Push(new EndState(StateData(false)));
+	}
+	else if (0 == Alien::alienCount)
+	{
+		popRequested= true;
+		Game::GetInstance().Push(new EndState(StateData(true)));
+	}
 }
 
 void StageState::Render(void) const
@@ -94,4 +107,11 @@ void StageState::Pause(void)
 {}
 void StageState::Resume(void)
 {}
+
+void StageState::CreateAlien(void)
+{
+	Vec2 windowDimension= Game::GetInstance().GetWindowDimensions();
+	objectArray.emplace_back(std::unique_ptr<Alien>( new Alien (rand()%(int)(windowDimension.x*2), rand()%(int)(windowDimension.y*2), (rand()%6)+1) ) );
+}
+
 
