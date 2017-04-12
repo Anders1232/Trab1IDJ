@@ -13,7 +13,7 @@ DEP_FLAGS = -MT $@ -MMD -MP -MF $(DEP_PATH)/$.d
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lm
 FLAGS= -std=c++11 -Wall -pedantic -Wextra -fmax-errors=5 -fdiagnostics-color
 
-INC_PATH = include
+INC_PATH = -Iinclude
 SRC_PATH = src
 BIN_PATH = bin
 DEP_PATH = dep
@@ -33,10 +33,13 @@ ifeq ($(OS),Windows_NT)
 #comando para remover um diretório recursivamente
 RMDIR= rd /s /q
 #comando para deletar um único arquivo
-EM = del
+RM = del
 
 #path da SDL
-SDL_PATH = C:\DL2-2.0.5\x86_64-w64-mingw32
+SDL_PATH = C:/Tools/msys64/mingw64
+INC_PATH += -I$(SDL_PATH)/include/SDL2
+FLAGS = -mwindows
+LIBS := -lmingw32 -lSDL2main $(LIBS)
 
 #Nome do executável
 EXEC := $(EXEC).exe
@@ -69,7 +72,7 @@ else
 	@mkdir -p $(DEP_PATH) $(BIN_PATH)
 endif
 
-	$(COMPILER) $(DEP_FLAGS) -c -o $@ $< -I$(INC_PATH) $(FLAGS)
+	$(COMPILER) $(DEP_FLAGS) -c -o $@ $< $(INC_PATH) $(FLAGS)
 
 -include $(DEP_FILES)
 
