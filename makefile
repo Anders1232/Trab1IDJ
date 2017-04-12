@@ -45,11 +45,7 @@ else
 UNAME_S := $(shell uname -s)
 
 #-------------------------------------------------------------
-<<<<<<< HEAD
 #Caso o sistema seja Mac
-=======
-#Caso o sistema seja windows
->>>>>>> fa4e425b04ca2fe53ef79ae789deb7d6cafc9ec5
 #-------------------------------------------------------------
 
 ifeq ($(UNAME_S), Darwin)
