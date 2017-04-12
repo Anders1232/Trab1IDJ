@@ -28,12 +28,14 @@ Text::~Text()
 }
 void Text::Render(int cameraX, int cameraY) const
 {
-	SDL_Rect destRect;
-	destRect.x= cameraX;
-	destRect.y= cameraY;
-	destRect.w= box.w;
-	destRect.h= box.h;
-	SDL_Rect srcRect= (SDL_Rect)box;
+	SDL_Rect srcRect;
+	srcRect.x= 0;
+	srcRect.y= 0;
+	srcRect.w= box.w;
+	srcRect.h= box.h;
+	SDL_Rect destRect= (SDL_Rect)box;
+//	std::cout << WHERE << " srcRect.x=" << srcRect.x<< " srcRect.y=" << srcRect.y<< " srcRect.w=" << srcRect.w<< " srcRect.h=" << srcRect.h << "\n";
+//	std::cout << WHERE << " destRect.x=" << destRect.x<< " destRect.y=" << destRect.y<< " destRect.w=" << destRect.w<< " destRect.h=" << destRect.h << "\n";
 	if(0 !=SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture, &srcRect, &destRect) )
 	{
 		Error("Render error: " << SDL_GetError());
@@ -44,7 +46,7 @@ void Text::SetPos(int x, int y, bool centerX, bool centerY)
 	Vec2 center= Game::GetInstance().GetWindowDimensions();
 	if(centerX)
 	{
-		box.x= center.x-(box.w*0.5);
+		box.x= (center.x-box.w)*0.5;
 	}
 	else
 	{
@@ -52,7 +54,7 @@ void Text::SetPos(int x, int y, bool centerX, bool centerY)
 	}
 	if(centerY)
 	{
-		box.y= center.y-(box.h*0.5);
+		box.y= (center.y-box.h)*0.5;
 	}
 	else
 	{

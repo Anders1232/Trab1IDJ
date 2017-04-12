@@ -5,6 +5,11 @@
 #include "Sprite.h"
 #include "Timer.h"
 
+#define PENGUIM_MIN_BOX_X (0)
+#define PENGUIM_MIN_BOX_Y (0)
+#define PENGUIM_MAX_BOX_X (1408)
+#define PENGUIM_MAX_BOX_Y (1280)
+
 class Penguins: public GameObject
 {
 	public:
@@ -25,6 +30,7 @@ class Penguins: public GameObject
 		float cannonAngle;
 		int hp;
 		Timer bulletsTimer;
+		void CheckMapLimits(void);
 };
 
 #endif // PENGUINS_H

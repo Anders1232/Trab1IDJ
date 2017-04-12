@@ -73,6 +73,7 @@ void Penguins::Update(float dt)
 	}
 	box= box + speed.Rotate(rotation)*dt;
 	cannonAngle= (inputManager.GetMousePos()-(box.Center()-Camera::pos)).Inclination()*CONVERSAO_GRAUS_RADIANOS;
+	CheckMapLimits();
 
 	bulletsTimer.Update(dt);
 	if(inputManager.IsMouseDown(LEFT_MOUSE_BUTTON))
@@ -132,6 +133,28 @@ void Penguins::NotifyCollision(GameObject &other)
 bool Penguins::Is(string type)
 {
 	return type=="Penguins";
+}
+
+void Penguins::CheckMapLimits(void)
+{
+	Vec2 pos= box.Center();
+	Vec2 diff= box-box.Center();
+	if(PENGUIM_MAX_BOX_X < pos.x )
+	{
+		box.x= PENGUIM_MAX_BOX_X+diff.x;
+	}
+	else if(PENGUIM_MIN_BOX_X > pos.x)
+	{
+		box.x= PENGUIM_MIN_BOX_X+diff.x;
+	}
+	if(PENGUIM_MAX_BOX_Y < pos.y )
+	{
+		box.y= PENGUIM_MAX_BOX_Y+diff.y;
+	}
+	else if(PENGUIM_MIN_BOX_Y > pos.y)
+	{
+		box.y= PENGUIM_MIN_BOX_Y+diff.y;
+	}
 }
 
 

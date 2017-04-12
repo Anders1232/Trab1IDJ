@@ -15,10 +15,15 @@ EndState::EndState(StateData stateData):
 	instruction.SetText("Press Esc to go to menu or Space to play again!");
 
 	bg.Render(0, 0);
-//	Vec2 pos= Game::GetInstance().GetWindowDimensions();
-//	instruction.SetPos(0, pos.y*0.8, true);
-
-	instruction.SetPos(0,0, true, true);
+	Vec2 pos= Game::GetInstance().GetWindowDimensions();
+	if(stateData.playerVictory)
+	{
+		instruction.SetPos(0, pos.y*0.005, true);
+	}
+	else
+	{
+		instruction.SetPos(0, pos.y-instruction.GetSize().y, true);
+	}
 }
 
 void EndState::Update(float dt)
