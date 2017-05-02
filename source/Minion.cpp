@@ -43,7 +43,7 @@ void Minion::Shoot(Vec2 pos)
 				(pos-box).Inclination(),
 				MINION_BULLET_SPEED,
 				MINION_BULLET_MAX_DISTANCE,
-				"img/minionbullet2.png"
+				"img/minionbullet1.png"
 			);
 	Game::GetInstance().GetState().AddObject(bullet);
 }

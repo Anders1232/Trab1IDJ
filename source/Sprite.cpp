@@ -53,8 +53,8 @@ void Sprite::Render(int x, int y, float angle) const
 	SDL_Rect rect;
 	rect.x = x;
 	rect.y = y;
-	rect.w = clipRect.w;
-	rect.h = clipRect.h;
+	rect.w = GetWidth();
+	rect.h = GetHeight();
 /*	if(SDL_RenderCopy(game.GetRenderer(), texture, &clipRect, &rect) )//verifica se haverá erro#define SPRITE_OPEN_X (0)//alterar esses valores altera a parte da textura que será renderizada
 
 	{
