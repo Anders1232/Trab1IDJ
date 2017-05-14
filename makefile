@@ -1,241 +1,92 @@
-compilador = g++
-arquivoSaida = JOGO.out
-LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
-FLAGS= -std=c++11 -Wall -pedantic -fmax-errors=5
-DebugOrRelease= -g #-Ofast -mtune=native
-binFolder= bin
-#DEBUG= -g
-#RELEASE= -O3
-incFldr= include
-srcFldr= src
-INCLUDE_FLAGS= -I$(incFldr)
+#-------------------------------------------------------------
+#Assume-se uma distribuição Linux como sistema operacional padrão
+#-------------------------------------------------------------
 
+COMPILER = g++
+#comando para remover pastas
+RMDIR = rm -rf
+#comando para remover arquivos
+RM = rm -f
 
-#regra geral
-executavel: \
-		bin $(binFolder)/Game.o\
-		$(binFolder)/Sprite.o\
-		$(binFolder)/State.o\
-		$(binFolder)/main.o\
-		$(binFolder)/Camera.o\
-		$(binFolder)/InputManager.o\
-		$(binFolder)/Alien.o\
-		$(binFolder)/Resources.o\
-		$(binFolder)/TileMap.o\
-		$(binFolder)/Tileset.o\
-		$(binFolder)/Vec2.o\
-		$(binFolder)/Gameobject.o\
-		$(binFolder)/Rect.o\
-		$(binFolder)/Minion.o\
-		$(binFolder)/Bullet.o\
-		$(binFolder)/Timer.o\
-		$(binFolder)/Animation.o\
-		$(binFolder)/Penguins.o
-	$(compilador)\
-		$(binFolder)/Game.o\
-		$(binFolder)/Sprite.o\
-		$(binFolder)/State.o\
-		$(binFolder)/InputManager.o\
-		$(binFolder)/Camera.o\
-		$(binFolder)/main.o\
-		$(binFolder)/Alien.o\
-		$(binFolder)/Resources.o\
-		$(binFolder)/TileMap.o\
-		$(binFolder)/Tileset.o\
-		$(binFolder)/Vec2.o\
-		$(binFolder)/Gameobject.o\
-		$(binFolder)/Rect.o\
-		$(binFolder)/Minion.o\
-		$(binFolder)/Bullet.o\
-		$(binFolder)/Timer.o\
-		$(binFolder)/Animation.o\
-		$(binFolder)/Penguins.o\
-		$(FLAGS) $(LIBS) -o $(binFolder)/$(arquivoSaida) $(DebugOrRelease)
+#Flags para geração automática de dependências
+DEP_FLAGS = -MT $@ -MMD -MP -MF $(DEP_PATH)/$.d
+LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lm
+FLAGS= -std=c++11 -Wall -pedantic -Wextra -fmax-errors=5 -fdiagnostics-color
+#FLAGS= -std=c++11 -Wall -pedantic -Wextra -fmax-errors=5
 
-#cria o diretório onde ficará os compilados e copia os resources para lá
-.PHONY: bin
-bin:
-	mkdir -p $(binFolder)
-#	cp -R assets $(binFolder)
+INC_PATH = -Iinclude
+SRC_PATH = src
+BIN_PATH = bin
+DEP_PATH = dep
 
-#desfaz tudo que algum make fez e faz denovo
-.PHONY: all
-all: clear executavel
+#Uma lista de arquivos por extensão:
+CPP_FILES= $(wildcard $(SRC_PATH)/*.cpp)
+OBJ_FILES= $(addprefix $(BIN_PATH)/,$(notdir $(CPP_FILES:.cpp=.o)))
+DEP_FILES = $(wildcard $(DEP_PATH)/*.d)
 
-.PHONY: gcc
-gcc:
-	$(eval compilador = gcc)
-	$(eval flags += -lstdc++)
-.PHONY: windows
-windows:
-	$(eval arquivoSaida = -o JOGO.exe)
+#Nome do executável
+EXEC = JOGO
 
-$(binFolder)/Game.o: \
-		$(srcFldr)/Game.cpp\
-		$(binFolder)/Alien.o\
-		$(incFldr)/Game.h\
-		$(incFldr)/Resources.h\
-		$(incFldr)/Error.h
-	$(compilador)\
-		$(srcFldr)/Game.cpp\
-		$(FLAGS) -o $(binFolder)/Game.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Sprite.o:\
-		$(srcFldr)/Sprite.cpp\
-		$(incFldr)/Sprite.h\
-		$(incFldr)/Game.h\
-		$(incFldr)/Error.h
-	$(compilador)\
-		$(srcFldr)/Sprite.cpp\
-		$(FLAGS) -o $(binFolder)/Sprite.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/State.o:\
-		$(srcFldr)/State.cpp\
-		$(incFldr)/State.h\
-		$(incFldr)/Sprite.h\
-		$(incFldr)/Gameobject.h\
-		$(incFldr)/Tileset.h\
-		$(incFldr)/TileMap.h\
-		$(incFldr)/InputManager.h
-	$(compilador)\
-		$(srcFldr)/State.cpp\
-		$(FLAGS) -o $(binFolder)/State.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/main.o:\
-		$(srcFldr)/main.cpp\
-		$(incFldr)/Game.h
-	$(compilador)\
-		$(srcFldr)/main.cpp\
-		$(FLAGS) -o $(binFolder)/main.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Camera.o:\
-		$(srcFldr)/Camera.cpp\
-		$(incFldr)/Camera.h\
-		$(incFldr)/Gameobject.h\
-		$(incFldr)/Vec2.h
-	$(compilador)\
-		$(srcFldr)/Camera.cpp\
-		$(FLAGS) -o $(binFolder)/Camera.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/InputManager.o:\
-		$(srcFldr)/InputManager.cpp\
-		$(incFldr)/InputManager.h
-	$(compilador)\
-		$(srcFldr)/InputManager.cpp\
-		$(FLAGS) -o $(binFolder)/InputManager.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Alien.o:\
-		$(srcFldr)/Alien.cpp\
-		$(incFldr)/Alien.h\
-		$(incFldr)/Minion.h\
-		$(incFldr)/Gameobject.h\
-		$(incFldr)/Sprite.h\
-		$(incFldr)/Vec2.h
-	$(compilador)\
-		$(srcFldr)/Alien.cpp\
-		$(FLAGS) -o $(binFolder)/Alien.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Resources.o:\
-		$(srcFldr)/Resources.cpp\
-		$(incFldr)/Resources.h\
-		$(incFldr)/Error.h\
-		$(incFldr)/Game.h
-	$(compilador)\
-		$(srcFldr)/Resources.cpp\
-		$(FLAGS) -o $(binFolder)/Resources.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Tileset.o:\
-		$(srcFldr)/Tileset.cpp\
-		$(incFldr)/Tileset.h\
-		$(incFldr)/Error.h\
-		$(incFldr)/Sprite.h
-	$(compilador)\
-		$(srcFldr)/Tileset.cpp\
-		$(FLAGS) -o $(binFolder)/Tileset.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/TileMap.o:\
-		$(srcFldr)/TileMap.cpp\
-		$(incFldr)/TileMap.h\
-		$(incFldr)/Tileset.h\
-		$(incFldr)/Error.h
-	$(compilador)\
-		$(srcFldr)/TileMap.cpp\
-		$(FLAGS) -o $(binFolder)/TileMap.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Vec2.o:\
-		$(srcFldr)/Vec2.cpp\
-		$(incFldr)/Vec2.h\
-		$(incFldr)/Error.h
-	$(compilador)\
-		$(srcFldr)/Vec2.cpp\
-		$(FLAGS) -o $(binFolder)/Vec2.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Gameobject.o:\
-		$(srcFldr)/Gameobject.cpp\
-		$(incFldr)/Gameobject.h\
-		$(incFldr)/Rect.h
-	$(compilador)\
-		$(srcFldr)/Gameobject.cpp\
-		$(FLAGS) -o $(binFolder)/Gameobject.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Rect.o:\
-		$(srcFldr)/Rect.cpp\
-		$(incFldr)/Rect.h\
-		$(incFldr)/Error.h\
-		$(incFldr)/Vec2.h
-	$(compilador)\
-		$(srcFldr)/Rect.cpp\
-		$(FLAGS) -o $(binFolder)/Rect.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Minion.o:\
-		$(srcFldr)/Minion.cpp\
-		$(incFldr)/Minion.h\
-		$(incFldr)/Error.h\
-		$(incFldr)/Vec2.h\
-		$(incFldr)/Gameobject.h\
-		$(incFldr)/Sprite.h\
-		$(incFldr)/Camera.h\
-		$(incFldr)/InputManager.h\
-		$(incFldr)/Bullet.h\
-		$(incFldr)/Game.h
-	$(compilador)\
-		$(srcFldr)/Minion.cpp\
-		$(FLAGS) -o $(binFolder)/Minion.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Bullet.o:\
-		$(srcFldr)/Bullet.cpp\
-		$(incFldr)/Bullet.h\
-		$(incFldr)/Error.h\
-		$(incFldr)/Vec2.h\
-		$(incFldr)/Sprite.h\
-		$(incFldr)/Gameobject.h\
-		$(incFldr)/Camera.h
-	$(compilador)\
-		$(srcFldr)/Bullet.cpp\
-		$(FLAGS) -o $(binFolder)/Bullet.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Penguins.o:\
-		$(srcFldr)/Penguins.cpp\
-		$(incFldr)/Penguins.h\
-		$(incFldr)/Error.h\
-		$(incFldr)/Vec2.h\
-		$(incFldr)/Sprite.h\
-		$(incFldr)/Gameobject.h\
-		$(incFldr)/Camera.h\
-		$(incFldr)/Timer.h\
-		$(incFldr)/InputManager.h\
-		$(incFldr)/Bullet.h\
-		$(incFldr)/Animation.h
-	$(compilador)\
-		$(srcFldr)/Penguins.cpp\
-		$(FLAGS) -o $(binFolder)/Penguins.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Animation.o:\
-		$(srcFldr)/Animation.cpp\
-		$(incFldr)/Animation.h\
-		$(incFldr)/Error.h\
-		$(incFldr)/Vec2.h\
-		$(incFldr)/Sprite.h\
-		$(incFldr)/Gameobject.h\
-		$(incFldr)/Camera.h\
-		$(incFldr)/Timer.h\
-		$(incFldr)/Animation.h
-	$(compilador)\
-		$(srcFldr)/Animation.cpp\
-		$(FLAGS) -o $(binFolder)/Animation.o -c $(DebugOrRelease) -I$(incFldr)
-$(binFolder)/Timer.o:\
-		$(srcFldr)/Timer.cpp\
-		$(incFldr)/Timer.h
-	$(compilador)\
-		$(srcFldr)/Timer.cpp\
-		$(FLAGS) -o $(binFolder)/Timer.o -c $(DebugOrRelease) -I$(incFldr)
+#-------------------------------------------------------------
+#Caso o sistema seja windows
+#-------------------------------------------------------------
+ifeq ($(OS),Windows_NT)
+#comando para remover um diretório recursivamente
+RMDIR= rd /s /q
+#comando para deletar um único arquivo
+RM = del
 
+#path da SDL
+SDL_PATH = C:/Tools/msys64/mingw64
+INC_PATH += -I$(SDL_PATH)/include/SDL2
+FLAGS = -mwindows
+LIBS := -lmingw32 -lSDL2main $(LIBS)
 
-clear:
-	rm -rf *.o bin
+#Nome do executável
+EXEC := $(EXEC).exe
 
+else
+UNAME_S := $(shell uname -s)
 
+#-------------------------------------------------------------
+#Caso o sistema seja Mac
+#-------------------------------------------------------------
+
+ifeq ($(UNAME_S), Darwin)
+
+LIBS = -lm -framework SDL2 -framework SDL2_image -framework SDL2_mixer -framework SDL2_ttf
+
+endif
+endif
+
+all: $(EXEC)
+
+$(EXEC): $(OBJ_FILES)
+	$(COMPILER) -o $@ $^ $(LIBS)
+
+$(BIN_PATH)/%.o: $(SRC_PATH)/%.cpp
+
+ifeq ($(OS), Windows_NT)
+	@if not exist $(DEP_PATH) @ mkdir $(DEP_PATH)
+	@if not exist $(BIN_PATH) @ mkdir $(BIN_PATH)
+else
+	@mkdir -p $(DEP_PATH) $(BIN_PATH)
+endif
+
+	$(COMPILER) $(DEP_FLAGS) -c -o $@ $< $(INC_PATH) $(FLAGS)
+
+-include $(DEP_FILES)
+
+clean:
+	$(RMDIR) $(BIN_PATH) $(DEP_PATH)
+	$(RM) $(EXEC)
+
+.PHONY: debug clean release again
+#regra pra debug
+print-% : ; @echo $* = $($*)
+
+debug: FLAGS += -g -O0
+debug: all
+
+release: FLAGS += -O3 -mtune=native
+release: all
