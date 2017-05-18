@@ -1,5 +1,7 @@
 #include "EndState.h"
 
+#define TEMPO_PISCA_TEXTO (1.)
+
 EndState::EndState(StateData stateData):
 	bg((stateData.playerVictory)?"img/win.jpg":"img/lose.jpg"),
 	music((stateData.playerVictory)?"audio/endStateWin.ogg": "audio/endStateLose.ogg"),
@@ -9,7 +11,8 @@ EndState::EndState(StateData stateData):
 		END_STATE_FONT_SIZE,
 		BLENDED,
 		{255, 255, 255, 255}
-	)
+	),
+	displayTimer(true)
 {
 	music.Play(0);
 	instruction.SetText("Press Esc to go to menu or Space to play again!");
@@ -42,11 +45,20 @@ void EndState::Update(float dt)
 		popRequested= true;
 		Game::GetInstance().Push(new StageState());
 	}
+	textTimer.Update(dt);
+	if(TEMPO_PISCA_TEXTO < textTimer.Get())
+	{
+		displayTimer= !displayTimer;
+		textTimer.Restart();
+	}
 }
 void EndState::Render() const
 {
 	bg.Render(0, 0);
-	instruction.Render();
+	if(displayTimer)
+	{
+		instruction.Render();
+	}
 }
 void EndState::Pause()
 {}
