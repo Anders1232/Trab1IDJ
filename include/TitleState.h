@@ -3,6 +3,8 @@
 
 #include "State.h"
 #include "Sprite.h"
+#include "Text.h"
+#include "Timer.h"
 
 class TitleState: public State
 {
@@ -14,6 +16,9 @@ class TitleState: public State
 		void Resume(void);
 	private:
 		Sprite bg;
+		Text message;
+		Timer textTimer;
+		bool displayText;
 };
 
 #endif // TITLESTATE_H

@@ -102,7 +102,15 @@ void Text::RemakeTexture(void)
 	{
 		temp = TTF_RenderText_Blended(font.get(), text.c_str(), color);
 	}
+	if(NULL == temp)
+	{
+		Error("\tCould not load " << text << " with size " << fontSize);
+	}
 	texture= SDL_CreateTextureFromSurface(Game::GetInstance().GetRenderer(), temp);
+	if(NULL == texture)
+	{
+		Error("\tCould not generate texture from surface " << text << " with size " << fontSize);
+	}
 	SDL_FreeSurface(temp);
 	SDL_QueryTexture(texture, nullptr, nullptr, (int*)&box.w, (int*)&box.h);
 	box.w= *((int*)&box.w);

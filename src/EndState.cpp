@@ -12,7 +12,7 @@ EndState::EndState(StateData stateData):
 		BLENDED,
 		{255, 255, 255, 255}
 	),
-	displayTimer(true)
+	displayText(true)
 {
 	music.Play(0);
 	instruction.SetText("Press Esc to go to menu or Space to play again!");
@@ -48,14 +48,14 @@ void EndState::Update(float dt)
 	textTimer.Update(dt);
 	if(TEMPO_PISCA_TEXTO < textTimer.Get())
 	{
-		displayTimer= !displayTimer;
+		displayText= !displayText;
 		textTimer.Restart();
 	}
 }
 void EndState::Render() const
 {
 	bg.Render(0, 0);
-	if(displayTimer)
+	if(displayText)
 	{
 		instruction.Render();
 	}

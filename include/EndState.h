@@ -23,7 +23,7 @@ class EndState: public State
 		Music music;
 		Text instruction;
 		Timer textTimer;
-		bool displayTimer;
+		bool displayText;
 };
 
 #include "InputManager.h"
