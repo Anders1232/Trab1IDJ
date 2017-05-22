@@ -119,12 +119,14 @@ std::shared_ptr<TTF_Font> Resources::GetFont(string file, int fontSize)
 	TTF_Font* ret;
 	if(fontTable.end() == fontTable.find(file+std::to_string(fontSize)))
 	{
+		REPORT_I_WAS_HERE;
 		ret= TTF_OpenFont (file.c_str(), fontSize);
+		REPORT_I_WAS_HERE;
 		if(nullptr == ret)
 		{
-//			std::cout << WHERE <<  << file << endl;
 			Error("Could not load "<<file);
 		}
+		REPORT_I_WAS_HERE;
 		fontTable[file+std::to_string(fontSize)]= std::shared_ptr<TTF_Font>
 				(
 					ret,
@@ -133,6 +135,7 @@ std::shared_ptr<TTF_Font> Resources::GetFont(string file, int fontSize)
 						TTF_CloseFont (font);
 					}
 				);
+		REPORT_I_WAS_HERE;
 	}
 	return fontTable[file+std::to_string(fontSize)];
 }

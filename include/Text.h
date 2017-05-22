@@ -39,6 +39,7 @@ class Text
 			int fontSize,
 			TextStyle style,
 			SDL_Color color,
+			std::string text = " ",
 			int x= 0,
 			int y=0
 		);

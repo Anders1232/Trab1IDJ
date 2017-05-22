@@ -1,23 +1,25 @@
 #include "Text.h"
 
-Text::Text
-(
-	string fontFile,
+Text::Text(string fontFile,
 	int fontSize,
 	TextStyle style,
 	SDL_Color color,
+	std::string text,
 	int x,
-	int y
-):font(Resources::GetFont(fontFile, fontSize)),
+	int y):
+	font(Resources::GetFont(fontFile, fontSize)),
 	texture(nullptr),
-//	text(),
+	text(text),
 	style(style),
 	fontSize(fontSize),
 	color(color)
 {
+	REPORT_I_WAS_HERE;
 	box.x= x;
 	box.y= y;
+	REPORT_I_WAS_HERE;
 	RemakeTexture();
+	REPORT_I_WAS_HERE;
 }
 Text::~Text()
 {
@@ -83,23 +85,33 @@ void Text::SetFontSize(int fontSize)
 }
 void Text::RemakeTexture(void)
 {
+	REPORT_I_WAS_HERE;
 	if(nullptr != texture)
 	{
 		SDL_DestroyTexture(texture);
 	}
 	SDL_Surface *temp;
-	if(SOLID == style)
+/*	if(text.empty()){
+		REPORT_I_WAS_HERE;
+		std::cout << WHERE << " AHAA!" << END_LINE;
+		return;
+	}
+*/	if(SOLID == style)
 	{
+		REPORT_I_WAS_HERE;
 		temp= TTF_RenderText_Solid(font.get(), text.c_str(), color);
 	}
 	else if(SHARED == style)
 	{
+		REPORT_I_WAS_HERE;
 		SDL_Color bgColor;
 		bgColor= {0, 0, 0, 0};//preto
 		temp= TTF_RenderText_Shaded(font.get(), text.c_str(), color, bgColor);
+		REPORT_I_WAS_HERE;
 	}
 	else if(BLENDED ==  style)
 	{
+		REPORT_I_WAS_HERE;
 		temp = TTF_RenderText_Blended(font.get(), text.c_str(), color);
 	}
 	if(NULL == temp)
@@ -111,8 +123,10 @@ void Text::RemakeTexture(void)
 	{
 		Error("\tCould not generate texture from surface " << text << " with size " << fontSize);
 	}
+	REPORT_I_WAS_HERE;
 	SDL_FreeSurface(temp);
 	SDL_QueryTexture(texture, nullptr, nullptr, (int*)&box.w, (int*)&box.h);
+	REPORT_I_WAS_HERE;
 	box.w= *((int*)&box.w);
 	box.h= *((int*)&box.h);
 }

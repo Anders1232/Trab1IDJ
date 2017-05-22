@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "StageState.h"
 
-#define TILE_STATE_FONT_SIZE (40)
+#define TILE_STATE_FONT_SIZE (35)
 #define DURACAO_DO_PISCAR (1.0)
 
 TitleState::TitleState():State(),
@@ -11,14 +11,16 @@ TitleState::TitleState():State(),
 	message(
 		"font/Call me maybe.ttf",
 		TILE_STATE_FONT_SIZE,
-		SHARED,
-		{255, 255, 255, 255}
+		TextStyle::BLENDED,
+		{255, 255, 255, 255},
+		std::string("Press space to start game")
 	),
 	displayText(false)
 {
-	message.SetText("Press space to start game");
+	REPORT_I_WAS_HERE;
 	Vec2 pos= Game::GetInstance().GetWindowDimensions();
 	message.SetPos(0, pos.y-message.GetSize().y, true);
+	REPORT_I_WAS_HERE;
 }
 void TitleState::Update(float dt)
 {
