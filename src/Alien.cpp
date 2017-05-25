@@ -139,7 +139,7 @@ int Alien::GetNearestMinion(Vec2 targetPos)
 
 float Alien::CalculateRestingCooldown(void)
 {
-	return ALIEN_RESTING_COOLDOWN* 1+( ( ( (float)(rand()%101) )/100-0.5) );
+	return ALIEN_RESTING_COOLDOWN* (1+ ( ( (float)(rand()%101) )/100-0.5) );
 }
 
 
